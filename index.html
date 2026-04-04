@@ -416,6 +416,135 @@
       body { cursor: auto; }
       #cursor-glow { display: none; }
     }
+
+    /* ── Project modals ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(5,7,19,0.88);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-panel {
+      background: #111729;
+      border: 1px solid rgba(148,163,184,0.2);
+      border-radius: 24px;
+      width: 100%; max-width: 800px;
+      max-height: 90vh; overflow-y: auto;
+      transform: translateY(48px) scale(0.95);
+      transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1);
+      box-shadow: 0 40px 90px rgba(0,0,0,0.65);
+      scrollbar-width: thin; scrollbar-color: rgba(79,209,197,0.3) transparent;
+    }
+    .modal-overlay.open .modal-panel { transform: translateY(0) scale(1); }
+    .modal-header {
+      padding: 26px 26px 22px; border-radius: 24px 24px 0 0;
+      position: relative;
+    }
+    .modal-header-icon { font-size: 34px; margin-bottom: 10px; display: block; filter: drop-shadow(0 0 12px currentColor); }
+    .modal-header h2 { font-size: 19px; letter-spacing: -0.03em; margin-bottom: 5px; color: #fff; }
+    .modal-header-role { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .modal-close {
+      position: absolute; top: 18px; right: 18px;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8); font-size: 15px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+    .modal-content { padding: 20px 26px 26px; }
+    .modal-metrics {
+      display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 10px; margin-bottom: 20px;
+    }
+    .modal-metric {
+      background: rgba(15,23,42,0.95); border-radius: 14px;
+      padding: 13px 12px 11px; border: 1px solid rgba(148,163,184,0.12);
+      text-align: center;
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .modal-metric.show { opacity: 1; transform: translateY(0); }
+    .modal-metric-value {
+      font-size: 22px; font-weight: 700; color: var(--accent);
+      letter-spacing: -0.04em; line-height: 1; margin-bottom: 5px;
+    }
+    .modal-metric-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.3; }
+    .modal-body {
+      display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr);
+      gap: 14px; margin-bottom: 18px;
+    }
+    .modal-section-title {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .modal-chart-wrap, .modal-steps-wrap {
+      background: rgba(15,23,42,0.7); border-radius: 14px; padding: 14px 16px;
+    }
+    .modal-bar-row { margin-bottom: 11px; }
+    .modal-bar-row:last-child { margin-bottom: 0; }
+    .modal-bar-label {
+      font-size: 11px; color: var(--muted); margin-bottom: 5px;
+      display: flex; justify-content: space-between;
+    }
+    .modal-bar-track {
+      height: 5px; background: rgba(148,163,184,0.1);
+      border-radius: 999px; overflow: hidden; margin-bottom: 3px;
+    }
+    .modal-bar-fill {
+      height: 100%; border-radius: 999px; width: 0%;
+      transition: width 0.9s cubic-bezier(0.4,0,0.2,1);
+    }
+    .modal-bar-fill.bar-before { background: rgba(148,163,184,0.25); }
+    .modal-bar-fill.bar-after { background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    .modal-step {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 7px 0; border-bottom: 1px solid rgba(148,163,184,0.07);
+      opacity: 0; transform: translateX(-12px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .modal-step.show { opacity: 1; transform: translateX(0); }
+    .modal-step:last-child { border-bottom: none; }
+    .modal-step-num {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+      background: var(--accent-soft); border: 1px solid rgba(79,209,197,0.35);
+      color: var(--accent); font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-step-text { font-size: 12px; color: var(--muted); padding-top: 3px; line-height: 1.4; }
+    .modal-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .modal-tech-pill {
+      border-radius: 999px; background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.22); padding: 4px 11px;
+      font-size: 11px; color: var(--muted);
+    }
+    .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .modal-btn-primary {
+      padding: 9px 20px; border-radius: 999px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b1020; font-weight: 600; font-size: 13px;
+      display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+      box-shadow: 0 8px 22px rgba(79,209,197,0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .modal-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(79,209,197,0.42); }
+    .modal-btn-ghost {
+      padding: 8px 16px; border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: transparent; color: var(--muted); font-size: 13px;
+      display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .modal-btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    @media (max-width: 640px) {
+      .modal-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .modal-body { grid-template-columns: minmax(0,1fr); }
+      .modal-panel { border-radius: 20px; max-height: 95vh; }
+    }
   </style>
 </head>
 <body>
@@ -520,19 +649,19 @@
       </div>
 
       <div class="projects-grid">
-        <a href="#case-governance" class="project-card fade-in" style="transition-delay:0.05s">
+        <a href="#" class="project-card fade-in" style="transition-delay:0.05s" onclick="openModal(event,'governance')">
           <div class="project-chip">Analytics platform</div>
           <div class="project-title">Unified product analytics &amp; data governance</div>
           <div class="project-role">Tungsten Automation &middot; Product Analyst</div>
           <div class="project-meta">Single source of truth across Product, Marketing, Sales &amp; CS; standardized KPIs and 20+ live dashboards.</div>
         </a>
-        <a href="#case-onboarding" class="project-card fade-in" style="transition-delay:0.1s">
+        <a href="#" class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal(event,'onboarding')">
           <div class="project-chip">Experimentation</div>
           <div class="project-title">Onboarding simplification &amp; experimentation program</div>
           <div class="project-role">Tungsten Automation &middot; Product Analyst</div>
           <div class="project-meta">End-to-end A/B testing for trial onboarding, lifting trial &rarr; paid conversion by 19.8% and driving $1.2M ARR.</div>
         </a>
-        <a href="#case-incident" class="project-card fade-in" style="transition-delay:0.15s">
+        <a href="#" class="project-card fade-in" style="transition-delay:0.15s" onclick="openModal(event,'incident')">
           <div class="project-chip">Incident detection</div>
           <div class="project-title">Invoice processing launch &amp; anomaly monitoring</div>
           <div class="project-role">Tungsten Automation &middot; Product Analyst</div>
@@ -722,7 +851,7 @@
 
       <div class="gh-grid">
 
-        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/customer-analytics-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.05s">
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.05s" onclick="openModal(event,'gh-customer')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#0d2137,#0a3d4a,#0b1020)">
             <div class="gh-dot" style="width:55px;height:55px;left:8%;animation-duration:6s;animation-delay:0s"></div>
             <div class="gh-dot" style="width:28px;height:28px;left:62%;animation-duration:8s;animation-delay:2s"></div>
@@ -739,7 +868,7 @@
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/product-feature-optimization" target="_blank" rel="noreferrer" style="transition-delay:0.1s">
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.1s" onclick="openModal(event,'gh-feature')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0d37,#2d1b69,#0b1020)">
             <div class="gh-dot" style="width:50px;height:50px;left:20%;animation-duration:7s;animation-delay:0.5s"></div>
             <div class="gh-dot" style="width:22px;height:22px;left:70%;animation-duration:9s;animation-delay:1.5s"></div>
@@ -756,7 +885,7 @@
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/data-pipeline-automation" target="_blank" rel="noreferrer" style="transition-delay:0.15s">
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.15s" onclick="openModal(event,'gh-pipeline')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#1a1200,#3d2800,#0b1020)">
             <div class="gh-dot" style="width:45px;height:45px;left:15%;animation-duration:5s;animation-delay:1s"></div>
             <div class="gh-dot" style="width:32px;height:32px;left:65%;animation-duration:7s;animation-delay:0s"></div>
@@ -773,7 +902,7 @@
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ecommerce-analytics-platform" target="_blank" rel="noreferrer" style="transition-delay:0.2s">
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.2s" onclick="openModal(event,'gh-ecommerce')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#001a0d,#004d2e,#0b1020)">
             <div class="gh-dot" style="width:52px;height:52px;left:25%;animation-duration:8s;animation-delay:0.3s"></div>
             <div class="gh-dot" style="width:26px;height:26px;left:72%;animation-duration:6s;animation-delay:2.5s"></div>
@@ -790,7 +919,7 @@
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ml-recommendation-system" target="_blank" rel="noreferrer" style="transition-delay:0.25s">
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.25s" onclick="openModal(event,'gh-ml')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#0d0a2e,#1a1060,#0b1020)">
             <div class="gh-dot" style="width:48px;height:48px;left:18%;animation-duration:7s;animation-delay:0.8s"></div>
             <div class="gh-dot" style="width:24px;height:24px;left:68%;animation-duration:5s;animation-delay:2s"></div>
@@ -807,7 +936,7 @@
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/realtime-monitoring-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.3s">
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.3s" onclick="openModal(event,'gh-realtime')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0505,#4a1010,#0b1020)">
             <div class="gh-dot" style="width:42px;height:42px;left:12%;animation-duration:6s;animation-delay:1.2s"></div>
             <div class="gh-dot" style="width:30px;height:30px;left:58%;animation-duration:8s;animation-delay:0.4s"></div>
@@ -905,6 +1034,34 @@
     </footer>
   </div>
 
+  <!-- ── PROJECT MODAL ── -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-panel" id="modal-panel">
+      <div class="modal-header" id="modal-header">
+        <button class="modal-close" id="modal-close-btn">✕</button>
+        <span class="modal-header-icon" id="modal-icon"></span>
+        <h2 id="modal-title"></h2>
+        <p class="modal-header-role" id="modal-role"></p>
+      </div>
+      <div class="modal-content">
+        <div class="modal-metrics" id="modal-metrics"></div>
+        <div class="modal-body">
+          <div class="modal-chart-wrap">
+            <div class="modal-section-title">Key metrics</div>
+            <div id="modal-chart"></div>
+          </div>
+          <div class="modal-steps-wrap">
+            <div class="modal-section-title">Process</div>
+            <div id="modal-steps"></div>
+          </div>
+        </div>
+        <div class="modal-section-title">Tech stack</div>
+        <div class="modal-tech" id="modal-tech"></div>
+        <div class="modal-actions" id="modal-actions"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
     // ── Scroll progress bar ──
     const progressBar = document.getElementById('scroll-progress');
@@ -944,13 +1101,308 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Trigger visible for elements already in view on load
     window.addEventListener('load', () => {
       document.querySelectorAll('.fade-in').forEach(el => {
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight) el.classList.add('visible');
       });
     });
+
+    // ── Modal data ──
+    const MODALS = {
+      governance: {
+        icon: '📊', gradient: 'linear-gradient(135deg,#0d2137 0%,#0a3d4a 60%,#0b1020 100%)',
+        title: 'Unified Analytics Platform & Stakeholder Governance',
+        role: 'Product Analyst · Tungsten Automation · SaaS',
+        metrics: [
+          { value: 35, suffix: '%', label: 'Faster decisions' },
+          { value: 85, suffix: ' hrs', label: 'Saved per week' },
+          { value: 220, prefix: '$', suffix: 'K', label: 'Annual savings' },
+          { value: 20, suffix: '+', label: 'Live dashboards' },
+        ],
+        chart: [
+          { label: 'Stakeholder satisfaction', before: 67, after: 90, beforeLabel: '67%', afterLabel: '90%' },
+          { label: 'Decision cycle speed', before: 50, after: 85, beforeLabel: 'Baseline', afterLabel: '+35%' },
+          { label: 'Reporting automation', before: 20, after: 95, beforeLabel: '20%', afterLabel: '95%' },
+        ],
+        steps: ['Stakeholder discovery & intake design','KPI standardization across 4 teams','Data integration (6+ sources)','20+ Tableau / Data Studio dashboards','Governance process & Confluence docs'],
+        tech: ['Tableau','Power BI','BigQuery','PostgreSQL','Salesforce','Marketo','Zendesk','Python','SQL','Confluence','Jira'],
+        primaryLabel: 'Read full case study ↓', primaryHref: '#case-governance', primaryScroll: true,
+        github: null,
+      },
+      onboarding: {
+        icon: '🧪', gradient: 'linear-gradient(135deg,#1a0d37 0%,#2d1b69 60%,#0b1020 100%)',
+        title: 'Onboarding Simplification & Experimentation Program',
+        role: 'Product Analyst / Experimentation Lead · Tungsten Automation',
+        metrics: [
+          { value: 19.8, suffix: '%', label: 'Conversion lift' },
+          { value: 1.2, prefix: '$', suffix: 'M ARR', label: 'Incremental revenue' },
+          { value: 42, suffix: '%', label: 'Support tickets ↓' },
+          { value: 22, suffix: '%', label: '90-day retention ↑' },
+        ],
+        chart: [
+          { label: 'Trial → paid conversion', before: 62, after: 74, beforeLabel: '62%', afterLabel: '74%' },
+          { label: 'Onboarding support tickets', before: 100, after: 58, beforeLabel: '100%', afterLabel: '−42%' },
+          { label: 'Time-to-first-value', before: 100, after: 62, beforeLabel: 'Baseline', afterLabel: '−38%' },
+        ],
+        steps: ['Qualitative & quantitative discovery','Hypothesis formation','Multi-variant A/B test design','Instrumentation (Optimizely + Segment)','Statistical analysis & winner selection','Scale to 15 experiments/quarter'],
+        tech: ['Optimizely','Segment','Amplitude','GA4','Hotjar','Python','SQL','scipy','statsmodels','Jira'],
+        primaryLabel: 'Read full case study ↓', primaryHref: '#case-onboarding', primaryScroll: true,
+        github: null,
+      },
+      incident: {
+        icon: '📡', gradient: 'linear-gradient(135deg,#1a0505 0%,#4a1010 60%,#0b1020 100%)',
+        title: 'Invoice Processing Launch & Anomaly Monitoring',
+        role: 'Product Analyst · Tungsten Automation · AI feature launch',
+        metrics: [
+          { value: 24, suffix: ' hrs', label: 'Incident resolution' },
+          { value: 18, suffix: '%', label: 'Error spike detected' },
+          { value: 100, suffix: '%', label: 'Conversion recovered' },
+          { value: 1, prefix: '', suffix: ' dashboard', label: 'Mission control' },
+        ],
+        chart: [
+          { label: 'File-upload error rate', before: 2, after: 18, beforeLabel: '2% pre-launch', afterLabel: '18% spike' },
+          { label: 'Conversion recovery', before: 72, after: 100, beforeLabel: '72% at incident', afterLabel: '100% restored' },
+          { label: 'Stakeholder update cadence', before: 20, after: 100, beforeLabel: 'Ad hoc', afterLabel: 'Daily' },
+        ],
+        steps: ['Define launch success metrics','Instrument tracking events','Build hourly-refresh dashboard','Detect anomaly within 24 hrs','Root-cause analysis & quantification','Fix, deploy & recovery tracking'],
+        tech: ['Tableau','SQL','PostgreSQL','Python','Jira','Confluence','GA4'],
+        primaryLabel: 'Read full case study ↓', primaryHref: '#case-incident', primaryScroll: true,
+        github: null,
+      },
+      'gh-customer': {
+        icon: '📊', gradient: 'linear-gradient(135deg,#0d2137 0%,#0a3d4a 60%,#0b1020 100%)',
+        title: 'Customer Analytics Dashboard',
+        role: 'Python · SQL · scikit-learn · PostgreSQL',
+        metrics: [
+          { value: 3, suffix: '', label: 'ML models' },
+          { value: 95, suffix: '%', label: 'Churn accuracy' },
+          { value: 4, suffix: '', label: 'Cohort segments' },
+          { value: 5, suffix: '', label: 'SQL schemas' },
+        ],
+        chart: [
+          { label: 'Churn model accuracy', before: 60, after: 95, beforeLabel: 'Baseline', afterLabel: '95%' },
+          { label: 'Feature coverage', before: 30, after: 85, beforeLabel: '30%', afterLabel: '85%' },
+          { label: 'Cohort retention tracked', before: 0, after: 100, beforeLabel: 'None', afterLabel: '4 segments' },
+        ],
+        steps: ['Data ingestion & schema design','Feature engineering pipeline','Churn prediction (Random Forest)','Cohort analysis & retention curves','Customer health scoring dashboard'],
+        tech: ['Python','scikit-learn','PostgreSQL','pandas','numpy','matplotlib','seaborn','SQLAlchemy'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/customer-analytics-dashboard', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/customer-analytics-dashboard',
+      },
+      'gh-feature': {
+        icon: '🧪', gradient: 'linear-gradient(135deg,#1a0d37 0%,#2d1b69 60%,#0b1020 100%)',
+        title: 'Product Feature Optimization',
+        role: 'Python · scipy · statsmodels · A/B testing framework',
+        metrics: [
+          { value: 95, suffix: '%', label: 'Confidence interval' },
+          { value: 3, suffix: '', label: 'Test variants' },
+          { value: 80, suffix: '%', label: 'Statistical power' },
+          { value: 10, suffix: '+', label: 'Experiments' },
+        ],
+        chart: [
+          { label: 'Statistical power achieved', before: 40, after: 80, beforeLabel: '40%', afterLabel: '80%' },
+          { label: 'Sample size efficiency', before: 50, after: 90, beforeLabel: 'Manual', afterLabel: 'Automated' },
+          { label: 'Experiment documentation', before: 20, after: 95, beforeLabel: '20%', afterLabel: '95%' },
+        ],
+        steps: ['Hypothesis & metric definition','Power analysis & sample sizing','Variant setup & randomization','Data collection & tracking','Statistical significance testing','Experiment report generation'],
+        tech: ['Python','scipy','statsmodels','pandas','matplotlib','seaborn','numpy','Jupyter'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/product-feature-optimization', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/product-feature-optimization',
+      },
+      'gh-pipeline': {
+        icon: '⚙️', gradient: 'linear-gradient(135deg,#1a1200 0%,#3d2800 60%,#0b1020 100%)',
+        title: 'Data Pipeline Automation',
+        role: 'Python · Apache Airflow · PostgreSQL · ETL',
+        metrics: [
+          { value: 5, suffix: '', label: 'DAG tasks' },
+          { value: 3, suffix: 'x', label: 'Auto-retry logic' },
+          { value: 100, suffix: '%', label: 'Scheduled daily' },
+          { value: 0, suffix: ' manual', label: 'Steps required' },
+        ],
+        chart: [
+          { label: 'Pipeline reliability', before: 60, after: 98, beforeLabel: '60%', afterLabel: '98%' },
+          { label: 'Manual effort eliminated', before: 100, after: 5, beforeLabel: '100%', afterLabel: '5%' },
+          { label: 'Data freshness', before: 30, after: 95, beforeLabel: 'Daily batch', afterLabel: 'Hourly' },
+        ],
+        steps: ['Source data extraction','Schema validation & type checks','Transformation & enrichment','PostgreSQL load & upsert','Email alerting on failure'],
+        tech: ['Python','Apache Airflow','PostgreSQL','pandas','SQLAlchemy','smtplib','logging'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/data-pipeline-automation', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/data-pipeline-automation',
+      },
+      'gh-ecommerce': {
+        icon: '🛒', gradient: 'linear-gradient(135deg,#001a0d 0%,#004d2e 60%,#0b1020 100%)',
+        title: 'E-Commerce Analytics Platform',
+        role: 'Python · lifetimes · BG/NBD · Gamma-Gamma CLV',
+        metrics: [
+          { value: 4, suffix: '', label: 'CLV segments' },
+          { value: 12, suffix: ' mo', label: 'Revenue forecast' },
+          { value: 85, suffix: '%', label: 'Model fit (R²)' },
+          { value: 3, suffix: 'x', label: 'ROI on top segment' },
+        ],
+        chart: [
+          { label: 'CLV model accuracy (R²)', before: 50, after: 85, beforeLabel: '50%', afterLabel: '85%' },
+          { label: 'Customer segmentation coverage', before: 0, after: 100, beforeLabel: 'None', afterLabel: '4 tiers' },
+          { label: 'Revenue forecast horizon', before: 10, after: 80, beforeLabel: '1 month', afterLabel: '12 months' },
+        ],
+        steps: ['Transaction data preparation','BG/NBD purchase frequency model','Gamma-Gamma spend model','CLV calculation & segmentation','Revenue forecasting & visualization'],
+        tech: ['Python','lifetimes','pandas','matplotlib','seaborn','scikit-learn','numpy','Jupyter'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/ecommerce-analytics-platform', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/ecommerce-analytics-platform',
+      },
+      'gh-ml': {
+        icon: '🤖', gradient: 'linear-gradient(135deg,#0d0a2e 0%,#1a1060 60%,#0b1020 100%)',
+        title: 'ML Recommendation System',
+        role: 'Python · scikit-learn · SVD · TF-IDF · Hybrid model',
+        metrics: [
+          { value: 2, suffix: ' models', label: 'Hybrid approach' },
+          { value: 0.82, suffix: '', label: 'RMSE score' },
+          { value: 10, suffix: 'K+', label: 'Items indexed' },
+          { value: 92, suffix: '%', label: 'Coverage' },
+        ],
+        chart: [
+          { label: 'Recommendation accuracy', before: 55, after: 82, beforeLabel: 'Baseline', afterLabel: '82%' },
+          { label: 'Catalog coverage', before: 40, after: 92, beforeLabel: '40%', afterLabel: '92%' },
+          { label: 'Cold-start handling', before: 0, after: 75, beforeLabel: 'None', afterLabel: '75%' },
+        ],
+        steps: ['Data preprocessing & user-item matrix','Collaborative filtering (SVD)','Content-based filtering (TF-IDF)','Hybrid score fusion','Evaluation (RMSE, precision@k)'],
+        tech: ['Python','scikit-learn','scipy','surprise','pandas','numpy','TF-IDF','SVD'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/ml-recommendation-system', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/ml-recommendation-system',
+      },
+      'gh-realtime': {
+        icon: '📡', gradient: 'linear-gradient(135deg,#1a0505 0%,#4a1010 60%,#0b1020 100%)',
+        title: 'Real-Time Monitoring Dashboard',
+        role: 'Python · FastAPI · React · Recharts · WebSocket',
+        metrics: [
+          { value: 50, suffix: ' ms', label: 'Latency' },
+          { value: 100, suffix: '/s', label: 'Events streamed' },
+          { value: 5, suffix: '', label: 'Live KPI panels' },
+          { value: 99, suffix: '%', label: 'Uptime' },
+        ],
+        chart: [
+          { label: 'Dashboard latency', before: 80, after: 95, beforeLabel: '500ms', afterLabel: '50ms' },
+          { label: 'Anomaly detection rate', before: 30, after: 88, beforeLabel: '30%', afterLabel: '88%' },
+          { label: 'KPI visibility', before: 20, after: 100, beforeLabel: 'Manual', afterLabel: 'Real-time' },
+        ],
+        steps: ['FastAPI WebSocket server setup','KPI metric streaming pipeline','React + Recharts frontend','Anomaly threshold alerting','Live dashboard deployment'],
+        tech: ['Python','FastAPI','React','Recharts','WebSocket','uvicorn','JavaScript','CSS'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/realtime-monitoring-dashboard', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/realtime-monitoring-dashboard',
+      },
+    };
+
+    // ── Modal open/close ──
+    const overlay = document.getElementById('modal-overlay');
+    const panel   = document.getElementById('modal-panel');
+    let countUpTimers = [];
+
+    function openModal(e, key) {
+      e.preventDefault();
+      const d = MODALS[key];
+      if (!d) return;
+
+      // Header
+      document.getElementById('modal-header').style.background = d.gradient;
+      document.getElementById('modal-icon').textContent = d.icon;
+      document.getElementById('modal-title').textContent = d.title;
+      document.getElementById('modal-role').textContent = d.role;
+
+      // Metrics
+      const mEl = document.getElementById('modal-metrics');
+      mEl.innerHTML = d.metrics.map((m,i) =>
+        `<div class="modal-metric" style="transition-delay:${0.05+i*0.07}s">
+          <div class="modal-metric-value" data-target="${m.value}" data-prefix="${m.prefix||''}" data-suffix="${m.suffix||''}">${m.prefix||''}0${m.suffix||''}</div>
+          <div class="modal-metric-label">${m.label}</div>
+        </div>`
+      ).join('');
+
+      // Chart
+      const cEl = document.getElementById('modal-chart');
+      cEl.innerHTML = d.chart.map(c =>
+        `<div class="modal-bar-row">
+          <div class="modal-bar-label"><span>${c.label}</span><span style="color:var(--accent)">${c.afterLabel}</span></div>
+          <div class="modal-bar-track"><div class="modal-bar-fill bar-before" data-w="${c.before}"></div></div>
+          <div class="modal-bar-track"><div class="modal-bar-fill bar-after" data-w="${c.after}"></div></div>
+        </div>`
+      ).join('');
+
+      // Steps
+      const sEl = document.getElementById('modal-steps');
+      sEl.innerHTML = d.steps.map((s,i) =>
+        `<div class="modal-step" style="transition-delay:${0.1+i*0.06}s">
+          <div class="modal-step-num">${i+1}</div>
+          <div class="modal-step-text">${s}</div>
+        </div>`
+      ).join('');
+
+      // Tech
+      document.getElementById('modal-tech').innerHTML =
+        d.tech.map(t => `<span class="modal-tech-pill">${t}</span>`).join('');
+
+      // Actions
+      const aEl = document.getElementById('modal-actions');
+      if (d.primaryScroll) {
+        aEl.innerHTML = `<button class="modal-btn-primary" onclick="closeModal();setTimeout(()=>document.querySelector('${d.primaryHref}').scrollIntoView({behavior:'smooth'}),200)">${d.primaryLabel}</button>`;
+      } else {
+        aEl.innerHTML = `<a class="modal-btn-primary" href="${d.primaryHref}" target="_blank" rel="noreferrer">${d.primaryLabel}</a>`;
+      }
+
+      // Show overlay
+      panel.scrollTop = 0;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      // Animate metrics (count-up)
+      countUpTimers.forEach(clearInterval);
+      countUpTimers = [];
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.modal-metric').forEach(el => el.classList.add('show'));
+        document.querySelectorAll('.modal-step').forEach(el => el.classList.add('show'));
+
+        // Bar chart animate
+        document.querySelectorAll('.modal-bar-fill').forEach(el => {
+          const w = parseFloat(el.dataset.w);
+          setTimeout(() => { el.style.width = w + '%'; }, 120);
+        });
+
+        // Count-up
+        document.querySelectorAll('.modal-metric-value').forEach(el => {
+          const target = parseFloat(el.dataset.target);
+          const prefix = el.dataset.prefix;
+          const suffix = el.dataset.suffix;
+          const isFloat = target % 1 !== 0;
+          const duration = 900;
+          const steps = 40;
+          const interval = duration / steps;
+          let step = 0;
+          const timer = setInterval(() => {
+            step++;
+            const val = target * (step / steps);
+            el.textContent = prefix + (isFloat ? val.toFixed(1) : Math.round(val)) + suffix;
+            if (step >= steps) { clearInterval(timer); el.textContent = prefix + (isFloat ? target.toFixed(1) : target) + suffix; }
+          }, interval);
+          countUpTimers.push(timer);
+        });
+      });
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      countUpTimers.forEach(clearInterval);
+      countUpTimers = [];
+      // Reset animated elements for next open
+      setTimeout(() => {
+        document.querySelectorAll('.modal-metric').forEach(el => el.classList.remove('show'));
+        document.querySelectorAll('.modal-step').forEach(el => el.classList.remove('show'));
+        document.querySelectorAll('.modal-bar-fill').forEach(el => { el.style.width = '0%'; });
+      }, 320);
+    }
+
+    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   </script>
 </body>
 </html>
