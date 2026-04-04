@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX'); // Replace with your Google Analytics ID
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mansi K - Product Analyst & Manager passionate about transforming data into actionable insights. View my portfolio of analytics projects and data-driven solutions.">
+    <meta name="keywords" content="Product Analyst, Data Analytics, Product Manager, Portfolio, Data Visualization, SQL, Python, Tableau">
+    <meta name="author" content="Mansi K">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mansi K - Product Analyst & Manager Portfolio">
+    <meta property="og:description" content="Transforming data into actionable insights. Explore my analytics projects and data-driven solutions.">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mansi K - Product Analyst & Manager Portfolio">
+    <meta name="twitter:description" content="Transforming data into actionable insights">
+    <meta name="twitter:image" content="https://yourwebsite.com/images/og-image.jpg">
+    
+    <title>Mansi K - Product Analyst & Manager Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-text">MK</span>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><button class="quiz-btn" onclick="openQuiz()"><i class="fas fa-brain"></i> Quiz</button></li>
+            </ul>
+            <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-sun"></i>
+            </button>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Hi, I'm <span class="gradient-text">Mansi K</span>
+                </h1>
+                <div class="typing-container">
+                    <h2 class="typing-text">
+                        <span id="typed-text"></span>
+                        <span class="cursor">|</span>
+                    </h2>
+                </div>
+                <p class="hero-description">
+                    Product Analyst & Manager passionate about transforming data into actionable insights
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>View My Work</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <span>Get In Touch</span>
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card card-1">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-lightbulb"></i>
+                    <span>Strategy</span>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-users"></i>
+                    <span>Leadership</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">About Me</h2>
+            <div class="about-content">
+                <div class="about-image" data-aos="fade-right">
+                    <div class="image-wrapper">
+                        <div class="image-placeholder">
+                            <!-- Replace this with your professional photo -->
+                            <!-- <img src="images/profile-photo.jpg" alt="Mansi K - Product Analyst" class="profile-photo"> -->
+                            <i class="fas fa-user"></i>
+                            <div class="photo-upload-hint">
+                                <i class="fas fa-camera"></i>
+                                <p>Add your photo here</p>
+                                <small>Replace with: images/profile-photo.jpg</small>
+                            </div>
+                        </div>
+                        <div class="experience-badge">
+                            <span class="badge-number">3+</span>
+                            <span class="badge-text">Years Experience</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-text" data-aos="fade-left">
+                    <p class="about-description">
+                        I'm a data-driven Product Analyst and Manager with a passion for turning complex data into actionable insights. 
+                        With expertise in analytics, product strategy, and cross-functional leadership, I help organizations make informed 
+                        decisions that drive growth and innovation.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="50">0</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="15">0</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-target="100">0</div>
+                            <div class="stat-label">Success Rate %</div>
+                        </div>
+                    </div>
+                    <a href="Mansi_K_Product_Analyst.pdf" class="btn btn-primary" download>
+                        <span>Download Resume</span>
+                        <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
+                    <div class="category-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Data Analysis</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>SQL</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Excel</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-progress="95"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
+                    <div class="category-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Visualization</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Tableau</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-progress="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Power BI</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Looker</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-progress="80"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
+                    <div class="category-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Product Management</h3>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Product Strategy</span>
+                                <span>92%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-progress="92"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Agile/Scrum</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-progress="88"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>User Research</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-progress="85"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
+            <div class="projects-grid">
+
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-project="analytics">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Customer Analytics Dashboard</h3>
+                        <p>Built comprehensive analytics dashboard to track customer behavior and improve retention by 25%</p>
+                        <div class="project-tags">
+                            <span class="tag">Tableau</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="project-link" onclick="openProjectModal('analytics')">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a class="project-link github-link" href="https://github.com/mansikamothi03/customer-analytics-dashboard" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-project="optimization">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Product Feature Optimization</h3>
+                        <p>Led A/B testing initiative that increased user engagement by 40% through data-driven insights</p>
+                        <div class="project-tags">
+                            <span class="tag">A/B Testing</span>
+                            <span class="tag">Analytics</span>
+                            <span class="tag">Strategy</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="project-link" onclick="openProjectModal('optimization')">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a class="project-link github-link" href="https://github.com/mansikamothi03/product-feature-optimization" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="300" data-project="automation">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <i class="fas fa-database"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Data Pipeline Automation</h3>
+                        <p>Automated data collection and reporting processes, reducing manual work by 60%</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">ETL</span>
+                            <span class="tag">Automation</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="project-link" onclick="openProjectModal('automation')">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a class="project-link github-link" href="https://github.com/mansikamothi03/data-pipeline-automation" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="400" data-project="ecommerce">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Analytics Platform</h3>
+                        <p>Developed end-to-end analytics solution for e-commerce tracking revenue, conversions, and customer lifetime value</p>
+                        <div class="project-tags">
+                            <span class="tag">Google Analytics</span>
+                            <span class="tag">BigQuery</span>
+                            <span class="tag">Data Studio</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="project-link" onclick="openProjectModal('ecommerce')">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a class="project-link github-link" href="https://github.com/mansikamothi03/ecommerce-analytics-platform" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="500" data-project="ml">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>ML-Powered Recommendation System</h3>
+                        <p>Built machine learning model for personalized product recommendations, increasing conversion rate by 35%</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">TensorFlow</span>
+                            <span class="tag">Scikit-learn</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="project-link" onclick="openProjectModal('ml')">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a class="project-link github-link" href="https://github.com/mansikamothi03/ml-recommendation-system" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="zoom-in" data-aos-delay="600" data-project="realtime">
+                    <div class="project-image">
+                        <div class="project-overlay">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Real-Time Monitoring Dashboard</h3>
+                        <p>Created real-time monitoring system for tracking KPIs and alerting stakeholders of critical changes</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">WebSocket</span>
+                            <span class="tag">Redis</span>
+                        </div>
+                        <div class="project-buttons">
+                            <button class="project-link" onclick="openProjectModal('realtime')">
+                                View Details <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <a class="project-link github-link" href="https://github.com/mansikamothi03/realtime-monitoring-dashboard" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing new opportunities, collaborations, or just having a chat about data and product management.</p>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>mansikamothi1999@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Location</h4>
+                                <p>San Francisco, CA</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form" data-aos="fade-left" id="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="5" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Mansi K. All rights reserved.</p>
+            <p>Built with <i class="fas fa-heart"></i> and passion for data</p>
+        </div>
+    </footer>
+
+    <!-- Particle Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProjectModal()">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- Interactive Quiz Modal -->
+    <div id="quizModal" class="modal quiz-modal">
+        <div class="modal-content quiz-content">
+            <span class="modal-close" onclick="closeQuiz()">&times;</span>
+            <div id="quizBody">
+                <div class="quiz-intro" id="quizIntro">
+                    <h2>🎯 Test Your Product Knowledge!</h2>
+                    <p>Choose your role to get personalized questions:</p>
+                    <div class="role-selection">
+                        <button class="role-btn" onclick="startQuiz('designer')">
+                            <i class="fas fa-palette"></i>
+                            <span>Designer</span>
+                        </button>
+                        <button class="role-btn" onclick="startQuiz('hr')">
+                            <i class="fas fa-users"></i>
+                            <span>HR/Recruiter</span>
+                        </button>
+                        <button class="role-btn" onclick="startQuiz('hm')">
+                            <i class="fas fa-user-tie"></i>
+                            <span>Hiring Manager</span>
+                        </button>
+                        <button class="role-btn" onclick="startQuiz('general')">
+                            <i class="fas fa-globe"></i>
+                            <span>General</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-questions" id="quizQuestions" style="display: none;">
+                    <div class="quiz-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span id="questionNumber">Question 1 of 5</span>
+                    </div>
+                    <div class="question-container" id="questionContainer">
+                        <h3 id="currentQuestion"></h3>
+                        <div class="answer-options" id="answerOptions"></div>
+                    </div>
+                    <div class="quiz-navigation">
+                        <button class="quiz-nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </button>
+                        <button class="quiz-nav-btn primary" id="nextBtn" onclick="nextQuestion()">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button class="quiz-nav-btn primary" id="submitBtn" onclick="submitQuiz()" style="display: none;">
+                            Submit <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="quiz-results" id="quizResults" style="display: none;">
+                    <div class="results-content">
+                        <div class="score-circle">
+                            <svg viewBox="0 0 100 100">
+                                <circle cx="50" cy="50" r="45" fill="none" stroke="#1a1a2e" stroke-width="8"/>
+                                <circle id="scoreCircle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="283"/>
+                                <defs>
+                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#8b5cf6"/>
+                                        <stop offset="100%" style="stop-color:#ec4899"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                            <div class="score-text">
+                                <span id="scorePercentage">0%</span>
+                                <p>Score</p>
+                            </div>
+                        </div>
+                        <p id="scoreText"></p>
+                        <h3 id="resultsTitle">Great Job!</h3>
+                        <p id="resultMessage"></p>
+                        <div class="results-actions">
+                            <button class="quiz-nav-btn primary" onclick="retakeQuiz()">
+                                <i class="fas fa-redo"></i> Try Again
+                            </button>
+                            <button class="quiz-nav-btn" onclick="closeQuiz()">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
