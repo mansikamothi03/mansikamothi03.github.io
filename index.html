@@ -1,610 +1,1001 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX'); // Replace with your Google Analytics ID
-    </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Mansi K - Product Analyst & Manager passionate about transforming data into actionable insights. View my portfolio of analytics projects and data-driven solutions.">
-    <meta name="keywords" content="Product Analyst, Data Analytics, Product Manager, Portfolio, Data Visualization, SQL, Python, Tableau">
-    <meta name="author" content="Mansi K">
-    
-    <!-- Open Graph / Social Media -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Mansi K - Product Analyst & Manager Portfolio">
-    <meta property="og:description" content="Transforming data into actionable insights. Explore my analytics projects and data-driven solutions.">
-    <meta property="og:url" content="https://yourwebsite.com">
-    <meta property="og:image" content="https://yourwebsite.com/images/og-image.jpg">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Mansi K - Product Analyst & Manager Portfolio">
-    <meta name="twitter:description" content="Transforming data into actionable insights">
-    <meta name="twitter:image" content="https://yourwebsite.com/images/og-image.jpg">
-    
-    <title>Mansi K - Product Analyst & Manager Portfolio</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mansi Kamothi – Product & Data Analyst Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #111729;
+      --card: #141b2f;
+      --accent: #4fd1c5;
+      --accent-soft: rgba(79, 209, 197, 0.12);
+      --text: #f7fafc;
+      --muted: #a0aec0;
+      --border-subtle: #2d3748;
+      --radius-lg: 16px;
+      --radius-sm: 8px;
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.45);
+      --shadow-subtle: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+      background: radial-gradient(circle at top left, #202b46 0, #0b1020 45%, #050713 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 32px 20px 72px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    nav a {
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #4fd1c5, #63b3ed);
+      transition: width 0.2s ease-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 32px;
+      margin-bottom: 40px;
+      align-items: center;
+    }
+
+    .hero-main {
+      background: radial-gradient(circle at top left, #1a2544 0, #111729 55%, #0b1020 100%);
+      border-radius: 28px;
+      padding: 28px 28px 24px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--muted);
+      margin-bottom: 14px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-chip-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #48bb78;
+      box-shadow: 0 0 0 5px rgba(72, 187, 120, 0.2);
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 4vw, 40px);
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 500px;
+      margin-bottom: 20px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 12px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #4fd1c5, #63b3ed);
+      color: #0b1020;
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 12px 30px rgba(79, 209, 197, 0.35);
+    }
+
+    .btn-ghost {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 24px;
+      font-size: 12px;
+    }
+
+    .metric-card {
+      background: rgba(15, 23, 42, 0.95);
+      border-radius: 14px;
+      padding: 10px 10px 9px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .metric-label {
+      color: var(--muted);
+      margin-bottom: 2px;
+      font-size: 11px;
+    }
+
+    .metric-value {
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .pill-card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 20px;
+      padding: 16px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .pill-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .pill-main {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .pill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .section-label {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 14px;
+      margin-top: 36px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 420px;
+      text-align: right;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .project-card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 18px;
+      padding: 14px 14px 13px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      cursor: pointer;
+      transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out;
+      display: block;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-subtle);
+      border-color: rgba(129, 230, 217, 0.85);
+    }
+
+    .project-chip {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-size: 14px;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .project-role {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .case-study {
+      background: rgba(11, 16, 32, 0.9);
+      border-radius: 22px;
+      padding: 18px 18px 18px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      margin-top: 14px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .case-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .case-title {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .case-tagline {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .case-meta {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+      min-width: 170px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .pill-small {
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 3px 8px;
+      font-size: 11px;
+    }
+
+    .case-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.4fr);
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .case-column h4 {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .case-column p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .case-column ul {
+      padding-left: 16px;
+      margin-bottom: 4px;
+    }
+
+    .case-column li {
+      font-size: 13px;
+      margin-bottom: 3px;
+    }
+
+    .metrics-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .metric-pill {
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 1px solid rgba(79, 209, 197, 0.5);
+    }
+
+    .rel-box {
+      margin-top: 10px;
+      border-radius: 14px;
+      border: 1px dashed rgba(129, 230, 217, 0.6);
+      background: rgba(11, 16, 32, 0.85);
+      padding: 9px 10px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.4fr);
+      gap: 18px;
+      margin-top: 6px;
+    }
+
+    .about-grid > div > p {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .skills-card {
+      background: rgba(15, 23, 42, 0.92);
+      border-radius: 16px;
+      padding: 10px 11px 9px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .skills-card h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .skills-card ul {
+      list-style: none;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .skills-card li + li {
+      margin-top: 2px;
+    }
+
+    .contact {
+      margin-top: 30px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(11, 16, 32, 0.9);
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .contact > div > p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .contact-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      padding: 6px 11px;
+      color: var(--muted);
+      background: rgba(15, 23, 42, 0.95);
+      font-size: 12px;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .contact-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-side {
+        order: -1;
+      }
+
+      .case-body,
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 24px 16px 56px;
+      }
+
+      .hero-main {
+        padding: 20px 18px 18px;
+      }
+
+      .hero-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .case-header {
+        flex-direction: column;
+      }
+
+      .case-meta {
+        text-align: left;
+      }
+
+      .contact {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo">
-                <span class="logo-text">MK</span>
+  <div class="page">
+    <header>
+      <div class="logo">MANSI KAMOTHI</div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-main">
+        <div class="hero-chip">
+          <span class="hero-chip-dot"></span>
+          <span>Product &amp; Data Analyst &rarr; Associate Product Manager</span>
+        </div>
+        <h1 class="hero-title">I build data-driven onboarding &amp; analytics capabilities.</h1>
+        <p class="hero-subtitle">
+          I help product and business teams turn ambiguous questions into measurable experiments, dashboards,
+          and roadmap decisions that drive conversion, retention, and stakeholder confidence.
+        </p>
+        <div class="hero-tags">
+          <span class="tag">Product Analytics</span>
+          <span class="tag">Experimentation</span>
+          <span class="tag">Dashboards &amp; BI</span>
+          <span class="tag">Stakeholder Alignment</span>
+          <span class="tag">SaaS &amp; B2B</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('case-studies').scrollIntoView({ behavior: 'smooth' })">
+            View case studies &rarr;
+          </button>
+          <a class="btn-ghost" href="mailto:mansikamothivts1999@gmail.com">Email me</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <div class="metric-label">Trial &rarr; paid uplift</div>
+            <div class="metric-value">+19.8% conversion</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Incremental ARR impact</div>
+            <div class="metric-value">$1.2M / year</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Reporting automation</div>
+            <div class="metric-value">85 hrs/week saved</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="pill-card">
+          <div class="pill-title">Now</div>
+          <div class="pill-main">Product Analyst &middot; Tungsten Automation (Remote, USA)</div>
+          <div class="pill-tags">
+            <span>Onboarding &amp; experimentation</span>
+            <span>Executive &amp; product dashboards</span>
+          </div>
+        </div>
+        <div class="pill-card">
+          <div class="pill-title">Target roles</div>
+          <div class="pill-main">Associate Product Manager &middot; Product Analyst &middot; Data/BI Analyst</div>
+          <div class="pill-tags">
+            <span>Wealth &amp; fintech</span>
+            <span>Digital client experiences</span>
+            <span>Analytics platforms</span>
+          </div>
+        </div>
+        <div class="pill-card">
+          <div class="pill-title">Toolbox</div>
+          <div class="pill-main">SQL &middot; Python &middot; Tableau &middot; Power BI &middot; BigQuery &middot; Salesforce &middot; GA4 &middot; Experimentation</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Featured work</div>
+          <h2 class="section-title">Selected product &amp; analytics projects</h2>
+        </div>
+        <p class="section-subtitle">
+          A snapshot of how I combine stakeholder discovery, experimentation, and data platforms to improve
+          onboarding, visibility, and decision-making.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <a href="#case-governance" class="project-card">
+          <div class="project-chip">Case study &middot; Analytics platform</div>
+          <div class="project-title">Unified product analytics &amp; data governance</div>
+          <div class="project-role">Tungsten Automation &middot; Product Analyst</div>
+          <div class="project-meta">Single source of truth across Product, Marketing, Sales &amp; CS; standardized KPIs and reporting.</div>
+        </a>
+        <a href="#case-onboarding" class="project-card">
+          <div class="project-chip">Case study &middot; Experimentation</div>
+          <div class="project-title">Onboarding simplification &amp; experimentation program</div>
+          <div class="project-role">Tungsten Automation &middot; Product Analyst</div>
+          <div class="project-meta">End-to-end A/B testing for trial onboarding, lifting trial &rarr; paid conversion and retention.</div>
+        </a>
+        <a href="#case-incident" class="project-card">
+          <div class="project-chip">Case study &middot; Incident detection</div>
+          <div class="project-title">Invoice processing launch &amp; anomaly monitoring</div>
+          <div class="project-role">Tungsten Automation &middot; Product Analyst</div>
+          <div class="project-meta">Dashboards and monitoring to detect a release defect, quantify impact, and restore conversion.</div>
+        </a>
+      </div>
+    </section>
+
+    <section id="case-studies">
+      <div class="section-header">
+        <div>
+          <div class="section-label">Case studies</div>
+          <h2 class="section-title">How I work end-to-end</h2>
+        </div>
+        <p class="section-subtitle">
+          Each project follows the same pattern: clarify the problem, align stakeholders, instrument the right
+          data, experiment, then translate insights into roadmap and releases.
+        </p>
+      </div>
+
+      <article id="case-governance" class="case-study">
+        <div class="case-header">
+          <div>
+            <h3 class="case-title">Unified analytics platform &amp; stakeholder governance</h3>
+            <p class="case-tagline">Creating a single source of truth for product, marketing, sales &amp; customer success</p>
+          </div>
+          <div class="case-meta">
+            <div><strong>Role</strong>: Product Analyst</div>
+            <div><strong>Company</strong>: Tungsten Automation</div>
+            <div><strong>Domain</strong>: SaaS analytics platform</div>
+            <div class="pill-row">
+              <span class="pill-small">Stakeholder leadership</span>
+              <span class="pill-small">Data governance</span>
+              <span class="pill-small">KPI design</span>
             </div>
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-                <li><button class="quiz-btn" onclick="openQuiz()"><i class="fas fa-brain"></i> Quiz</button></li>
+          </div>
+        </div>
+
+        <div class="case-body">
+          <div class="case-column">
+            <h4>Context &amp; problem</h4>
+            <p>
+              Product, Marketing, Sales, and Customer Success each had their own reports and metrics, leading to
+              conflicting views of adoption, funnel performance, and customer health. Leaders lacked a single, trusted
+              view of "how the product is really doing" and which levers to pull.
+            </p>
+            <ul>
+              <li>Complex data landscape across product usage (PostgreSQL), GA, Salesforce, Marketo, Zendesk, and BigQuery.</li>
+              <li>No standardized KPIs or intake process for new analytics needs.</li>
+              <li>Ad hoc reporting consumed analyst time and delayed decisions.</li>
             </ul>
-            <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
-                <i class="fas fa-sun"></i>
-            </button>
-            <div class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">
-                    Hi, I'm <span class="gradient-text">Mansi K</span>
-                </h1>
-                <div class="typing-container">
-                    <h2 class="typing-text">
-                        <span id="typed-text"></span>
-                        <span class="cursor">|</span>
-                    </h2>
-                </div>
-                <p class="hero-description">
-                    Product Analyst & Manager passionate about transforming data into actionable insights
-                </p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">
-                        <span>View My Work</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="#contact" class="btn btn-secondary">
-                        <span>Get In Touch</span>
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
+            <h4>What I did</h4>
+            <ul>
+              <li>Led a cross-functional data governance initiative, identifying 15+ key stakeholders and establishing weekly/bi-weekly syncs by function.</li>
+              <li>Designed a Jira-based requirements intake form capturing business question, desired outputs, data sources, timelines, and success criteria.</li>
+              <li>Partnered with stakeholders to define core product, revenue, and engagement KPIs and documented them in Confluence as the single reference.</li>
+              <li>Mapped and integrated data from product logs, GA, Salesforce, Marketo, Zendesk, and BigQuery into a harmonized model powering 20+ Tableau / Data Studio dashboards.</li>
+              <li>Created presentation templates for executive reviews: context, methodology, key insights, and prioritized recommendations.</li>
+            </ul>
+          </div>
+
+          <div class="case-column">
+            <h4>Impact</h4>
+            <ul>
+              <li>Shortened product decision cycles by <strong>35%</strong> by aligning on standard KPIs and always-available dashboards.</li>
+              <li>Saved <strong>85 hours/week</strong> of manual reporting effort, worth roughly <strong>$220K</strong> per year.</li>
+              <li>Enabled data-backed roadmap and campaign decisions that contributed to <strong>$1.8M ARR</strong> in additional revenue and <strong>$450K</strong> in churn prevention.</li>
+              <li>Increased stakeholder satisfaction with data insights from <strong>67%</strong> to <strong>90%</strong>, based on quarterly surveys.</li>
+            </ul>
+
+            <div class="metrics-row">
+              <span class="metric-pill">Single source of truth across 6+ systems</span>
+              <span class="metric-pill">20+ live dashboards</span>
+              <span class="metric-pill">Executive &amp; functional views</span>
             </div>
-            <div class="hero-image">
-                <div class="floating-card card-1">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Analytics</span>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fas fa-lightbulb"></i>
-                    <span>Strategy</span>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fas fa-users"></i>
-                    <span>Leadership</span>
-                </div>
+
+            <div class="rel-box">
+              <strong>Relevance to J.P. Morgan WM</strong><br />
+              This is directly analogous to defining and governing unified KPIs across digital wealth platforms,
+              advisor tools, and servicing journeys &mdash; partnering with business and tech to ensure everyone executes
+              against the same numbers.
             </div>
+          </div>
         </div>
+      </article>
+
+      <article id="case-onboarding" class="case-study">
+        <div class="case-header">
+          <div>
+            <h3 class="case-title">Onboarding simplification &amp; experimentation program</h3>
+            <p class="case-tagline">Using A/B testing to redesign trial onboarding and improve conversion &amp; retention</p>
+          </div>
+          <div class="case-meta">
+            <div><strong>Role</strong>: Product Analyst / Experimentation Lead</div>
+            <div><strong>Domain</strong>: SaaS onboarding funnel</div>
+            <div><strong>Scope</strong>: Trial &rarr; paid conversion, feature adoption, support volume</div>
+            <div class="pill-row">
+              <span class="pill-small">Hypothesis-driven discovery</span>
+              <span class="pill-small">Experiment design</span>
+              <span class="pill-small">Funnel analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-body">
+          <div class="case-column">
+            <h4>Context &amp; problem</h4>
+            <p>
+              New users were dropping out of a 5-step onboarding flow before they experienced value. Session
+              recordings, support tickets, and funnel data showed that 42% abandoned at integration setup, long before
+              they processed a single document.
+            </p>
+            <ul>
+              <li>Goal: improve trial &rarr; paid conversion and reduce onboarding-related support tickets.</li>
+              <li>Constraints: preserve necessary configuration for enterprise customers while simplifying for SMBs.</li>
+            </ul>
+
+            <h4>What I did</h4>
+            <ul>
+              <li>Conducted qualitative and quantitative discovery: GA/Amplitude funnels, Hotjar session recordings, user interviews, and 200+ onboarding-related support tickets.</li>
+              <li>Formulated a test hypothesis: reducing steps and automating integrations would increase conversion by 15% and lower abandonment at integration setup.</li>
+              <li>Designed a multi-variant A/B test (control 5-step vs two 3-step variants), calculated required sample size and test duration, and partnered with UX and engineering on flows.</li>
+              <li>Defined tracking events and instrumentation plan across Optimizely, Segment, and product analytics to measure activation, feature adoption, and retention by segment.</li>
+            </ul>
+          </div>
+
+          <div class="case-column">
+            <h4>Impact</h4>
+            <ul>
+              <li>Increased trial &rarr; paid conversion by <strong>19.8%</strong> relative lift on the winning variant, driving approximately <strong>$1.2M in incremental ARR</strong>.</li>
+              <li>Reduced onboarding-related support tickets by <strong>42%</strong> and improved 90-day retention by <strong>22%</strong> among users who went through the simplified flow.</li>
+              <li>Improved time-to-first-value by <strong>38%</strong>, enabling more users to activate within the trial window.</li>
+              <li>Scaled the experimentation program from 1&ndash;2 tests per quarter to ~15 per quarter, with a knowledge base of 20+ documented experiments informing future roadmap decisions.</li>
+            </ul>
+
+            <div class="metrics-row">
+              <span class="metric-pill">3 onboarding variants tested</span>
+              <span class="metric-pill">5k+ users in experiment</span>
+              <span class="metric-pill">Conversion, retention, and support KPIs</span>
+            </div>
+
+            <div class="rel-box">
+              <strong>Relevance to J.P. Morgan WM</strong><br />
+              Mirrors optimizing digital wealth onboarding and cross-channel journeys &mdash; using data and experiments
+              across web and mobile to prioritize features, quantify impact on client conversion, and feed into
+              multi-year roadmap and OKRs.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article id="case-incident" class="case-study">
+        <div class="case-header">
+          <div>
+            <h3 class="case-title">Invoice processing launch &amp; anomaly monitoring</h3>
+            <p class="case-tagline">Using dashboards as an early-warning system during a high-stakes feature release</p>
+          </div>
+          <div class="case-meta">
+            <div><strong>Role</strong>: Product Analyst</div>
+            <div><strong>Domain</strong>: AI-powered invoice processing feature</div>
+            <div><strong>Scope</strong>: Launch monitoring, incident detection, remediation</div>
+            <div class="pill-row">
+              <span class="pill-small">Release monitoring</span>
+              <span class="pill-small">Root-cause analysis</span>
+              <span class="pill-small">Cross-functional response</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-body">
+          <div class="case-column">
+            <h4>Context &amp; problem</h4>
+            <p>
+              The team was launching a flagship AI invoice processing feature after months of engineering work. We
+              needed to monitor adoption, accuracy, and conversion, and be able to react quickly if anything went wrong
+              in production.
+            </p>
+            <ul>
+              <li>Instrumented tracking for key events: setup completion, first successful invoice, errors, and funnel drop-offs.</li>
+              <li>Built an hourly-refresh Tableau dashboard as "mission control" for PMs, engineers, and leadership.</li>
+            </ul>
+
+            <h4>What I did</h4>
+            <ul>
+              <li>Defined launch success metrics with the Product Manager: adoption, processing accuracy, time savings, and impact on trial &rarr; paid conversion.</li>
+              <li>On launch, monitored KPIs daily; when conversion suddenly dropped, sliced data by segment and use case to isolate the issue.</li>
+              <li>Identified a spike in file-upload errors (2% &rarr; 18%) tied to large invoice PDFs after a code change. Quantified the impact in affected users and estimated ARR at risk.</li>
+              <li>Partnered with engineering and support to prioritize the fix, then tracked recovery and shared daily updates with stakeholders until metrics normalized.</li>
+            </ul>
+          </div>
+
+          <div class="case-column">
+            <h4>Impact</h4>
+            <ul>
+              <li>Prevented an extended revenue impact by catching and helping resolve the bug within ~24 hours instead of weeks.</li>
+              <li>Turned the incident into a company-wide case study on data-driven release monitoring and incident response.</li>
+              <li>Strengthened trust in analytics as part of the release process, leading PMs to treat dashboards as a required launch artifact.</li>
+            </ul>
+
+            <div class="metrics-row">
+              <span class="metric-pill">Real-time anomaly detection</span>
+              <span class="metric-pill">Daily stakeholder updates</span>
+              <span class="metric-pill">Faster incident resolution</span>
+            </div>
+
+            <div class="rel-box">
+              <strong>Relevance to J.P. Morgan WM</strong><br />
+              Similar to monitoring new wealth features across web, mobile, and advisor tools &mdash; using analytics to
+              validate releases, detect client-impacting issues early, and coordinate with technology and product to
+              remediate while keeping stakeholders informed.
+            </div>
+          </div>
+        </div>
+      </article>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">About Me</h2>
-            <div class="about-content">
-                <div class="about-image" data-aos="fade-right">
-                    <div class="image-wrapper">
-                        <div class="image-placeholder">
-                            <!-- Replace this with your professional photo -->
-                            <!-- <img src="images/profile-photo.jpg" alt="Mansi K - Product Analyst" class="profile-photo"> -->
-                            <i class="fas fa-user"></i>
-                            <div class="photo-upload-hint">
-                                <i class="fas fa-camera"></i>
-                                <p>Add your photo here</p>
-                                <small>Replace with: images/profile-photo.jpg</small>
-                            </div>
-                        </div>
-                        <div class="experience-badge">
-                            <span class="badge-number">3+</span>
-                            <span class="badge-text">Years Experience</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-text" data-aos="fade-left">
-                    <p class="about-description">
-                        I'm a data-driven Product Analyst and Manager with a passion for turning complex data into actionable insights. 
-                        With expertise in analytics, product strategy, and cross-functional leadership, I help organizations make informed 
-                        decisions that drive growth and innovation.
-                    </p>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="50">0</div>
-                            <div class="stat-label">Projects Completed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="15">0</div>
-                            <div class="stat-label">Happy Clients</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number" data-target="100">0</div>
-                            <div class="stat-label">Success Rate %</div>
-                        </div>
-                    </div>
-                    <a href="Mansi_K_Product_Analyst.pdf" class="btn btn-primary" download>
-                        <span>Download Resume</span>
-                        <i class="fas fa-download"></i>
-                    </a>
-                </div>
-            </div>
+    <section id="about">
+      <div class="section-header">
+        <div>
+          <div class="section-label">About</div>
+          <h2 class="section-title">Who I am &amp; how I work</h2>
         </div>
+        <p class="section-subtitle">
+          I sit at the intersection of product, analytics, and stakeholders: clarifying the problem, instrumenting
+          the data, and helping teams make confident decisions in complex environments.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div>
+          <p>
+            I am a Product and Business Analyst with 3+ years of experience in SaaS and enterprise environments,
+            focused on turning data into product decisions. I work best in cross-functional pods with Product
+            Managers, designers, engineers, and business stakeholders.
+          </p>
+          <p>
+            My recent work centers on onboarding, experimentation, and analytics platforms: defining success metrics,
+            running A/B tests, building executive-ready dashboards, and partnering with leadership to adjust strategy
+            based on what the data is telling us.
+          </p>
+          <p>
+            I am particularly excited about roles like Associate Product Manager in wealth and fintech, where
+            improving digital client experiences and advisor tools has a tangible impact on peoples' financial lives.
+          </p>
+        </div>
+        <div class="skills-grid">
+          <div class="skills-card">
+            <h4>Product &amp; discovery</h4>
+            <ul>
+              <li>Requirements elicitation &amp; intake design</li>
+              <li>Stakeholder workshops &amp; alignment</li>
+              <li>As-Is / To-Be journey mapping</li>
+              <li>Roadmap &amp; OKR input</li>
+            </ul>
+          </div>
+          <div class="skills-card">
+            <h4>Analytics &amp; experimentation</h4>
+            <ul>
+              <li>SQL, Python (pandas, numpy)</li>
+              <li>Experiment design &amp; analysis</li>
+              <li>Funnel &amp; cohort analysis</li>
+              <li>Forecasting &amp; performance tracking</li>
+            </ul>
+          </div>
+          <div class="skills-card">
+            <h4>Data platforms</h4>
+            <ul>
+              <li>Tableau, Power BI, Google Data Studio</li>
+              <li>BigQuery, PostgreSQL, MySQL</li>
+              <li>Salesforce, Marketo, Zendesk</li>
+              <li>Google Analytics, Amplitude, Mixpanel</li>
+            </ul>
+          </div>
+          <div class="skills-card">
+            <h4>Ways of working</h4>
+            <ul>
+              <li>Agile / Scrum (Jira, Confluence)</li>
+              <li>Cross-functional collaboration</li>
+              <li>Executive-ready storytelling</li>
+              <li>Process &amp; reporting automation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="100">
-                    <div class="category-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Data Analysis</h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>SQL</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Python</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Excel</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" data-progress="95"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="200">
-                    <div class="category-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Visualization</h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Tableau</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" data-progress="90"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Power BI</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Looker</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" data-progress="80"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="skill-category" data-aos="fade-up" data-aos-delay="300">
-                    <div class="category-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Product Management</h3>
-                    <div class="skill-bars">
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Product Strategy</span>
-                                <span>92%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" data-progress="92"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>Agile/Scrum</span>
-                                <span>88%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" data-progress="88"></div>
-                            </div>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-info">
-                                <span>User Research</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress" data-progress="85"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Featured Projects</h2>
-            <div class="projects-grid">
-
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="100" data-project="analytics">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Customer Analytics Dashboard</h3>
-                        <p>Built comprehensive analytics dashboard to track customer behavior and improve retention by 25%</p>
-                        <div class="project-tags">
-                            <span class="tag">Tableau</span>
-                            <span class="tag">SQL</span>
-                            <span class="tag">Python</span>
-                        </div>
-                        <div class="project-buttons">
-                            <button class="project-link" onclick="openProjectModal('analytics')">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <a class="project-link github-link" href="https://github.com/mansikamothi03/customer-analytics-dashboard" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="200" data-project="optimization">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Product Feature Optimization</h3>
-                        <p>Led A/B testing initiative that increased user engagement by 40% through data-driven insights</p>
-                        <div class="project-tags">
-                            <span class="tag">A/B Testing</span>
-                            <span class="tag">Analytics</span>
-                            <span class="tag">Strategy</span>
-                        </div>
-                        <div class="project-buttons">
-                            <button class="project-link" onclick="openProjectModal('optimization')">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <a class="project-link github-link" href="https://github.com/mansikamothi03/product-feature-optimization" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="300" data-project="automation">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <i class="fas fa-database"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Data Pipeline Automation</h3>
-                        <p>Automated data collection and reporting processes, reducing manual work by 60%</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">ETL</span>
-                            <span class="tag">Automation</span>
-                        </div>
-                        <div class="project-buttons">
-                            <button class="project-link" onclick="openProjectModal('automation')">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <a class="project-link github-link" href="https://github.com/mansikamothi03/data-pipeline-automation" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="400" data-project="ecommerce">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <i class="fas fa-shopping-cart"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>E-Commerce Analytics Platform</h3>
-                        <p>Developed end-to-end analytics solution for e-commerce tracking revenue, conversions, and customer lifetime value</p>
-                        <div class="project-tags">
-                            <span class="tag">Google Analytics</span>
-                            <span class="tag">BigQuery</span>
-                            <span class="tag">Data Studio</span>
-                        </div>
-                        <div class="project-buttons">
-                            <button class="project-link" onclick="openProjectModal('ecommerce')">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <a class="project-link github-link" href="https://github.com/mansikamothi03/ecommerce-analytics-platform" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="500" data-project="ml">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>ML-Powered Recommendation System</h3>
-                        <p>Built machine learning model for personalized product recommendations, increasing conversion rate by 35%</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">TensorFlow</span>
-                            <span class="tag">Scikit-learn</span>
-                        </div>
-                        <div class="project-buttons">
-                            <button class="project-link" onclick="openProjectModal('ml')">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <a class="project-link github-link" href="https://github.com/mansikamothi03/ml-recommendation-system" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card" data-aos="zoom-in" data-aos-delay="600" data-project="realtime">
-                    <div class="project-image">
-                        <div class="project-overlay">
-                            <i class="fas fa-bolt"></i>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <h3>Real-Time Monitoring Dashboard</h3>
-                        <p>Created real-time monitoring system for tracking KPIs and alerting stakeholders of critical changes</p>
-                        <div class="project-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">WebSocket</span>
-                            <span class="tag">Redis</span>
-                        </div>
-                        <div class="project-buttons">
-                            <button class="project-link" onclick="openProjectModal('realtime')">
-                                View Details <i class="fas fa-arrow-right"></i>
-                            </button>
-                            <a class="project-link github-link" href="https://github.com/mansikamothi03/realtime-monitoring-dashboard" target="_blank">
-                                <i class="fab fa-github"></i> GitHub
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
     <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info" data-aos="fade-right">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always open to discussing new opportunities, collaborations, or just having a chat about data and product management.</p>
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>mansikamothi1999@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+1 (555) 123-4567</p>
-                            </div>
-                        </div>
-                        <div class="contact-method">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Location</h4>
-                                <p>San Francisco, CA</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
-                    </div>
-                </div>
-                <form class="contact-form" data-aos="fade-left" id="contact-form">
-                    <div class="form-group">
-                        <input type="text" id="name" required>
-                        <label for="name">Your Name</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" required>
-                        <label for="email">Your Email</label>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" required>
-                        <label for="subject">Subject</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" rows="5" required></textarea>
-                        <label for="message">Message</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <span>Send Message</span>
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
+      <div>
+        <div class="section-label">Contact</div>
+        <p>
+          Interested in how this kind of work could look on your team? I'm currently based in the Bay Area and
+          open to Associate Product Manager, Product Analyst, and Analytics roles.
+        </p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-pill" href="mailto:mansikamothivts1999@gmail.com">mansikamothivts1999@gmail.com</a>
+        <a class="contact-pill" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer">LinkedIn</a>
+        <span class="contact-pill">San Jose / Fremont, CA</span>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Mansi K. All rights reserved.</p>
-            <p>Built with <i class="fas fa-heart"></i> and passion for data</p>
-        </div>
+    <footer>
+      Portfolio content based on recent Product Analyst work at Tungsten Automation and prior Business Analyst experience.
     </footer>
-
-    <!-- Particle Background -->
-    <canvas id="particles"></canvas>
-
-    <!-- Project Modal -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="modal-close" onclick="closeProjectModal()">&times;</span>
-            <div id="modalBody"></div>
-        </div>
-    </div>
-
-    <!-- Interactive Quiz Modal -->
-    <div id="quizModal" class="modal quiz-modal">
-        <div class="modal-content quiz-content">
-            <span class="modal-close" onclick="closeQuiz()">&times;</span>
-            <div id="quizBody">
-                <div class="quiz-intro" id="quizIntro">
-                    <h2>🎯 Test Your Product Knowledge!</h2>
-                    <p>Choose your role to get personalized questions:</p>
-                    <div class="role-selection">
-                        <button class="role-btn" onclick="startQuiz('designer')">
-                            <i class="fas fa-palette"></i>
-                            <span>Designer</span>
-                        </button>
-                        <button class="role-btn" onclick="startQuiz('hr')">
-                            <i class="fas fa-users"></i>
-                            <span>HR/Recruiter</span>
-                        </button>
-                        <button class="role-btn" onclick="startQuiz('hm')">
-                            <i class="fas fa-user-tie"></i>
-                            <span>Hiring Manager</span>
-                        </button>
-                        <button class="role-btn" onclick="startQuiz('general')">
-                            <i class="fas fa-globe"></i>
-                            <span>General</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="quiz-questions" id="quizQuestions" style="display: none;">
-                    <div class="quiz-progress">
-                        <div class="progress-bar">
-                            <div class="progress-fill" id="progressFill"></div>
-                        </div>
-                        <span id="questionNumber">Question 1 of 5</span>
-                    </div>
-                    <div class="question-container" id="questionContainer">
-                        <h3 id="currentQuestion"></h3>
-                        <div class="answer-options" id="answerOptions"></div>
-                    </div>
-                    <div class="quiz-navigation">
-                        <button class="quiz-nav-btn" id="prevBtn" onclick="previousQuestion()" disabled>
-                            <i class="fas fa-arrow-left"></i> Previous
-                        </button>
-                        <button class="quiz-nav-btn primary" id="nextBtn" onclick="nextQuestion()">
-                            Next <i class="fas fa-arrow-right"></i>
-                        </button>
-                        <button class="quiz-nav-btn primary" id="submitBtn" onclick="submitQuiz()" style="display: none;">
-                            Submit <i class="fas fa-check"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="quiz-results" id="quizResults" style="display: none;">
-                    <div class="results-content">
-                        <div class="score-circle">
-                            <svg viewBox="0 0 100 100">
-                                <circle cx="50" cy="50" r="45" fill="none" stroke="#1a1a2e" stroke-width="8"/>
-                                <circle id="scoreCircle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient)" stroke-width="8" stroke-dasharray="283" stroke-dashoffset="283"/>
-                                <defs>
-                                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" style="stop-color:#8b5cf6"/>
-                                        <stop offset="100%" style="stop-color:#ec4899"/>
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                            <div class="score-text">
-                                <span id="scorePercentage">0%</span>
-                                <p>Score</p>
-                            </div>
-                        </div>
-                        <p id="scoreText"></p>
-                        <h3 id="resultsTitle">Great Job!</h3>
-                        <p id="resultMessage"></p>
-                        <div class="results-actions">
-                            <button class="quiz-nav-btn primary" onclick="retakeQuiz()">
-                                <i class="fas fa-redo"></i> Try Again
-                            </button>
-                            <button class="quiz-nav-btn" onclick="closeQuiz()">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+  </div>
 </body>
 </html>
