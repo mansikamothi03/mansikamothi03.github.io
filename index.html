@@ -258,6 +258,54 @@
       font-size: 11px; padding: 4px 10px; border: 1px solid rgba(79,209,197,0.4);
     }
 
+    /* ── GitHub projects (thumbnail grid) ── */
+    .gh-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+    .gh-card {
+      background: rgba(15,23,42,0.92);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: block;
+      transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out;
+    }
+    .gh-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-subtle);
+      border-color: rgba(79,209,197,0.7);
+    }
+    .gh-thumb {
+      width: 100%;
+      aspect-ratio: 2 / 1;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+      background: #111729;
+    }
+    .gh-body { padding: 12px 14px 13px; }
+    .gh-lang {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--accent); margin-bottom: 4px;
+    }
+    .gh-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .gh-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
+    .gh-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 11px; color: var(--muted);
+    }
+    .gh-link {
+      font-size: 11px; color: var(--accent);
+      border: 1px solid rgba(79,209,197,0.4);
+      border-radius: 999px; padding: 3px 9px;
+      transition: background 0.15s;
+    }
+    .gh-link:hover { background: var(--accent-soft); }
+    @media (max-width: 900px) { .gh-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 640px) { .gh-grid { grid-template-columns: minmax(0,1fr); } }
+
     /* ── About ── */
     .about-grid {
       display: grid; grid-template-columns: minmax(0,1.6fr) minmax(0,1.4fr);
@@ -339,6 +387,7 @@
       <nav>
         <a href="#work">Work</a>
         <a href="#case-studies">Case Studies</a>
+        <a href="#github-projects">GitHub</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -613,6 +662,98 @@
       </article>
     </section>
 
+<!-- ── GITHUB PROJECTS ── -->
+    <section id="github-projects">
+      <div class="section-header fade-in">
+        <div>
+          <div class="section-label">GitHub</div>
+          <h2 class="section-title">Technical projects &amp; code</h2>
+        </div>
+        <p class="section-subtitle">
+          Data pipelines, ML models, dashboards, and analytics tools — all open source on GitHub.
+        </p>
+      </div>
+
+      <div class="gh-grid">
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/customer-analytics-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.05s">
+          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/customer-analytics-dashboard" alt="customer-analytics-dashboard" loading="lazy" />
+          <div class="gh-body">
+            <div class="gh-lang">Python · SQL</div>
+            <div class="gh-title">Customer Analytics Dashboard</div>
+            <div class="gh-desc">Churn prediction model, cohort analysis, and customer health scoring with PostgreSQL schema and scikit-learn.</div>
+            <div class="gh-footer">
+              <span>mansikamothi03</span>
+              <span class="gh-link">View repo &nearr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/product-feature-optimization" target="_blank" rel="noreferrer" style="transition-delay:0.1s">
+          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/product-feature-optimization" alt="product-feature-optimization" loading="lazy" />
+          <div class="gh-body">
+            <div class="gh-lang">Python · statsmodels</div>
+            <div class="gh-title">Product Feature Optimization</div>
+            <div class="gh-desc">A/B test framework with statistical significance testing, power analysis, and experiment reporting using scipy and statsmodels.</div>
+            <div class="gh-footer">
+              <span>mansikamothi03</span>
+              <span class="gh-link">View repo &nearr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/data-pipeline-automation" target="_blank" rel="noreferrer" style="transition-delay:0.15s">
+          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/data-pipeline-automation" alt="data-pipeline-automation" loading="lazy" />
+          <div class="gh-body">
+            <div class="gh-lang">Python · Apache Airflow</div>
+            <div class="gh-title">Data Pipeline Automation</div>
+            <div class="gh-desc">Apache Airflow DAG for automated customer data ingestion, transformation, and loading with error handling and alerting.</div>
+            <div class="gh-footer">
+              <span>mansikamothi03</span>
+              <span class="gh-link">View repo &nearr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ecommerce-analytics-platform" target="_blank" rel="noreferrer" style="transition-delay:0.2s">
+          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/ecommerce-analytics-platform" alt="ecommerce-analytics-platform" loading="lazy" />
+          <div class="gh-body">
+            <div class="gh-lang">Python · lifetimes</div>
+            <div class="gh-title">E-Commerce Analytics Platform</div>
+            <div class="gh-desc">Customer lifetime value modeling using BG/NBD and Gamma-Gamma models, with CLV segmentation and revenue forecasting.</div>
+            <div class="gh-footer">
+              <span>mansikamothi03</span>
+              <span class="gh-link">View repo &nearr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ml-recommendation-system" target="_blank" rel="noreferrer" style="transition-delay:0.25s">
+          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/ml-recommendation-system" alt="ml-recommendation-system" loading="lazy" />
+          <div class="gh-body">
+            <div class="gh-lang">Python · scikit-learn</div>
+            <div class="gh-title">ML Recommendation System</div>
+            <div class="gh-desc">Hybrid recommender combining collaborative filtering (SVD) and content-based filtering (TF-IDF) for product recommendations.</div>
+            <div class="gh-footer">
+              <span>mansikamothi03</span>
+              <span class="gh-link">View repo &nearr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/realtime-monitoring-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.3s">
+          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/realtime-monitoring-dashboard" alt="realtime-monitoring-dashboard" loading="lazy" />
+          <div class="gh-body">
+            <div class="gh-lang">Python · React · FastAPI</div>
+            <div class="gh-title">Real-Time Monitoring Dashboard</div>
+            <div class="gh-desc">FastAPI WebSocket backend with React + Recharts frontend for live KPI monitoring, anomaly alerts, and metric streaming.</div>
+            <div class="gh-footer">
+              <span>mansikamothi03</span>
+              <span class="gh-link">View repo &nearr;</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
     <!-- ── ABOUT ── -->
     <section id="about">
       <div class="section-header fade-in">
