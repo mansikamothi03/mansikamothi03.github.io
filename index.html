@@ -258,7 +258,7 @@
       font-size: 11px; padding: 4px 10px; border: 1px solid rgba(79,209,197,0.4);
     }
 
-    /* ── GitHub projects (thumbnail grid) ── */
+    /* ── GitHub projects (animated thumbnail grid) ── */
     .gh-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -270,25 +270,70 @@
       border: 1px solid var(--border);
       overflow: hidden;
       display: block;
-      transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
     }
     .gh-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-subtle);
-      border-color: rgba(79,209,197,0.7);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border-color: rgba(79,209,197,0.8);
     }
     .gh-thumb {
-      width: 100%;
-      aspect-ratio: 2 / 1;
-      object-fit: cover;
-      display: block;
+      width: 100%; aspect-ratio: 2.4/1;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
       border-bottom: 1px solid var(--border);
-      background: #111729;
     }
+    .gh-thumb::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
+      background-size: 200% 100%;
+      animation: gh-shimmer 3s ease-in-out infinite;
+    }
+    @keyframes gh-shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .gh-icon {
+      font-size: 38px; z-index: 2; position: relative;
+      filter: drop-shadow(0 0 14px currentColor);
+      animation: gh-float 3.5s ease-in-out infinite;
+    }
+    @keyframes gh-float {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-7px) scale(1.05); }
+    }
+    .gh-dot {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      animation: gh-rise linear infinite;
+    }
+    @keyframes gh-rise {
+      0% { transform: translateY(110%) scale(0.3); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.3; }
+      100% { transform: translateY(-110%) scale(1.1); opacity: 0; }
+    }
+    .gh-repo-label {
+      position: absolute; bottom: 7px; left: 12px;
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); z-index: 3;
+    }
+    .gh-octo {
+      position: absolute; top: 10px; right: 12px;
+      width: 20px; height: 20px; z-index: 3;
+      opacity: 0.4; transition: opacity 0.2s;
+      fill: white;
+    }
+    .gh-card:hover .gh-octo { opacity: 0.9; }
     .gh-body { padding: 12px 14px 13px; }
     .gh-lang {
+      display: flex; align-items: center; gap: 6px;
       font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em;
-      color: var(--accent); margin-bottom: 4px;
+      color: var(--accent); margin-bottom: 5px;
+    }
+    .gh-dot-lang {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
     }
     .gh-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
     .gh-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
@@ -300,9 +345,9 @@
       font-size: 11px; color: var(--accent);
       border: 1px solid rgba(79,209,197,0.4);
       border-radius: 999px; padding: 3px 9px;
-      transition: background 0.15s;
+      transition: background 0.15s, border-color 0.15s;
     }
-    .gh-link:hover { background: var(--accent-soft); }
+    .gh-link:hover { background: var(--accent-soft); border-color: var(--accent); }
     @media (max-width: 900px) { .gh-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
     @media (max-width: 640px) { .gh-grid { grid-template-columns: minmax(0,1fr); } }
 
@@ -416,7 +461,7 @@
           <button class="btn-primary" onclick="document.getElementById('case-studies').scrollIntoView({behavior:'smooth'})">
             View case studies &rarr;
           </button>
-          <a class="btn-ghost" href="mailto:mansikamothivts1999@gmail.com">Email me</a>
+          <a class="btn-ghost" href="mailto:mansikamothi1999@gmail.com">Email me</a>
           <a class="btn-ghost" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer">LinkedIn &nearr;</a>
         </div>
         <div class="hero-metrics">
@@ -675,83 +720,109 @@
       </div>
 
       <div class="gh-grid">
+
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/customer-analytics-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.05s">
-          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/customer-analytics-dashboard" alt="customer-analytics-dashboard" loading="lazy" />
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#0d2137,#0a3d4a,#0b1020)">
+            <div class="gh-dot" style="width:55px;height:55px;left:8%;animation-duration:6s;animation-delay:0s"></div>
+            <div class="gh-dot" style="width:28px;height:28px;left:62%;animation-duration:8s;animation-delay:2s"></div>
+            <div class="gh-dot" style="width:18px;height:18px;left:82%;animation-duration:5s;animation-delay:1s"></div>
+            <div class="gh-icon" style="color:#4fd1c5">📊</div>
+            <div class="gh-repo-label">customer-analytics-dashboard</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
           <div class="gh-body">
-            <div class="gh-lang">Python · SQL</div>
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · SQL</div>
             <div class="gh-title">Customer Analytics Dashboard</div>
-            <div class="gh-desc">Churn prediction model, cohort analysis, and customer health scoring with PostgreSQL schema and scikit-learn.</div>
-            <div class="gh-footer">
-              <span>mansikamothi03</span>
-              <span class="gh-link">View repo &nearr;</span>
-            </div>
+            <div class="gh-desc">Churn prediction, cohort analysis, and customer health scoring with PostgreSQL and scikit-learn.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/product-feature-optimization" target="_blank" rel="noreferrer" style="transition-delay:0.1s">
-          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/product-feature-optimization" alt="product-feature-optimization" loading="lazy" />
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0d37,#2d1b69,#0b1020)">
+            <div class="gh-dot" style="width:50px;height:50px;left:20%;animation-duration:7s;animation-delay:0.5s"></div>
+            <div class="gh-dot" style="width:22px;height:22px;left:70%;animation-duration:9s;animation-delay:1.5s"></div>
+            <div class="gh-dot" style="width:14px;height:14px;left:45%;animation-duration:6s;animation-delay:3s"></div>
+            <div class="gh-icon" style="color:#b794f4">🧪</div>
+            <div class="gh-repo-label">product-feature-optimization</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
           <div class="gh-body">
-            <div class="gh-lang">Python · statsmodels</div>
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · statsmodels</div>
             <div class="gh-title">Product Feature Optimization</div>
-            <div class="gh-desc">A/B test framework with statistical significance testing, power analysis, and experiment reporting using scipy and statsmodels.</div>
-            <div class="gh-footer">
-              <span>mansikamothi03</span>
-              <span class="gh-link">View repo &nearr;</span>
-            </div>
+            <div class="gh-desc">A/B test framework with statistical significance testing, power analysis, and experiment reporting.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/data-pipeline-automation" target="_blank" rel="noreferrer" style="transition-delay:0.15s">
-          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/data-pipeline-automation" alt="data-pipeline-automation" loading="lazy" />
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a1200,#3d2800,#0b1020)">
+            <div class="gh-dot" style="width:45px;height:45px;left:15%;animation-duration:5s;animation-delay:1s"></div>
+            <div class="gh-dot" style="width:32px;height:32px;left:65%;animation-duration:7s;animation-delay:0s"></div>
+            <div class="gh-dot" style="width:16px;height:16px;left:40%;animation-duration:9s;animation-delay:2s"></div>
+            <div class="gh-icon" style="color:#f6ad55">⚙️</div>
+            <div class="gh-repo-label">data-pipeline-automation</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
           <div class="gh-body">
-            <div class="gh-lang">Python · Apache Airflow</div>
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · Apache Airflow</div>
             <div class="gh-title">Data Pipeline Automation</div>
-            <div class="gh-desc">Apache Airflow DAG for automated customer data ingestion, transformation, and loading with error handling and alerting.</div>
-            <div class="gh-footer">
-              <span>mansikamothi03</span>
-              <span class="gh-link">View repo &nearr;</span>
-            </div>
+            <div class="gh-desc">Airflow DAG for automated customer data ingestion, transformation, and loading with error handling.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ecommerce-analytics-platform" target="_blank" rel="noreferrer" style="transition-delay:0.2s">
-          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/ecommerce-analytics-platform" alt="ecommerce-analytics-platform" loading="lazy" />
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#001a0d,#004d2e,#0b1020)">
+            <div class="gh-dot" style="width:52px;height:52px;left:25%;animation-duration:8s;animation-delay:0.3s"></div>
+            <div class="gh-dot" style="width:26px;height:26px;left:72%;animation-duration:6s;animation-delay:2.5s"></div>
+            <div class="gh-dot" style="width:15px;height:15px;left:50%;animation-duration:10s;animation-delay:1s"></div>
+            <div class="gh-icon" style="color:#68d391">🛒</div>
+            <div class="gh-repo-label">ecommerce-analytics-platform</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
           <div class="gh-body">
-            <div class="gh-lang">Python · lifetimes</div>
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · lifetimes</div>
             <div class="gh-title">E-Commerce Analytics Platform</div>
-            <div class="gh-desc">Customer lifetime value modeling using BG/NBD and Gamma-Gamma models, with CLV segmentation and revenue forecasting.</div>
-            <div class="gh-footer">
-              <span>mansikamothi03</span>
-              <span class="gh-link">View repo &nearr;</span>
-            </div>
+            <div class="gh-desc">CLV modeling using BG/NBD and Gamma-Gamma models, with customer segmentation and revenue forecasting.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ml-recommendation-system" target="_blank" rel="noreferrer" style="transition-delay:0.25s">
-          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/ml-recommendation-system" alt="ml-recommendation-system" loading="lazy" />
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#0d0a2e,#1a1060,#0b1020)">
+            <div class="gh-dot" style="width:48px;height:48px;left:18%;animation-duration:7s;animation-delay:0.8s"></div>
+            <div class="gh-dot" style="width:24px;height:24px;left:68%;animation-duration:5s;animation-delay:2s"></div>
+            <div class="gh-dot" style="width:20px;height:20px;left:38%;animation-duration:8s;animation-delay:0.2s"></div>
+            <div class="gh-icon" style="color:#76e4f7">🤖</div>
+            <div class="gh-repo-label">ml-recommendation-system</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
           <div class="gh-body">
-            <div class="gh-lang">Python · scikit-learn</div>
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · scikit-learn</div>
             <div class="gh-title">ML Recommendation System</div>
-            <div class="gh-desc">Hybrid recommender combining collaborative filtering (SVD) and content-based filtering (TF-IDF) for product recommendations.</div>
-            <div class="gh-footer">
-              <span>mansikamothi03</span>
-              <span class="gh-link">View repo &nearr;</span>
-            </div>
+            <div class="gh-desc">Hybrid recommender combining collaborative filtering (SVD) and content-based TF-IDF for product recommendations.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/realtime-monitoring-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.3s">
-          <img class="gh-thumb" src="https://opengraph.githubassets.com/1/mansikamothi03/realtime-monitoring-dashboard" alt="realtime-monitoring-dashboard" loading="lazy" />
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0505,#4a1010,#0b1020)">
+            <div class="gh-dot" style="width:42px;height:42px;left:12%;animation-duration:6s;animation-delay:1.2s"></div>
+            <div class="gh-dot" style="width:30px;height:30px;left:58%;animation-duration:8s;animation-delay:0.4s"></div>
+            <div class="gh-dot" style="width:17px;height:17px;left:78%;animation-duration:5s;animation-delay:2.8s"></div>
+            <div class="gh-icon" style="color:#fc8181">📡</div>
+            <div class="gh-repo-label">realtime-monitoring-dashboard</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
           <div class="gh-body">
-            <div class="gh-lang">Python · React · FastAPI</div>
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#f7df1e"></span>Python · React · FastAPI</div>
             <div class="gh-title">Real-Time Monitoring Dashboard</div>
-            <div class="gh-desc">FastAPI WebSocket backend with React + Recharts frontend for live KPI monitoring, anomaly alerts, and metric streaming.</div>
-            <div class="gh-footer">
-              <span>mansikamothi03</span>
-              <span class="gh-link">View repo &nearr;</span>
-            </div>
+            <div class="gh-desc">FastAPI WebSocket backend with React + Recharts for live KPI monitoring, anomaly alerts, and metric streaming.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
+
       </div>
     </section>
     <!-- ── ABOUT ── -->
@@ -816,13 +887,14 @@
     <section id="contact" class="contact fade-in">
       <div>
         <div class="section-label">Contact</div>
-        <p>Currently based in the Bay Area and open to Associate Product Manager, Product Analyst, and Analytics roles. Let's talk.</p>
+        <p>Based in San Francisco, California, USA. Open to Associate Product Manager, Product Analyst, and Analytics roles — and open to relocation for the right opportunity.</p>
       </div>
       <div class="contact-links">
-        <a class="contact-pill" href="mailto:mansikamothivts1999@gmail.com">mansikamothivts1999@gmail.com</a>
+        <a class="contact-pill" href="mailto:mansikamothi1999@gmail.com">mansikamothi1999@gmail.com</a>
         <a class="contact-pill" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer">LinkedIn &nearr;</a>
-        <span class="contact-pill">San Jose / Fremont, CA</span>
+        <span class="contact-pill">📍 San Francisco, CA, USA</span>
         <span class="contact-pill">+1 510 710 8030</span>
+        <span class="contact-pill" style="border-color:rgba(79,209,197,0.5);color:var(--accent)">✈ Open to relocation</span>
       </div>
     </section>
 
