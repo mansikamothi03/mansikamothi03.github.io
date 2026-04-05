@@ -171,17 +171,36 @@
     }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
     .hero-metrics {
-      display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+      display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
       gap: 10px; margin-top: 24px; font-size: 14px;
     }
     .metric-card {
       background: rgba(15,23,42,0.95); border-radius: 14px;
-      padding: 10px 10px 9px; border: 1px solid var(--border);
-      transition: border-color 0.2s;
+      padding: 12px 10px 10px; border: 1px solid var(--border);
+      text-align: center;
+      transition: border-color 0.2s, transform 0.15s;
     }
-    .metric-card:hover { border-color: rgba(79,209,197,0.5); }
-    .metric-label { color: var(--muted); margin-bottom: 2px; font-size: 13px; }
-    .metric-value { font-weight: 600; font-size: 17px; color: var(--accent); }
+    .metric-card:hover { border-color: rgba(79,209,197,0.5); transform: translateY(-2px); }
+    .metric-icon { font-size: 18px; margin-bottom: 5px; line-height: 1; }
+    .metric-label { color: var(--muted); margin-top: 3px; font-size: 12px; line-height: 1.3; }
+    .metric-value { font-weight: 700; font-size: 17px; color: var(--accent); }
+    /* Hero name label */
+    .hero-name {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 10px; opacity: 0.85;
+    }
+    /* Icon-only CTA links */
+    .hero-icon-link {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.9);
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--muted); font-size: 15px; font-weight: 700;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+    }
+    .hero-icon-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
 
     /* ── Hero side ── */
     .hero-side { display: flex; flex-direction: column; gap: 14px; }
@@ -638,18 +657,18 @@
     <!-- ── HERO ── -->
     <section class="hero" id="top">
       <div class="hero-main fade-in">
+        <p class="hero-name">Mansi Kamothi</p>
         <div class="hero-chip">
           <span class="hero-chip-dot"></span>
-          <span>Product &amp; Data Analyst &rarr; Associate Product Manager</span>
+          <span>Open to APM &amp; Product Analyst roles</span>
         </div>
-        <h1 class="hero-title">I build data-driven onboarding &amp; analytics capabilities.</h1>
+        <h1 class="hero-title">I turn product data into decisions that move metrics.</h1>
         <p class="hero-subtitle">
-          I help product and business teams turn ambiguous questions into <strong>measurable experiments</strong>, <strong>dashboards</strong>,
-          and roadmap decisions that drive conversion, retention, and stakeholder confidence.
+          <strong>3 years</strong> bridging analytics and product — running <strong>A/B tests</strong>, building <strong>executive dashboards</strong>, and partnering with PMs to ship features that drive <strong>conversion and retention</strong>.
         </p>
         <div class="hero-tags">
           <span class="tag">Product Analytics</span>
-          <span class="tag">Experimentation</span>
+          <span class="tag">A/B Experimentation</span>
           <span class="tag">Dashboards &amp; BI</span>
           <span class="tag">Stakeholder Alignment</span>
           <span class="tag">SaaS &amp; B2B</span>
@@ -659,21 +678,29 @@
             View case studies &rarr;
           </button>
           <a class="btn-ghost" href="MK_RESUME.pdf" target="_blank" rel="noreferrer">📄 Resume</a>
-          <a class="btn-ghost" href="mailto:mansikamothi1999@gmail.com">Email me</a>
-          <a class="btn-ghost" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer">LinkedIn &nearr;</a>
+          <a class="hero-icon-link" href="mailto:mansikamothi1999@gmail.com" title="Email mansikamothi1999@gmail.com">✉</a>
+          <a class="hero-icon-link" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer" title="LinkedIn">in</a>
         </div>
         <div class="hero-metrics">
           <div class="metric-card">
-            <div class="metric-label">Trial &rarr; paid uplift</div>
+            <div class="metric-icon">📈</div>
             <div class="metric-value">+19.8%</div>
+            <div class="metric-label">Conversion lift</div>
           </div>
           <div class="metric-card">
-            <div class="metric-label">Incremental ARR impact</div>
-            <div class="metric-value">$1.2M / yr</div>
+            <div class="metric-icon">💰</div>
+            <div class="metric-value">$1.2M</div>
+            <div class="metric-label">ARR driven</div>
           </div>
           <div class="metric-card">
-            <div class="metric-label">Reporting automation</div>
-            <div class="metric-value">85 hrs/wk</div>
+            <div class="metric-icon">⏱</div>
+            <div class="metric-value">85 hrs</div>
+            <div class="metric-label">Saved per week</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">🧪</div>
+            <div class="metric-value">15+</div>
+            <div class="metric-label">Experiments shipped</div>
           </div>
         </div>
       </div>
