@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mansi Kamothi – Product &amp; Data Analyst Portfolio</title>
+  <title>Mansi Kamothi – Product Analyst | APM | Data Analyst Portfolio</title>
+  <meta name="description" content="Mansi Kamothi — Product & Data Analyst with 3+ years in SaaS. Drove $1.2M ARR, 19.8% conversion lift, and 85 hrs/week saved. Open to APM and Product Analyst roles in fintech and SaaS." />
+  <meta property="og:title" content="Mansi Kamothi – Product Analyst Portfolio" />
+  <meta property="og:description" content="3+ years turning product data into decisions. $1.2M ARR · 19.8% conversion lift · 15+ experiments shipped. Open to APM & Product Analyst roles." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Mansi Kamothi – Product Analyst Portfolio" />
+  <meta name="twitter:description" content="3+ years turning product data into decisions. $1.2M ARR · 19.8% conversion lift · 15+ experiments shipped." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
   <style>
     /* ── Design tokens ── */
     :root {
@@ -96,7 +104,7 @@
       margin-bottom: 32px;
     }
     .logo {
-      font-weight: 700; letter-spacing: 0.08em; font-size: 15px;
+      font-weight: 700; letter-spacing: 0.08em; font-size: 19px;
       text-transform: uppercase; color: var(--muted);
     }
     nav { display: flex; gap: 20px; font-size: 16px; color: var(--muted); }
@@ -237,7 +245,7 @@
     .project-card {
       background: rgba(15,23,42,0.92); border-radius: 18px;
       padding: 16px 16px 14px; border: 1px solid var(--border);
-      cursor: pointer; display: block;
+      cursor: pointer; display: flex; flex-direction: column;
       transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out;
       animation: card-hint-pulse 3s ease-in-out infinite;
     }
@@ -256,18 +264,26 @@
     }
     .project-title { font-size: 16px; margin-bottom: 4px; font-weight: 600; }
     .project-role { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
-    .project-meta { font-size: 14px; color: var(--muted); line-height: 1.5; }
+    .project-meta { font-size: 14px; color: var(--muted); line-height: 1.5; flex: 1; }
+    .gh-bar { transform-origin: bottom center; animation: gh-bar-grow 1s ease-out both; }
+    @keyframes gh-bar-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+    .gh-line-path { stroke-dasharray: 400; stroke-dashoffset: 400; animation: gh-line-draw 1.4s ease-out both 0.2s; }
+    @keyframes gh-line-draw { to { stroke-dashoffset: 0; } }
+    .gh-pulse { animation: gh-pulse-anim 1.6s ease-in-out infinite; }
+    @keyframes gh-pulse-anim { 0%,100%{r:3;opacity:1} 50%{r:6;opacity:0.5} }
+    .gh-flow { stroke-dasharray: 7,3; animation: gh-flow-move 1.5s linear infinite; }
+    @keyframes gh-flow-move { from{stroke-dashoffset:10} to{stroke-dashoffset:0} }
     .project-mini-metrics {
       display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 6px; margin-top: 10px;
       max-height: 0; overflow: hidden;
-      transition: max-height 0.35s ease, opacity 0.3s ease;
-      opacity: 0;
+      transition: max-height 0.35s ease, opacity 0.3s ease, padding 0.35s ease;
+      opacity: 0; padding: 0 1px;
     }
-    .project-card:hover .project-mini-metrics { max-height: 60px; opacity: 1; }
+    .project-card:hover .project-mini-metrics { max-height: 80px; opacity: 1; padding: 2px 1px; }
     .project-mini-metric {
-      background: rgba(79,209,197,0.07); border-radius: 8px;
-      padding: 5px 8px; border: 1px solid rgba(79,209,197,0.18);
+      background: rgba(79,209,197,0.09); border-radius: 8px;
+      padding: 5px 8px; border: 1px solid rgba(79,209,197,0.45);
       text-align: center;
       transform: translateY(6px);
       transition: transform 0.3s ease;
@@ -278,7 +294,7 @@
     .project-mini-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
     .project-card-footer {
       display: flex; align-items: center; justify-content: space-between;
-      margin-top: 10px; padding-top: 8px;
+      margin-top: auto; padding-top: 8px;
       border-top: 1px solid rgba(148,163,184,0.08);
     }
     .project-card-badge {
@@ -717,12 +733,12 @@
     <!-- ── HERO ── -->
     <section class="hero" id="top">
       <div class="hero-main fade-in">
-        <p class="hero-name">Mansi Kamothi</p>
         <div class="hero-chip">
           <span class="hero-chip-dot"></span>
-          <span>Open to APM &amp; Product Analyst roles</span>
+          <span>Open to the right opportunities</span>
         </div>
         <h1 class="hero-title">I turn product data into decisions that move metrics.</h1>
+        <p style="margin:6px 0 14px;font-size:14px;color:var(--muted);letter-spacing:0.01em;">📍 San Francisco, CA</p>
         <p class="hero-subtitle">
           <strong>3 years</strong> at the intersection of data and product. I run <strong>A/B tests</strong>, build <strong>dashboards</strong> people actually open, and help PMs make calls they can defend to leadership — all the way from the question to the shipped decision.
         </p>
@@ -737,7 +753,7 @@
           <button class="btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">
             View projects &rarr;
           </button>
-          <a class="btn-ghost" href="MK_RESUME.pdf" target="_blank" rel="noreferrer">📄 Resume</a>
+          <a class="btn-primary" href="MK_RESUME.pdf" target="_blank" rel="noreferrer" style="background:transparent;border:1.5px solid var(--accent);color:var(--accent);box-shadow:0 8px 22px rgba(79,209,197,0.18)">📄 Resume</a>
           <a class="hero-icon-link" href="mailto:mansikamothi1999@gmail.com" title="Email mansikamothi1999@gmail.com">✉</a>
           <a class="hero-icon-link" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer" title="LinkedIn">in</a>
         </div>
@@ -786,6 +802,16 @@
         <div class="pill-card fade-in" style="transition-delay:0.3s">
           <div class="pill-title">Toolbox</div>
           <div class="pill-main">SQL &middot; Python &middot; Tableau &middot; Power BI &middot; BigQuery &middot; Salesforce &middot; GA4 &middot; Optimizely</div>
+        </div>
+        <div class="pill-card fade-in" style="transition-delay:0.4s">
+          <div class="pill-title">Availability</div>
+          <div class="pill-main" style="color:var(--accent)">✅ Available immediately</div>
+          <div class="pill-tags">
+            <span>Remote</span>
+            <span>Hybrid</span>
+            <span>On-site</span>
+            <span>Open to relocation</span>
+          </div>
         </div>
       </div>
     </section>
@@ -869,105 +895,182 @@
 
       <div class="gh-grid">
 
-        <a class="gh-card fade-in" href="#" style="transition-delay:0.05s" onclick="openModal(event,'gh-customer')">
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/customer-analytics-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.05s" onclick="openModal(event,'gh-customer')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#0d2137,#0a3d4a,#0b1020)">
-            <div class="gh-dot" style="width:55px;height:55px;left:8%;animation-duration:6s;animation-delay:0s"></div>
-            <div class="gh-dot" style="width:28px;height:28px;left:62%;animation-duration:8s;animation-delay:2s"></div>
-            <div class="gh-dot" style="width:18px;height:18px;left:82%;animation-duration:5s;animation-delay:1s"></div>
-            <div class="gh-icon" style="color:#4fd1c5">📊</div>
-            <div class="gh-repo-label">customer-analytics-dashboard</div>
-            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">COHORT ANALYSIS · CHURN MODEL</text>
+              <line x1="14" y1="78" x2="135" y2="78" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <line x1="14" y1="20" x2="14" y2="78" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <rect class="gh-bar" x="22" y="52" width="13" height="26" fill="rgba(79,209,197,0.35)" rx="2" style="animation-delay:0.05s"/>
+              <rect class="gh-bar" x="40" y="38" width="13" height="40" fill="rgba(79,209,197,0.55)" rx="2" style="animation-delay:0.15s"/>
+              <rect class="gh-bar" x="58" y="46" width="13" height="32" fill="rgba(79,209,197,0.45)" rx="2" style="animation-delay:0.25s"/>
+              <rect class="gh-bar" x="76" y="28" width="13" height="50" fill="rgba(79,209,197,0.85)" rx="2" style="animation-delay:0.35s"/>
+              <rect class="gh-bar" x="94" y="42" width="13" height="36" fill="rgba(79,209,197,0.55)" rx="2" style="animation-delay:0.45s"/>
+              <rect class="gh-bar" x="112" y="34" width="13" height="44" fill="rgba(79,209,197,0.7)" rx="2" style="animation-delay:0.55s"/>
+              <polyline class="gh-line-path" points="148,68 163,55 178,58 193,42 208,46 223,32" fill="none" stroke="rgba(99,179,237,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle class="gh-pulse" cx="223" cy="32" r="3" fill="#63b3ed"/>
+              <text x="148" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">RETENTION</text>
+              <rect x="148" y="76" width="82" height="13" rx="2" fill="rgba(79,209,197,0.12)" stroke="rgba(79,209,197,0.3)" stroke-width="0.5"/>
+              <text x="189" y="85" fill="rgba(79,209,197,0.85)" font-size="6.5" font-family="monospace" text-anchor="middle">CHURN ACCURACY: 95%</text>
+            </svg>
+            
+            
           </div>
           <div class="gh-body">
             <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · SQL</div>
             <div class="gh-title">Customer Analytics Dashboard</div>
             <div class="gh-desc">Churn prediction, cohort analysis, and customer health scoring with PostgreSQL and scikit-learn.</div>
-            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+            <div class="gh-footer"><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="#" style="transition-delay:0.1s" onclick="openModal(event,'gh-feature')">
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/product-feature-optimization" target="_blank" rel="noreferrer" style="transition-delay:0.1s" onclick="openModal(event,'gh-feature')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0d37,#2d1b69,#0b1020)">
-            <div class="gh-dot" style="width:50px;height:50px;left:20%;animation-duration:7s;animation-delay:0.5s"></div>
-            <div class="gh-dot" style="width:22px;height:22px;left:70%;animation-duration:9s;animation-delay:1.5s"></div>
-            <div class="gh-dot" style="width:14px;height:14px;left:45%;animation-duration:6s;animation-delay:3s"></div>
-            <div class="gh-icon" style="color:#b794f4">🧪</div>
-            <div class="gh-repo-label">product-feature-optimization</div>
-            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">A/B TEST RESULTS · OPTIMIZELY</text>
+              <text x="14" y="30" fill="rgba(255,255,255,0.45)" font-size="7.5" font-family="monospace">Control</text>
+              <rect x="58" y="22" width="130" height="13" rx="2" fill="rgba(255,255,255,0.06)"/>
+              <rect class="gh-bar" x="58" y="22" width="104" height="13" rx="2" fill="rgba(148,163,184,0.4)" style="transform-origin:left center"/>
+              <text x="166" y="31" fill="rgba(148,163,184,0.8)" font-size="7.5" font-family="monospace">62%</text>
+              <text x="14" y="50" fill="rgba(255,255,255,0.45)" font-size="7.5" font-family="monospace">Variant A</text>
+              <rect x="58" y="42" width="130" height="13" rx="2" fill="rgba(255,255,255,0.06)"/>
+              <rect class="gh-bar" x="58" y="42" width="124" height="13" rx="2" fill="rgba(183,148,244,0.65)" style="transform-origin:left center;animation-delay:0.2s"/>
+              <text x="186" y="51" fill="rgba(183,148,244,0.95)" font-size="7.5" font-family="monospace">74%</text>
+              <rect x="14" y="63" width="95" height="14" rx="3" fill="rgba(72,187,120,0.15)" stroke="rgba(72,187,120,0.45)" stroke-width="0.5"/>
+              <text x="61" y="73" fill="rgba(72,187,120,0.95)" font-size="7.5" font-family="monospace" text-anchor="middle">✓ +19.8% lift</text>
+              <text x="116" y="73" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">p &lt; 0.05</text>
+              <text x="14" y="90" fill="rgba(255,255,255,0.22)" font-size="6" font-family="monospace">Statistical power: 80% · n = 12,400 · 95% CI</text>
+            </svg>
+            
+            
           </div>
           <div class="gh-body">
             <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · statsmodels</div>
             <div class="gh-title">Product Feature Optimization</div>
             <div class="gh-desc">A/B test framework with statistical significance testing, power analysis, and experiment reporting.</div>
-            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+            <div class="gh-footer"><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="#" style="transition-delay:0.15s" onclick="openModal(event,'gh-pipeline')">
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/data-pipeline-automation" target="_blank" rel="noreferrer" style="transition-delay:0.15s" onclick="openModal(event,'gh-pipeline')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#1a1200,#3d2800,#0b1020)">
-            <div class="gh-dot" style="width:45px;height:45px;left:15%;animation-duration:5s;animation-delay:1s"></div>
-            <div class="gh-dot" style="width:32px;height:32px;left:65%;animation-duration:7s;animation-delay:0s"></div>
-            <div class="gh-dot" style="width:16px;height:16px;left:40%;animation-duration:9s;animation-delay:2s"></div>
-            <div class="gh-icon" style="color:#f6ad55">⚙️</div>
-            <div class="gh-repo-label">data-pipeline-automation</div>
-            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">ETL PIPELINE · APACHE AIRFLOW DAG</text>
+              <rect x="8" y="28" width="58" height="32" rx="4" fill="rgba(246,173,85,0.12)" stroke="rgba(246,173,85,0.5)" stroke-width="1"/>
+              <text x="37" y="42" fill="rgba(246,173,85,0.9)" font-size="7.5" font-family="monospace" text-anchor="middle">EXTRACT</text>
+              <text x="37" y="52" fill="rgba(255,255,255,0.3)" font-size="6" font-family="monospace" text-anchor="middle">15 sources</text>
+              <line x1="66" y1="44" x2="88" y2="44" stroke="rgba(246,173,85,0.5)" stroke-width="1.5" class="gh-flow"/>
+              <polygon points="86,41 92,44 86,47" fill="rgba(246,173,85,0.7)"/>
+              <rect x="92" y="28" width="58" height="32" rx="4" fill="rgba(246,173,85,0.12)" stroke="rgba(246,173,85,0.5)" stroke-width="1"/>
+              <text x="121" y="42" fill="rgba(246,173,85,0.9)" font-size="7.5" font-family="monospace" text-anchor="middle">TRANSFORM</text>
+              <text x="121" y="52" fill="rgba(255,255,255,0.3)" font-size="6" font-family="monospace" text-anchor="middle">dbt models</text>
+              <line x1="150" y1="44" x2="172" y2="44" stroke="rgba(246,173,85,0.5)" stroke-width="1.5" class="gh-flow"/>
+              <polygon points="170,41 176,44 170,47" fill="rgba(246,173,85,0.7)"/>
+              <rect x="176" y="28" width="58" height="32" rx="4" fill="rgba(246,173,85,0.12)" stroke="rgba(246,173,85,0.5)" stroke-width="1"/>
+              <text x="205" y="42" fill="rgba(246,173,85,0.9)" font-size="7.5" font-family="monospace" text-anchor="middle">LOAD</text>
+              <text x="205" y="52" fill="rgba(255,255,255,0.3)" font-size="6" font-family="monospace" text-anchor="middle">PostgreSQL</text>
+              <circle cx="14" cy="72" r="3" fill="rgba(72,187,120,0.8)"/>
+              <text x="22" y="76" fill="rgba(72,187,120,0.75)" font-size="6.5" font-family="monospace">DAG: customer_data_pipeline · success</text>
+              <text x="14" y="90" fill="rgba(255,255,255,0.22)" font-size="6" font-family="monospace">1M+ records/day · 3x auto-retry · 0 manual steps</text>
+            </svg>
+            
+            
           </div>
           <div class="gh-body">
             <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · Apache Airflow</div>
             <div class="gh-title">Data Pipeline Automation</div>
             <div class="gh-desc">Airflow DAG for automated customer data ingestion, transformation, and loading with error handling.</div>
-            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+            <div class="gh-footer"><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="#" style="transition-delay:0.2s" onclick="openModal(event,'gh-ecommerce')">
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ecommerce-analytics-platform" target="_blank" rel="noreferrer" style="transition-delay:0.2s" onclick="openModal(event,'gh-ecommerce')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#001a0d,#004d2e,#0b1020)">
-            <div class="gh-dot" style="width:52px;height:52px;left:25%;animation-duration:8s;animation-delay:0.3s"></div>
-            <div class="gh-dot" style="width:26px;height:26px;left:72%;animation-duration:6s;animation-delay:2.5s"></div>
-            <div class="gh-dot" style="width:15px;height:15px;left:50%;animation-duration:10s;animation-delay:1s"></div>
-            <div class="gh-icon" style="color:#68d391">🛒</div>
-            <div class="gh-repo-label">ecommerce-analytics-platform</div>
-            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">CLV MODEL · BG/NBD + GAMMA-GAMMA</text>
+              <line x1="18" y1="78" x2="18" y2="18" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <line x1="18" y1="78" x2="165" y2="78" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+              <path class="gh-line-path" d="M18,74 C35,68 55,55 75,44 C95,33 115,26 135,21 C148,18 155,17 165,16" fill="none" stroke="rgba(104,211,145,0.9)" stroke-width="2.5" stroke-linecap="round"/>
+              <path d="M18,74 C35,68 55,55 75,44 C95,33 115,26 135,21 C148,18 155,17 165,16 L165,78 Z" fill="rgba(104,211,145,0.07)"/>
+              <circle class="gh-pulse" cx="165" cy="16" r="3" fill="#68d391"/>
+              <rect x="175" y="16" width="58" height="12" rx="2" fill="rgba(104,211,145,0.2)" stroke="rgba(104,211,145,0.45)" stroke-width="0.5"/>
+              <text x="204" y="25" fill="rgba(104,211,145,0.9)" font-size="6.5" font-family="monospace" text-anchor="middle">Champions</text>
+              <rect x="175" y="32" width="50" height="12" rx="2" fill="rgba(104,211,145,0.12)" stroke="rgba(104,211,145,0.3)" stroke-width="0.5"/>
+              <text x="200" y="41" fill="rgba(104,211,145,0.7)" font-size="6.5" font-family="monospace" text-anchor="middle">Loyal</text>
+              <rect x="175" y="48" width="42" height="12" rx="2" fill="rgba(104,211,145,0.07)" stroke="rgba(104,211,145,0.2)" stroke-width="0.5"/>
+              <text x="196" y="57" fill="rgba(104,211,145,0.5)" font-size="6.5" font-family="monospace" text-anchor="middle">At Risk</text>
+              <rect x="175" y="64" width="35" height="12" rx="2" fill="rgba(104,211,145,0.04)" stroke="rgba(104,211,145,0.12)" stroke-width="0.5"/>
+              <text x="192" y="73" fill="rgba(104,211,145,0.35)" font-size="6.5" font-family="monospace" text-anchor="middle">Churned</text>
+              <text x="14" y="92" fill="rgba(255,255,255,0.22)" font-size="6" font-family="monospace">R²: 0.85 · 12-month forecast · 3x ROI top segment</text>
+            </svg>
+            
+            
           </div>
           <div class="gh-body">
             <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · lifetimes</div>
             <div class="gh-title">E-Commerce Analytics Platform</div>
             <div class="gh-desc">CLV modeling using BG/NBD and Gamma-Gamma models, with customer segmentation and revenue forecasting.</div>
-            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+            <div class="gh-footer"><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="#" style="transition-delay:0.25s" onclick="openModal(event,'gh-ml')">
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ml-recommendation-system" target="_blank" rel="noreferrer" style="transition-delay:0.25s" onclick="openModal(event,'gh-ml')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#0d0a2e,#1a1060,#0b1020)">
-            <div class="gh-dot" style="width:48px;height:48px;left:18%;animation-duration:7s;animation-delay:0.8s"></div>
-            <div class="gh-dot" style="width:24px;height:24px;left:68%;animation-duration:5s;animation-delay:2s"></div>
-            <div class="gh-dot" style="width:20px;height:20px;left:38%;animation-duration:8s;animation-delay:0.2s"></div>
-            <div class="gh-icon" style="color:#76e4f7">🤖</div>
-            <div class="gh-repo-label">ml-recommendation-system</div>
-            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">HYBRID RECOMMENDER · SVD + TF-IDF</text>
+              <rect x="14" y="20" width="17" height="17" rx="2" fill="rgba(118,228,247,0.9)"/>
+              <rect x="34" y="20" width="17" height="17" rx="2" fill="rgba(118,228,247,0.4)"/>
+              <rect x="54" y="20" width="17" height="17" rx="2" fill="rgba(118,228,247,0.15)"/>
+              <rect x="74" y="20" width="17" height="17" rx="2" fill="rgba(118,228,247,0.05)"/>
+              <rect x="14" y="40" width="17" height="17" rx="2" fill="rgba(118,228,247,0.4)"/>
+              <rect x="34" y="40" width="17" height="17" rx="2" fill="rgba(118,228,247,0.9)"/>
+              <rect x="54" y="40" width="17" height="17" rx="2" fill="rgba(118,228,247,0.5)"/>
+              <rect x="74" y="40" width="17" height="17" rx="2" fill="rgba(118,228,247,0.1)"/>
+              <rect x="14" y="60" width="17" height="17" rx="2" fill="rgba(118,228,247,0.1)"/>
+              <rect x="34" y="60" width="17" height="17" rx="2" fill="rgba(118,228,247,0.5)"/>
+              <rect x="54" y="60" width="17" height="17" rx="2" fill="rgba(118,228,247,0.9)"/>
+              <rect x="74" y="60" width="17" height="17" rx="2" fill="rgba(118,228,247,0.3)"/>
+              <text x="105" y="28" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace">TOP PICKS</text>
+              <rect x="105" y="33" width="125" height="11" rx="2" fill="rgba(118,228,247,0.15)"/>
+              <text x="110" y="41" fill="rgba(118,228,247,0.85)" font-size="6.5" font-family="monospace">Item #4821 · score: 0.94</text>
+              <rect x="105" y="47" width="108" height="11" rx="2" fill="rgba(118,228,247,0.1)"/>
+              <text x="110" y="55" fill="rgba(118,228,247,0.65)" font-size="6.5" font-family="monospace">Item #2034 · score: 0.87</text>
+              <rect x="105" y="61" width="90" height="11" rx="2" fill="rgba(118,228,247,0.06)"/>
+              <text x="110" y="69" fill="rgba(118,228,247,0.45)" font-size="6.5" font-family="monospace">Item #7712 · score: 0.81</text>
+              <text x="14" y="90" fill="rgba(255,255,255,0.22)" font-size="6" font-family="monospace">RMSE: 0.82 · Coverage: 92% · 10K+ items indexed</text>
+            </svg>
+            
+            
           </div>
           <div class="gh-body">
             <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · scikit-learn</div>
             <div class="gh-title">ML Recommendation System</div>
             <div class="gh-desc">Hybrid recommender combining collaborative filtering (SVD) and content-based TF-IDF for product recommendations.</div>
-            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+            <div class="gh-footer"><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
-        <a class="gh-card fade-in" href="#" style="transition-delay:0.3s" onclick="openModal(event,'gh-realtime')">
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/realtime-monitoring-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.3s" onclick="openModal(event,'gh-realtime')">
           <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0505,#4a1010,#0b1020)">
-            <div class="gh-dot" style="width:42px;height:42px;left:12%;animation-duration:6s;animation-delay:1.2s"></div>
-            <div class="gh-dot" style="width:30px;height:30px;left:58%;animation-duration:8s;animation-delay:0.4s"></div>
-            <div class="gh-dot" style="width:17px;height:17px;left:78%;animation-duration:5s;animation-delay:2.8s"></div>
-            <div class="gh-icon" style="color:#fc8181">📡</div>
-            <div class="gh-repo-label">realtime-monitoring-dashboard</div>
-            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">LIVE KPI MONITOR · WEBSOCKET · 50ms</text>
+              <line x1="14" y1="75" x2="220" y2="75" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <line x1="14" y1="20" x2="14" y2="75" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+              <polyline class="gh-line-path" points="14,60 35,58 55,55 75,57 95,54 115,56 135,30 155,62 175,58 195,55 215,53" fill="none" stroke="rgba(252,129,129,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle class="gh-pulse" cx="135" cy="30" r="4" fill="rgba(252,129,129,0.9)"/>
+              <rect x="140" y="22" width="72" height="14" rx="2" fill="rgba(252,129,129,0.15)" stroke="rgba(252,129,129,0.5)" stroke-width="0.5"/>
+              <text x="176" y="31" fill="rgba(252,129,129,0.95)" font-size="6.5" font-family="monospace" text-anchor="middle">⚠ ANOMALY: 18%</text>
+              <circle cx="215" cy="53" r="3" fill="rgba(252,129,129,0.7)"/>
+              <text x="14" y="88" fill="rgba(255,255,255,0.22)" font-size="6" font-family="monospace">FastAPI · React · Recharts · 100 events/sec · 99% uptime</text>
+            </svg>
+            
+            
           </div>
           <div class="gh-body">
             <div class="gh-lang"><span class="gh-dot-lang" style="background:#f7df1e"></span>Python · React · FastAPI</div>
             <div class="gh-title">Real-Time Monitoring Dashboard</div>
             <div class="gh-desc">FastAPI WebSocket backend with React + Recharts for live KPI monitoring, anomaly alerts, and metric streaming.</div>
-            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+            <div class="gh-footer"><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>
 
@@ -989,14 +1092,14 @@
           <div class="exp-dot"><div class="exp-dot-inner current"></div></div>
           <div class="exp-header">
             <div>
-              <div class="exp-role">Product &amp; Data Analyst</div>
+              <div class="exp-role">Product Analyst <span style="font-weight:400;color:var(--muted);font-size:14px">(Product Management Focus)</span></div>
               <div class="exp-company">
                 Tungsten Automation
                 <span class="exp-badge">Current</span>
               </div>
             </div>
             <div>
-              <div class="exp-period">2022 – Present</div>
+              <div class="exp-period">Jul 2024 – Present</div>
               <div class="exp-location">Remote, USA</div>
             </div>
           </div>
@@ -1010,24 +1113,24 @@
           </ul>
         </div>
 
-        <!-- Prior role -->
+        <!-- Magna Infotech -->
         <div class="exp-item fade-in" style="transition-delay:0.1s">
           <div class="exp-dot"><div class="exp-dot-inner"></div></div>
           <div class="exp-header">
             <div>
-              <div class="exp-role">Business / Data Analyst</div>
-              <div class="exp-company">Prior Role</div>
+              <div class="exp-role">Business Analyst, Product</div>
+              <div class="exp-company">Magna Infotech</div>
             </div>
             <div>
-              <div class="exp-period">2020 – 2022</div>
-              <div class="exp-location">Bay Area, CA</div>
+              <div class="exp-period">Mar 2020 – Dec 2021</div>
+              <div class="exp-location">India</div>
             </div>
           </div>
           <ul class="exp-bullets">
-            <li>Analyzed customer behavior data to surface insights that informed product and pricing decisions.</li>
-            <li>Built SQL-based reporting pipelines and Tableau dashboards for operations and finance teams.</li>
-            <li>Supported go-to-market strategy with segmentation analysis and competitive benchmarking.</li>
-            <li>Reduced manual reporting time by 60% through process automation and standardized data models.</li>
+            <li>Analyzed customer behavior and transaction data across 50K+ records to surface insights that shaped product and pricing decisions for 3 product lines.</li>
+            <li>Built SQL reporting pipelines and Tableau dashboards used daily by operations and finance teams — cut ad hoc data requests by 40%.</li>
+            <li>Supported GTM strategy with segmentation analysis and competitive benchmarking, contributing to 3 successful product launches.</li>
+            <li>Reduced manual reporting time by <strong>60%</strong> (~12 hrs/week) through Python automation and standardized data models across 4 business units.</li>
           </ul>
         </div>
       </div>
@@ -1100,10 +1203,11 @@
       <div class="contact-links">
         <a class="contact-pill" href="mailto:mansikamothi1999@gmail.com">mansikamothi1999@gmail.com</a>
         <a class="contact-pill" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer">LinkedIn &nearr;</a>
-        <a class="contact-pill" href="MK_RESUME.pdf" target="_blank" rel="noreferrer" style="border-color:rgba(79,209,197,0.5);color:var(--accent)">📄 View Resume</a>
+        <a class="contact-pill" href="MK_RESUME.pdf" target="_blank" rel="noreferrer" style="border-color:rgba(79,209,197,0.5);color:var(--accent);font-weight:600">📄 Download Resume</a>
         <span class="contact-pill">📍 San Francisco, CA, USA</span>
         <span class="contact-pill">+1 510 710 8030</span>
         <span class="contact-pill" style="border-color:rgba(79,209,197,0.5);color:var(--accent)">✈ Open to relocation</span>
+        <span class="contact-pill" style="border-color:rgba(72,187,120,0.5);color:#48bb78;font-weight:600">✅ Available immediately</span>
       </div>
     </section>
 
