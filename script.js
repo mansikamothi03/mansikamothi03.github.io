@@ -1034,3 +1034,90 @@ function resetQuiz() {
     userAnswers = [];
     showQuizIntro();
 }
+// ============================================================
+// SCROLL PROGRESS BAR
+// ============================================================
+function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    const bar = document.getElementById('scrollProgress');
+    if (bar) bar.style.width = progress + '%';
+}
+
+// ============================================================
+// CURSOR GLOW
+// ============================================================
+function initCursorGlow() {
+    const glow = document.getElementById('cursorGlow');
+    if (!glow) return;
+    document.addEventListener('mousemove', (e) => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+        glow.style.opacity = '1';
+    });
+    document.addEventListener('mouseleave', () => {
+        glow.style.opacity = '0';
+    });
+}
+
+// ============================================================
+// BACK TO TOP
+// ============================================================
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateBackToTop() {
+    const btn = document.getElementById('backToTop');
+    if (!btn) return;
+    if (window.scrollY > 400) {
+        btn.classList.add('visible');
+    } else {
+        btn.classList.remove('visible');
+    }
+}
+
+// ============================================================
+// PROJECT FILTER TABS
+// ============================================================
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update active button
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filter === 'all' || category === filter) {
+                    card.classList.remove('hidden');
+                    card.classList.add('fade-in');
+                    setTimeout(() => card.classList.remove('fade-in'), 400);
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        });
+    });
+}
+
+// ============================================================
+// WIRE UP SCROLL EVENTS & INIT
+// ============================================================
+window.addEventListener('scroll', () => {
+    updateScrollProgress();
+    updateBackToTop();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    initCursorGlow();
+    initProjectFilters();
+    updateScrollProgress();
+    updateBackToTop();
+});

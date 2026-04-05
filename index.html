@@ -46,15 +46,26 @@
     }
 
     /* ── Cursor glow ── */
+    /* ── Bold keyword highlight for recruiters ── */
+    .hero-subtitle strong,
+    .about-grid strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
     #cursor-glow {
       position: fixed;
-      width: 320px; height: 320px;
+      width: 260px; height: 260px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(79,209,197,0.07) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(79,209,197,0.28) 0%, rgba(79,209,197,0.10) 40%, transparent 70%);
       pointer-events: none;
       transform: translate(-50%, -50%);
       z-index: 9998;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.3s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
+    }
+    #cursor-glow.cursor-active {
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(79,209,197,0.55) 0%, rgba(79,209,197,0.22) 40%, transparent 70%);
     }
 
     /* ── Back to top ── */
@@ -67,7 +78,7 @@
       border: none;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      font-size: 18px; color: #0b1020;
+      font-size: 20px; color: #0b1020;
       box-shadow: 0 8px 24px rgba(79,209,197,0.4);
       opacity: 0; transform: translateY(12px);
       transition: opacity 0.3s ease, transform 0.3s ease;
@@ -85,10 +96,10 @@
       margin-bottom: 32px;
     }
     .logo {
-      font-weight: 700; letter-spacing: 0.08em; font-size: 13px;
+      font-weight: 700; letter-spacing: 0.08em; font-size: 15px;
       text-transform: uppercase; color: var(--muted);
     }
-    nav { display: flex; gap: 20px; font-size: 14px; color: var(--muted); }
+    nav { display: flex; gap: 20px; font-size: 16px; color: var(--muted); }
     nav a { position: relative; padding-bottom: 4px; }
     nav a::after {
       content: ""; position: absolute; left: 0; bottom: 0;
@@ -113,7 +124,7 @@
     }
     .hero-chip {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 12px; padding: 4px 10px; border-radius: 999px;
+      font-size: 14px; padding: 4px 10px; border-radius: 999px;
       background: rgba(15,23,42,0.9); border: 1px solid rgba(148,163,184,0.45);
       color: var(--muted); margin-bottom: 14px; backdrop-filter: blur(10px);
     }
@@ -127,13 +138,13 @@
       50% { box-shadow: 0 0 0 8px rgba(72,187,120,0.08); }
     }
     .hero-title {
-      font-size: clamp(28px, 4vw, 40px);
+      font-size: clamp(30px, 4.2vw, 42px);
       letter-spacing: -0.04em; margin-bottom: 10px;
     }
     .hero-subtitle {
-      font-size: 15px; color: var(--muted); max-width: 500px; margin-bottom: 20px;
+      font-size: 17px; color: var(--muted); max-width: 500px; margin-bottom: 20px;
     }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; font-size: 12px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; font-size: 14px; }
     .tag {
       padding: 4px 10px; border-radius: 999px;
       border: 1px solid var(--border); color: var(--muted);
@@ -145,7 +156,7 @@
     .btn-primary {
       padding: 9px 18px; border-radius: 999px; border: none; cursor: pointer;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #0b1020; font-weight: 600; font-size: 14px;
+      color: #0b1020; font-weight: 600; font-size: 16px;
       display: inline-flex; align-items: center; gap: 8px;
       box-shadow: 0 12px 30px rgba(79,209,197,0.35);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -154,14 +165,14 @@
     .btn-ghost {
       padding: 8px 14px; border-radius: 999px;
       border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.9); color: var(--muted); font-size: 13px;
+      background: rgba(15,23,42,0.9); color: var(--muted); font-size: 15px;
       display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
       transition: border-color 0.2s, color 0.2s;
     }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
     .hero-metrics {
       display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 10px; margin-top: 24px; font-size: 12px;
+      gap: 10px; margin-top: 24px; font-size: 14px;
     }
     .metric-card {
       background: rgba(15,23,42,0.95); border-radius: 14px;
@@ -169,8 +180,8 @@
       transition: border-color 0.2s;
     }
     .metric-card:hover { border-color: rgba(79,209,197,0.5); }
-    .metric-label { color: var(--muted); margin-bottom: 2px; font-size: 11px; }
-    .metric-value { font-weight: 600; font-size: 15px; color: var(--accent); }
+    .metric-label { color: var(--muted); margin-bottom: 2px; font-size: 13px; }
+    .metric-value { font-weight: 600; font-size: 17px; color: var(--accent); }
 
     /* ── Hero side ── */
     .hero-side { display: flex; flex-direction: column; gap: 14px; }
@@ -181,23 +192,23 @@
     }
     .pill-card:hover { border-color: rgba(79,209,197,0.4); transform: translateY(-1px); }
     .pill-title {
-      font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em;
       color: var(--muted); margin-bottom: 6px;
     }
-    .pill-main { font-size: 14px; margin-bottom: 6px; }
-    .pill-tags { display: flex; flex-wrap: wrap; gap: 6px; font-size: 11px; color: var(--muted); }
+    .pill-main { font-size: 16px; margin-bottom: 6px; }
+    .pill-tags { display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px; color: var(--muted); }
 
     /* ── Section headers ── */
     .section-label {
-      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 6px;
     }
     .section-header {
       display: flex; justify-content: space-between; align-items: baseline;
       margin-bottom: 14px; margin-top: 40px;
     }
-    .section-title { font-size: 20px; letter-spacing: -0.03em; }
-    .section-subtitle { font-size: 13px; color: var(--muted); max-width: 420px; text-align: right; }
+    .section-title { font-size: 22px; letter-spacing: -0.03em; }
+    .section-subtitle { font-size: 15px; color: var(--muted); max-width: 420px; text-align: right; }
 
     /* ── Projects grid ── */
     .projects-grid {
@@ -221,12 +232,12 @@
       animation: none;
     }
     .project-chip {
-      font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em;
       color: var(--accent); margin-bottom: 6px;
     }
-    .project-title { font-size: 14px; margin-bottom: 4px; font-weight: 600; }
-    .project-role { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
-    .project-meta { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .project-title { font-size: 16px; margin-bottom: 4px; font-weight: 600; }
+    .project-role { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+    .project-meta { font-size: 14px; color: var(--muted); line-height: 1.5; }
     .project-mini-metrics {
       display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 6px; margin-top: 10px;
@@ -244,21 +255,21 @@
     }
     .project-card:hover .project-mini-metric { transform: translateY(0); }
     .project-card:hover .project-mini-metric:nth-child(2) { transition-delay: 0.07s; }
-    .project-mini-val { font-size: 13px; font-weight: 700; color: var(--accent); line-height: 1.2; }
-    .project-mini-lbl { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .project-mini-val { font-size: 15px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+    .project-mini-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
     .project-card-footer {
       display: flex; align-items: center; justify-content: space-between;
       margin-top: 10px; padding-top: 8px;
       border-top: 1px solid rgba(148,163,184,0.08);
     }
     .project-card-badge {
-      font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em;
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
       color: var(--accent); background: var(--accent-soft);
       border: 1px solid rgba(79,209,197,0.3); border-radius: 999px;
       padding: 2px 7px;
     }
     .project-card-cta {
-      font-size: 11px; color: var(--accent);
+      font-size: 13px; color: var(--accent);
       display: flex; align-items: center; gap: 4px;
       opacity: 0.6; transition: opacity 0.2s, letter-spacing 0.2s;
     }
@@ -273,31 +284,31 @@
     }
     .case-study:hover { border-color: rgba(79,209,197,0.3); }
     .case-header { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
-    .case-title { font-size: 17px; margin-bottom: 4px; font-weight: 600; }
-    .case-tagline { font-size: 13px; color: var(--muted); }
-    .case-meta { font-size: 11px; color: var(--muted); text-align: right; min-width: 170px; }
+    .case-title { font-size: 19px; margin-bottom: 4px; font-weight: 600; }
+    .case-tagline { font-size: 15px; color: var(--muted); }
+    .case-meta { font-size: 13px; color: var(--muted); text-align: right; min-width: 170px; }
     .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
     .pill-small {
       border-radius: 999px; background: rgba(15,23,42,0.95);
-      border: 1px solid var(--border); padding: 3px 9px; font-size: 11px;
+      border: 1px solid var(--border); padding: 3px 9px; font-size: 13px;
     }
     .case-body {
       display: grid; grid-template-columns: minmax(0,1.8fr) minmax(0,1.4fr);
       gap: 20px; margin-top: 8px;
     }
     .case-column h4 {
-      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
       color: var(--accent); margin-bottom: 6px; margin-top: 14px;
     }
     .case-column h4:first-child { margin-top: 0; }
-    .case-column p { font-size: 13px; color: var(--muted); margin-bottom: 8px; line-height: 1.6; }
+    .case-column p { font-size: 15px; color: var(--muted); margin-bottom: 8px; line-height: 1.6; }
     .case-column ul { padding-left: 16px; margin-bottom: 6px; }
-    .case-column li { font-size: 13px; color: var(--muted); margin-bottom: 4px; line-height: 1.55; }
+    .case-column li { font-size: 15px; color: var(--muted); margin-bottom: 4px; line-height: 1.55; }
     .case-column li strong { color: var(--text); }
     .metrics-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .metric-pill {
       border-radius: 999px; background: var(--accent-soft); color: var(--accent);
-      font-size: 11px; padding: 4px 10px; border: 1px solid rgba(79,209,197,0.4);
+      font-size: 13px; padding: 4px 10px; border: 1px solid rgba(79,209,197,0.4);
     }
 
     /* ── GitHub projects (animated thumbnail grid) ── */
@@ -337,7 +348,7 @@
       100% { background-position: -200% 0; }
     }
     .gh-icon {
-      font-size: 38px; z-index: 2; position: relative;
+      font-size: 40px; z-index: 2; position: relative;
       filter: drop-shadow(0 0 14px currentColor);
       animation: gh-float 3.5s ease-in-out infinite;
     }
@@ -358,7 +369,7 @@
     }
     .gh-repo-label {
       position: absolute; bottom: 7px; left: 12px;
-      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
       color: rgba(255,255,255,0.4); z-index: 3;
     }
     .gh-octo {
@@ -371,20 +382,20 @@
     .gh-body { padding: 12px 14px 13px; }
     .gh-lang {
       display: flex; align-items: center; gap: 6px;
-      font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.16em;
       color: var(--accent); margin-bottom: 5px;
     }
     .gh-dot-lang {
       width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
     }
-    .gh-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-    .gh-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
+    .gh-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .gh-desc { font-size: 14px; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
     .gh-footer {
       display: flex; align-items: center; justify-content: space-between;
-      font-size: 11px; color: var(--muted);
+      font-size: 13px; color: var(--muted);
     }
     .gh-link {
-      font-size: 11px; color: var(--accent);
+      font-size: 13px; color: var(--accent);
       border: 1px solid rgba(79,209,197,0.4);
       border-radius: 999px; padding: 3px 9px;
       transition: background 0.15s, border-color 0.15s;
@@ -398,7 +409,7 @@
       display: grid; grid-template-columns: minmax(0,1.6fr) minmax(0,1.4fr);
       gap: 24px; margin-top: 6px;
     }
-    .about-grid > div > p { font-size: 14px; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
+    .about-grid > div > p { font-size: 16px; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
     .skills-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
     .skills-card {
       background: rgba(15,23,42,0.92); border-radius: 16px;
@@ -407,11 +418,11 @@
     }
     .skills-card:hover { border-color: rgba(79,209,197,0.4); }
     .skills-card h4 {
-      font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em;
       color: var(--accent); margin-bottom: 6px;
     }
     .skills-card ul { list-style: none; }
-    .skills-card li { font-size: 13px; color: var(--muted); padding: 2px 0; }
+    .skills-card li { font-size: 15px; color: var(--muted); padding: 2px 0; }
     .skills-card li + li { border-top: 1px solid rgba(148,163,184,0.08); }
 
     /* ── Contact ── */
@@ -420,16 +431,16 @@
       border: 1px solid var(--border); background: rgba(11,16,32,0.9);
       display: flex; justify-content: space-between; gap: 16px; align-items: center;
     }
-    .contact > div > p { font-size: 13px; color: var(--muted); margin-top: 4px; max-width: 480px; }
+    .contact > div > p { font-size: 15px; color: var(--muted); margin-top: 4px; max-width: 480px; }
     .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
     .contact-pill {
       border-radius: 999px; border: 1px solid rgba(148,163,184,0.45);
       padding: 7px 14px; color: var(--muted); background: rgba(15,23,42,0.95);
-      font-size: 12px; transition: border-color 0.2s, color 0.2s;
+      font-size: 14px; transition: border-color 0.2s, color 0.2s;
     }
     .contact-pill:hover { border-color: var(--accent); color: var(--accent); }
 
-    footer { margin-top: 28px; font-size: 11px; color: var(--muted); text-align: center; }
+    footer { margin-top: 28px; font-size: 13px; color: var(--muted); text-align: center; }
 
     /* ── Fade-in on scroll ── */
     .fade-in {
@@ -487,14 +498,14 @@
       padding: 26px 26px 22px; border-radius: 24px 24px 0 0;
       position: relative;
     }
-    .modal-header-icon { font-size: 34px; margin-bottom: 10px; display: block; filter: drop-shadow(0 0 12px currentColor); }
-    .modal-header h2 { font-size: 19px; letter-spacing: -0.03em; margin-bottom: 5px; color: #fff; }
-    .modal-header-role { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .modal-header-icon { font-size: 36px; margin-bottom: 10px; display: block; filter: drop-shadow(0 0 12px currentColor); }
+    .modal-header h2 { font-size: 21px; letter-spacing: -0.03em; margin-bottom: 5px; color: #fff; }
+    .modal-header-role { font-size: 15px; color: rgba(255,255,255,0.55); }
     .modal-close {
       position: absolute; top: 18px; right: 18px;
       width: 34px; height: 34px; border-radius: 50%;
       background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.8); font-size: 15px; cursor: pointer;
+      color: rgba(255,255,255,0.8); font-size: 17px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background 0.2s, transform 0.2s;
     }
@@ -513,16 +524,16 @@
     }
     .modal-metric.show { opacity: 1; transform: translateY(0); }
     .modal-metric-value {
-      font-size: 22px; font-weight: 700; color: var(--accent);
+      font-size: 24px; font-weight: 700; color: var(--accent);
       letter-spacing: -0.04em; line-height: 1; margin-bottom: 5px;
     }
-    .modal-metric-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.3; }
+    .modal-metric-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.3; }
     .modal-body {
       display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr);
       gap: 14px; margin-bottom: 18px;
     }
     .modal-section-title {
-      font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em;
       color: var(--accent); margin-bottom: 10px;
     }
     .modal-chart-wrap, .modal-steps-wrap {
@@ -531,7 +542,7 @@
     .modal-bar-row { margin-bottom: 11px; }
     .modal-bar-row:last-child { margin-bottom: 0; }
     .modal-bar-label {
-      font-size: 11px; color: var(--muted); margin-bottom: 5px;
+      font-size: 13px; color: var(--muted); margin-bottom: 5px;
       display: flex; justify-content: space-between;
     }
     .modal-bar-track {
@@ -555,21 +566,21 @@
     .modal-step-num {
       width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
       background: var(--accent-soft); border: 1px solid rgba(79,209,197,0.35);
-      color: var(--accent); font-size: 10px; font-weight: 700;
+      color: var(--accent); font-size: 12px; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
     }
-    .modal-step-text { font-size: 12px; color: var(--muted); padding-top: 3px; line-height: 1.4; }
+    .modal-step-text { font-size: 14px; color: var(--muted); padding-top: 3px; line-height: 1.4; }
     .modal-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
     .modal-tech-pill {
       border-radius: 999px; background: rgba(15,23,42,0.95);
       border: 1px solid rgba(148,163,184,0.22); padding: 4px 11px;
-      font-size: 11px; color: var(--muted);
+      font-size: 13px; color: var(--muted);
     }
     .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .modal-btn-primary {
       padding: 9px 20px; border-radius: 999px; border: none; cursor: pointer;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #0b1020; font-weight: 600; font-size: 13px;
+      color: #0b1020; font-weight: 600; font-size: 15px;
       display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
       box-shadow: 0 8px 22px rgba(79,209,197,0.3);
       transition: transform 0.15s, box-shadow 0.15s;
@@ -578,7 +589,7 @@
     .modal-btn-ghost {
       padding: 8px 16px; border-radius: 999px;
       border: 1px solid rgba(148,163,184,0.4);
-      background: transparent; color: var(--muted); font-size: 13px;
+      background: transparent; color: var(--muted); font-size: 15px;
       display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
       text-decoration: none; transition: border-color 0.2s, color 0.2s;
     }
@@ -619,7 +630,7 @@
         </div>
         <h1 class="hero-title">I build data-driven onboarding &amp; analytics capabilities.</h1>
         <p class="hero-subtitle">
-          I help product and business teams turn ambiguous questions into measurable experiments, dashboards,
+          I help product and business teams turn ambiguous questions into <strong>measurable experiments</strong>, <strong>dashboards</strong>,
           and roadmap decisions that drive conversion, retention, and stakeholder confidence.
         </p>
         <div class="hero-tags">
@@ -1053,9 +1064,9 @@
       </div>
       <div class="about-grid fade-in">
         <div>
-          <p>I am a Product and Business Analyst with 3+ years of experience in SaaS and enterprise environments, focused on turning data into product decisions. I work best in cross-functional pods with Product Managers, designers, engineers, and business stakeholders.</p>
-          <p>My recent work centers on onboarding, experimentation, and analytics platforms: defining success metrics, running A/B tests, building executive-ready dashboards, and partnering with leadership to adjust strategy based on what the data is telling us.</p>
-          <p>I am particularly excited about Associate Product Manager and Product Analyst roles in wealth, fintech, and SaaS, where improving digital client experiences has a tangible impact on people's financial lives.</p>
+          <p>I am a <strong>Product and Business Analyst</strong> with <strong>3+ years of experience</strong> in <strong>SaaS and enterprise</strong> environments, focused on turning data into product decisions. I work best in cross-functional pods with Product Managers, designers, engineers, and business stakeholders.</p>
+          <p>My recent work centers on onboarding, experimentation, and analytics platforms: defining success metrics, running <strong>A/B tests</strong>, building <strong>executive-ready dashboards</strong>, and partnering with leadership to adjust strategy based on what the data is telling us.</p>
+          <p>I am particularly excited about <strong>Associate Product Manager</strong> and <strong>Product Analyst</strong> roles in wealth, fintech, and SaaS, where improving digital client experiences has a tangible impact on people's financial lives.</p>
         </div>
         <div class="skills-grid">
           <div class="skills-card">
@@ -1172,6 +1183,12 @@
     document.addEventListener('mousemove', e => {
       glow.style.left = e.clientX + 'px';
       glow.style.top  = e.clientY + 'px';
+    });
+    // Intensify glow on interactive elements
+    const interactiveEls = 'a, button, .project-card, .gh-card, .case-study, [data-modal]';
+    document.querySelectorAll(interactiveEls).forEach(el => {
+      el.addEventListener('mouseenter', () => glow.classList.add('cursor-active'));
+      el.addEventListener('mouseleave', () => glow.classList.remove('cursor-active'));
     });
 
     // ── Fade-in on scroll (Intersection Observer) ──
