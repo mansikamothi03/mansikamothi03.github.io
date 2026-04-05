@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet" />
   <title>Mansi Kamothi – Product Analyst | APM | Data Analyst Portfolio</title>
   <meta name="description" content="Mansi Kamothi — Product & Data Analyst with 3+ years in SaaS. Drove $1.2M ARR, 19.8% conversion lift, and 85 hrs/week saved. Open to APM and Product Analyst roles in fintech and SaaS." />
   <meta property="og:title" content="Mansi Kamothi – Product Analyst Portfolio" />
@@ -13,26 +16,26 @@
   <meta name="twitter:description" content="3+ years turning product data into decisions. $1.2M ARR · 19.8% conversion lift · 15+ experiments shipped." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
   <style>
-    /* ── Design tokens ── */
+    /* ── Design tokens — Charcoal + Violet ── */
     :root {
-      --bg: #0b1020;
-      --bg-alt: #111729;
-      --card: #141b2f;
-      --accent: #4fd1c5;
-      --accent-2: #63b3ed;
-      --accent-soft: rgba(79, 209, 197, 0.12);
-      --text: #f7fafc;
-      --muted: #a0aec0;
-      --border: rgba(148, 163, 184, 0.35);
-      --shadow-soft: 0 18px 45px rgba(0,0,0,0.45);
-      --shadow-subtle: 0 10px 30px rgba(0,0,0,0.35);
+      --bg: #111111;
+      --bg-alt: #1c1c1e;
+      --card: #1c1c1e;
+      --accent: #a78bfa;
+      --accent-2: #34d399;
+      --accent-soft: rgba(167, 139, 250, 0.12);
+      --text: #f9fafb;
+      --muted: #71717a;
+      --border: rgba(167, 139, 250, 0.18);
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
+      --shadow-subtle: 0 10px 30px rgba(0,0,0,0.45);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
-      background: radial-gradient(circle at top left, #202b46 0, #0b1020 45%, #050713 100%);
+      background: radial-gradient(circle at top left, #1e1b2e 0, #111111 45%, #0a0a0a 100%);
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -65,7 +68,7 @@
       position: fixed;
       width: 260px; height: 260px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(79,209,197,0.28) 0%, rgba(79,209,197,0.10) 40%, transparent 70%);
+      background: radial-gradient(circle, rgba(200,169,110,0.22) 0%, rgba(167,139,250,0.08) 40%, transparent 70%);
       pointer-events: none;
       transform: translate(-50%, -50%);
       z-index: 9998;
@@ -73,7 +76,7 @@
     }
     #cursor-glow.cursor-active {
       width: 180px; height: 180px;
-      background: radial-gradient(circle, rgba(79,209,197,0.55) 0%, rgba(79,209,197,0.22) 40%, transparent 70%);
+      background: radial-gradient(circle, rgba(200,169,110,0.45) 0%, rgba(167,139,250,0.18) 40%, transparent 70%);
     }
 
     /* ── Back to top ── */
@@ -86,8 +89,8 @@
       border: none;
       cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      font-size: 20px; color: #0b1020;
-      box-shadow: 0 8px 24px rgba(79,209,197,0.4);
+      font-size: 20px; color: #111111;
+      box-shadow: 0 8px 24px rgba(200,169,110,0.4);
       opacity: 0; transform: translateY(12px);
       transition: opacity 0.3s ease, transform 0.3s ease;
       z-index: 9997;
@@ -124,16 +127,16 @@
       gap: 32px; margin-bottom: 40px; align-items: center;
     }
     .hero-main {
-      background: radial-gradient(circle at top left, #1a2544 0, #111729 55%, #0b1020 100%);
+      background: radial-gradient(circle at top left, #1e1b2e 0, #1c1c1e 55%, #111111 100%);
       border-radius: 28px; padding: 28px 28px 24px;
       box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(148,163,184,0.18);
+      border: 1px solid rgba(167,139,250,0.15);
       position: relative; overflow: hidden;
     }
     .hero-chip {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 14px; padding: 4px 10px; border-radius: 999px;
-      background: rgba(15,23,42,0.9); border: 1px solid rgba(148,163,184,0.45);
+      background: rgba(22,27,34,0.9); border: 1px solid rgba(167,139,250,0.3);
       color: var(--muted); margin-bottom: 14px; backdrop-filter: blur(10px);
     }
     .hero-chip-dot {
@@ -146,8 +149,17 @@
       50% { box-shadow: 0 0 0 8px rgba(72,187,120,0.08); }
     }
     .hero-title {
-      font-size: clamp(30px, 4.2vw, 42px);
-      letter-spacing: -0.04em; margin-bottom: 10px;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .hero-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
     }
     .hero-subtitle {
       font-size: 17px; color: var(--muted); max-width: 500px; margin-bottom: 20px;
@@ -156,24 +168,24 @@
     .tag {
       padding: 4px 10px; border-radius: 999px;
       border: 1px solid var(--border); color: var(--muted);
-      background: rgba(15,23,42,0.9);
+      background: rgba(22,27,34,0.9);
       transition: border-color 0.2s, color 0.2s;
     }
     .tag:hover { border-color: var(--accent); color: var(--accent); }
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .btn-primary {
       padding: 9px 18px; border-radius: 999px; border: none; cursor: pointer;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #0b1020; font-weight: 600; font-size: 16px;
+      background: var(--accent);
+      color: #111111; font-weight: 700; font-size: 16px;
       display: inline-flex; align-items: center; gap: 8px;
-      box-shadow: 0 12px 30px rgba(79,209,197,0.35);
+      box-shadow: 0 12px 30px rgba(200,169,110,0.35);
       transition: transform 0.15s ease, box-shadow 0.15s ease;
     }
-    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(79,209,197,0.45); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(200,169,110,0.5); }
     .btn-ghost {
       padding: 8px 14px; border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.5);
-      background: rgba(15,23,42,0.9); color: var(--muted); font-size: 15px;
+      border: 1px solid rgba(167,139,250,0.3);
+      background: rgba(22,27,34,0.9); color: var(--muted); font-size: 15px;
       display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
       transition: border-color 0.2s, color 0.2s;
     }
@@ -183,12 +195,12 @@
       gap: 10px; margin-top: 24px; font-size: 14px;
     }
     .metric-card {
-      background: rgba(15,23,42,0.95); border-radius: 14px;
+      background: rgba(22,27,34,0.95); border-radius: 14px;
       padding: 12px 10px 10px; border: 1px solid var(--border);
       text-align: center;
       transition: border-color 0.2s, transform 0.15s;
     }
-    .metric-card:hover { border-color: rgba(79,209,197,0.5); transform: translateY(-2px); }
+    .metric-card:hover { border-color: rgba(200,169,110,0.5); transform: translateY(-2px); }
     .metric-icon { font-size: 18px; margin-bottom: 5px; line-height: 1; }
     .metric-label { color: var(--muted); margin-top: 3px; font-size: 12px; line-height: 1.3; }
     .metric-value { font-weight: 700; font-size: 17px; color: var(--accent); }
@@ -201,8 +213,8 @@
     /* Icon-only CTA links */
     .hero-icon-link {
       width: 40px; height: 40px; border-radius: 50%;
-      border: 1px solid rgba(148,163,184,0.4);
-      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(167,139,250,0.25);
+      background: rgba(22,27,34,0.9);
       display: inline-flex; align-items: center; justify-content: center;
       color: var(--muted); font-size: 15px; font-weight: 700;
       text-decoration: none;
@@ -213,11 +225,11 @@
     /* ── Hero side ── */
     .hero-side { display: flex; flex-direction: column; gap: 14px; }
     .pill-card {
-      background: rgba(15,23,42,0.92); border-radius: 20px; padding: 16px 18px;
+      background: rgba(22,27,34,0.92); border-radius: 20px; padding: 16px 18px;
       border: 1px solid var(--border); box-shadow: var(--shadow-subtle);
       transition: border-color 0.2s, transform 0.15s;
     }
-    .pill-card:hover { border-color: rgba(79,209,197,0.4); transform: translateY(-1px); }
+    .pill-card:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-1px); }
     .pill-title {
       font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em;
       color: var(--muted); margin-bottom: 6px;
@@ -243,19 +255,19 @@
       gap: 16px; margin-bottom: 10px;
     }
     .project-card {
-      background: rgba(15,23,42,0.92); border-radius: 18px;
+      background: rgba(22,27,34,0.92); border-radius: 18px;
       padding: 16px 16px 14px; border: 1px solid var(--border);
       cursor: pointer; display: flex; flex-direction: column;
       transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out;
       animation: card-hint-pulse 3s ease-in-out infinite;
     }
     @keyframes card-hint-pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(79,209,197,0); }
-      50% { box-shadow: 0 0 0 4px rgba(79,209,197,0.12); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(200,169,110,0); }
+      50% { box-shadow: 0 0 0 4px rgba(167,139,250,0.12); }
     }
     .project-card:hover {
       transform: translateY(-3px); box-shadow: var(--shadow-subtle);
-      border-color: rgba(79,209,197,0.7);
+      border-color: rgba(200,169,110,0.7);
       animation: none;
     }
     .project-chip {
@@ -282,8 +294,8 @@
     }
     .project-card:hover .project-mini-metrics { max-height: 80px; opacity: 1; padding: 2px 1px; }
     .project-mini-metric {
-      background: rgba(79,209,197,0.09); border-radius: 8px;
-      padding: 5px 8px; border: 1px solid rgba(79,209,197,0.45);
+      background: rgba(200,169,110,0.09); border-radius: 8px;
+      padding: 5px 8px; border: 1px solid rgba(200,169,110,0.45);
       text-align: center;
       transform: translateY(6px);
       transition: transform 0.3s ease;
@@ -300,7 +312,7 @@
     .project-card-badge {
       font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
       color: var(--accent); background: var(--accent-soft);
-      border: 1px solid rgba(79,209,197,0.3); border-radius: 999px;
+      border: 1px solid rgba(167,139,250,0.3); border-radius: 999px;
       padding: 2px 7px;
     }
     .project-card-cta {
@@ -312,19 +324,19 @@
 
     /* ── Case studies ── */
     .case-study {
-      background: rgba(11,16,32,0.9); border-radius: 22px;
+      background: rgba(22,27,34,0.9); border-radius: 22px;
       padding: 22px 22px 20px; border: 1px solid var(--border);
       margin-top: 14px; margin-bottom: 16px; box-shadow: var(--shadow-subtle);
       transition: border-color 0.2s;
     }
-    .case-study:hover { border-color: rgba(79,209,197,0.3); }
+    .case-study:hover { border-color: rgba(167,139,250,0.3); }
     .case-header { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
     .case-title { font-size: 19px; margin-bottom: 4px; font-weight: 600; }
     .case-tagline { font-size: 15px; color: var(--muted); }
     .case-meta { font-size: 13px; color: var(--muted); text-align: right; min-width: 170px; }
     .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
     .pill-small {
-      border-radius: 999px; background: rgba(15,23,42,0.95);
+      border-radius: 999px; background: rgba(22,27,34,0.95);
       border: 1px solid var(--border); padding: 3px 9px; font-size: 13px;
     }
     .case-body {
@@ -343,7 +355,7 @@
     .metrics-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
     .metric-pill {
       border-radius: 999px; background: var(--accent-soft); color: var(--accent);
-      font-size: 13px; padding: 4px 10px; border: 1px solid rgba(79,209,197,0.4);
+      font-size: 13px; padding: 4px 10px; border: 1px solid rgba(200,169,110,0.4);
     }
 
     /* ── GitHub projects (animated thumbnail grid) ── */
@@ -353,7 +365,7 @@
       gap: 16px;
     }
     .gh-card {
-      background: rgba(15,23,42,0.92);
+      background: rgba(22,27,34,0.92);
       border-radius: 18px;
       border: 1px solid var(--border);
       overflow: hidden;
@@ -363,7 +375,7 @@
     .gh-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-      border-color: rgba(79,209,197,0.8);
+      border-color: rgba(200,169,110,0.8);
     }
     .gh-thumb {
       width: 100%; aspect-ratio: 2.4/1;
@@ -431,7 +443,7 @@
     }
     .gh-link {
       font-size: 13px; color: var(--accent);
-      border: 1px solid rgba(79,209,197,0.4);
+      border: 1px solid rgba(200,169,110,0.4);
       border-radius: 999px; padding: 3px 9px;
       transition: background 0.15s, border-color 0.15s;
     }
@@ -448,15 +460,15 @@
     }
     .exp-item {
       position: relative; margin-bottom: 24px;
-      background: rgba(15,23,42,0.92); border-radius: 18px;
+      background: rgba(22,27,34,0.92); border-radius: 18px;
       padding: 18px 20px 16px; border: 1px solid var(--border);
       transition: border-color 0.2s, transform 0.15s;
     }
-    .exp-item:hover { border-color: rgba(79,209,197,0.4); transform: translateY(-1px); }
+    .exp-item:hover { border-color: rgba(200,169,110,0.4); transform: translateY(-1px); }
     .exp-dot {
       position: absolute; left: -28px; top: 20px;
       width: 14px; height: 14px; border-radius: 50%;
-      border: 2px solid rgba(79,209,197,0.4); background: #0b1020;
+      border: 2px solid rgba(200,169,110,0.4); background: #111111;
       display: flex; align-items: center; justify-content: center;
     }
     .exp-dot-inner {
@@ -464,7 +476,7 @@
     }
     .exp-dot-inner.current {
       background: var(--accent);
-      box-shadow: 0 0 0 3px rgba(79,209,197,0.2);
+      box-shadow: 0 0 0 3px rgba(200,169,110,0.2);
       animation: pulse-dot 2s ease-in-out infinite;
     }
     .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
@@ -472,11 +484,11 @@
     .exp-company { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--accent); }
     .exp-badge {
       font-size: 11px; padding: 2px 7px; border-radius: 999px;
-      background: rgba(79,209,197,0.1); border: 1px solid rgba(79,209,197,0.3);
+      background: rgba(200,169,110,0.1); border: 1px solid rgba(167,139,250,0.3);
       color: var(--accent);
     }
     .exp-period { font-size: 13px; color: var(--muted); text-align: right; }
-    .exp-location { font-size: 12px; color: rgba(148,163,184,0.5); margin-top: 2px; }
+    .exp-location { font-size: 12px; color: rgba(167,139,250,0.3); margin-top: 2px; }
     .exp-bullets { list-style: none; padding: 0; margin: 0; }
     .exp-bullets li {
       display: flex; gap: 10px; font-size: 15px; color: var(--muted);
@@ -492,11 +504,11 @@
     .about-grid > div > p { font-size: 16px; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
     .skills-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
     .skills-card {
-      background: rgba(15,23,42,0.92); border-radius: 16px;
+      background: rgba(22,27,34,0.92); border-radius: 16px;
       padding: 12px 13px 11px; border: 1px solid var(--border);
       transition: border-color 0.2s;
     }
-    .skills-card:hover { border-color: rgba(79,209,197,0.4); }
+    .skills-card:hover { border-color: rgba(200,169,110,0.4); }
     .skills-card h4 {
       font-size: 13px; text-transform: uppercase; letter-spacing: 0.14em;
       color: var(--accent); margin-bottom: 6px;
@@ -508,14 +520,14 @@
     /* ── Contact ── */
     .contact {
       margin-top: 32px; padding: 20px 22px; border-radius: 20px;
-      border: 1px solid var(--border); background: rgba(11,16,32,0.9);
+      border: 1px solid var(--border); background: rgba(22,27,34,0.9);
       display: flex; justify-content: space-between; gap: 16px; align-items: center;
     }
     .contact > div > p { font-size: 15px; color: var(--muted); margin-top: 4px; max-width: 480px; }
     .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
     .contact-pill {
-      border-radius: 999px; border: 1px solid rgba(148,163,184,0.45);
-      padding: 7px 14px; color: var(--muted); background: rgba(15,23,42,0.95);
+      border-radius: 999px; border: 1px solid rgba(167,139,250,0.3);
+      padding: 7px 14px; color: var(--muted); background: rgba(22,27,34,0.95);
       font-size: 14px; transition: border-color 0.2s, color 0.2s;
     }
     .contact-pill:hover { border-color: var(--accent); color: var(--accent); }
@@ -548,6 +560,32 @@
       .contact { flex-direction: column; align-items: flex-start; }
       body { cursor: auto; }
       #cursor-glow { display: none; }
+      /* ── Additional mobile fixes ── */
+      .section-header { flex-direction: column; gap: 6px; margin-top: 32px; }
+      .section-subtitle { text-align: left; max-width: 100%; }
+      nav { flex-wrap: wrap; gap: 10px; font-size: 14px; }
+      .hero-subtitle { font-size: 15px; }
+      .hero-side { gap: 10px; }
+      .pill-card { padding: 12px 14px; }
+      .hero-actions { gap: 8px; }
+      .hero-tags { gap: 6px; }
+      .exp-header { gap: 8px; }
+      .exp-period { text-align: left; }
+      .skills-grid { grid-template-columns: minmax(0,1fr); }
+      .about-grid { gap: 16px; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 28px; }
+      .hero-chip { font-size: 12px; }
+      .metric-value { font-size: 15px; }
+      .metric-label { font-size: 11px; }
+      .btn-primary { font-size: 14px; padding: 8px 14px; }
+      .btn-ghost { font-size: 13px; padding: 7px 12px; }
+      .logo { font-size: 16px; }
+      .exp-role { font-size: 15px; }
+      .exp-bullets li { font-size: 14px; }
+      .contact-links { gap: 8px; }
+      .contact-pill { font-size: 13px; padding: 6px 12px; }
     }
 
     /* ── Project modals ── */
@@ -572,15 +610,15 @@
       cursor: pointer !important;
     }
     .modal-panel {
-      background: #111729;
-      border: 1px solid rgba(148,163,184,0.2);
+      background: #1c1c1e;
+      border: 1px solid rgba(167,139,250,0.18);
       border-radius: 24px;
       width: 100%; max-width: 800px;
       max-height: 90vh; overflow-y: auto;
       transform: translateY(48px) scale(0.95);
       transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1);
       box-shadow: 0 40px 90px rgba(0,0,0,0.65);
-      scrollbar-width: thin; scrollbar-color: rgba(79,209,197,0.3) transparent;
+      scrollbar-width: thin; scrollbar-color: rgba(167,139,250,0.3) transparent;
     }
     .modal-overlay.open .modal-panel { transform: translateY(0) scale(1); }
     .modal-header {
@@ -601,7 +639,7 @@
     }
     .modal-close:hover {
       background: rgba(255,255,255,0.25);
-      box-shadow: 0 0 0 3px rgba(79,209,197,0.3);
+      box-shadow: 0 0 0 3px rgba(167,139,250,0.3);
       transform: rotate(90deg);
     }
     .modal-content { padding: 20px 26px 26px; }
@@ -610,7 +648,7 @@
       gap: 10px; margin-bottom: 20px;
     }
     .modal-metric {
-      background: rgba(15,23,42,0.95); border-radius: 14px;
+      background: rgba(22,27,34,0.95); border-radius: 14px;
       padding: 13px 12px 11px; border: 1px solid rgba(148,163,184,0.12);
       text-align: center;
       opacity: 0; transform: translateY(14px);
@@ -631,7 +669,7 @@
       color: var(--accent); margin-bottom: 10px;
     }
     .modal-chart-wrap, .modal-steps-wrap {
-      background: rgba(15,23,42,0.7); border-radius: 14px; padding: 14px 16px;
+      background: rgba(22,27,34,0.7); border-radius: 14px; padding: 14px 16px;
     }
     .modal-bar-row { margin-bottom: 11px; }
     .modal-bar-row:last-child { margin-bottom: 0; }
@@ -659,30 +697,30 @@
     .modal-step:last-child { border-bottom: none; }
     .modal-step-num {
       width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
-      background: var(--accent-soft); border: 1px solid rgba(79,209,197,0.35);
+      background: var(--accent-soft); border: 1px solid rgba(200,169,110,0.35);
       color: var(--accent); font-size: 12px; font-weight: 700;
       display: flex; align-items: center; justify-content: center;
     }
     .modal-step-text { font-size: 14px; color: var(--muted); padding-top: 3px; line-height: 1.4; }
     .modal-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
     .modal-tech-pill {
-      border-radius: 999px; background: rgba(15,23,42,0.95);
-      border: 1px solid rgba(148,163,184,0.22); padding: 4px 11px;
+      border-radius: 999px; background: rgba(22,27,34,0.95);
+      border: 1px solid rgba(200,169,110,0.2); padding: 4px 11px;
       font-size: 13px; color: var(--muted);
     }
     .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
     .modal-btn-primary {
       padding: 9px 20px; border-radius: 999px; border: none; cursor: pointer;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      color: #0b1020; font-weight: 600; font-size: 15px;
+      color: #111111; font-weight: 600; font-size: 15px;
       display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
-      box-shadow: 0 8px 22px rgba(79,209,197,0.3);
+      box-shadow: 0 8px 22px rgba(167,139,250,0.3);
       transition: transform 0.15s, box-shadow 0.15s;
     }
-    .modal-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(79,209,197,0.42); }
+    .modal-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(200,169,110,0.42); }
     .modal-btn-ghost {
       padding: 8px 16px; border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.4);
+      border: 1px solid rgba(167,139,250,0.25);
       background: transparent; color: var(--muted); font-size: 15px;
       display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
       text-decoration: none; transition: border-color 0.2s, color 0.2s;
@@ -700,6 +738,34 @@
     .modal-case-list { padding-left: 16px; margin: 0; }
     .modal-case-list li { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 5px; }
     .modal-case-list li strong { color: rgba(255,255,255,0.9); }
+    /* ── 7-section case study ── */
+    .cs7 { margin-top: 10px; display: flex; flex-direction: column; }
+    .cs7-section { padding: 13px 0; border-bottom: 1px solid rgba(148,163,184,0.1); }
+    .cs7-section:last-child { border-bottom: none; }
+    .cs7-header { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
+    .cs7-num { width: 20px; height: 20px; border-radius: 50%; background: rgba(167,139,250,0.15); color: var(--accent); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .cs7-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.85); }
+    .cs7-tag { font-size: 9px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 999px; margin-left: auto; flex-shrink: 0; }
+    .cs7-tag.product { background: rgba(139,92,246,0.2); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+    .cs7-tag.ux { background: rgba(167,139,250,0.15); color: var(--accent); border: 1px solid rgba(167,139,250,0.25); }
+    .cs7-tag.both { background: rgba(251,191,36,0.15); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+    .cs7-tag.outcome { background: rgba(52,211,153,0.15); color: #34d399; border: 1px solid rgba(52,211,153,0.25); }
+    .cs7-body { font-size: 13px; color: var(--muted); line-height: 1.65; padding-left: 30px; }
+    .cs7-body strong { color: rgba(255,255,255,0.9); }
+    .cs7-body ul { padding-left: 16px; margin: 5px 0 0; }
+    .cs7-body li { margin-bottom: 4px; }
+    .cs7-next { font-size: 12px; color: #fbbf24; font-style: italic; margin-top: 5px; }
+    .cs7-insight {
+      background: rgba(167,139,250,0.08);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 8px 12px;
+      margin: 8px 0 4px 30px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      font-style: italic;
+      line-height: 1.5;
+    }
     @media (max-width: 640px) {
       .modal-case-body { grid-template-columns: 1fr; }
     }
@@ -725,6 +791,7 @@
         <a href="#work">Work</a>
         <a href="#github-projects">GitHub</a>
         <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -735,9 +802,9 @@
       <div class="hero-main fade-in">
         <div class="hero-chip">
           <span class="hero-chip-dot"></span>
-          <span>Open to the right opportunities</span>
+          <span>Available immediately</span>
         </div>
-        <h1 class="hero-title">I turn product data into decisions that move metrics.</h1>
+        <h1 class="hero-title">I turn product data into decisions that <em>actually ship.</em></h1>
         <p style="margin:6px 0 14px;font-size:14px;color:var(--muted);letter-spacing:0.01em;">📍 San Francisco, CA</p>
         <p class="hero-subtitle">
           <strong>3 years</strong> at the intersection of data and product. I run <strong>A/B tests</strong>, build <strong>dashboards</strong> people actually open, and help PMs make calls they can defend to leadership — all the way from the question to the shipped decision.
@@ -753,7 +820,7 @@
           <button class="btn-primary" onclick="document.getElementById('work').scrollIntoView({behavior:'smooth'})">
             View projects &rarr;
           </button>
-          <a class="btn-primary" href="MK_RESUME.pdf" target="_blank" rel="noreferrer" style="background:transparent;border:1.5px solid var(--accent);color:var(--accent);box-shadow:0 8px 22px rgba(79,209,197,0.18)">📄 Resume</a>
+          <a class="btn-primary" href="MK_RESUME.pdf" target="_blank" rel="noreferrer" style="background:transparent;border:1.5px solid var(--accent);color:var(--accent);box-shadow:0 8px 22px rgba(167,139,250,0.18)">📄 Resume</a>
           <a class="hero-icon-link" href="mailto:mansikamothi1999@gmail.com" title="Email mansikamothi1999@gmail.com">✉</a>
           <a class="hero-icon-link" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer" title="LinkedIn">in</a>
         </div>
@@ -896,22 +963,22 @@
       <div class="gh-grid">
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/customer-analytics-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.05s" onclick="openModal(event,'gh-customer')">
-          <div class="gh-thumb" style="background:linear-gradient(135deg,#0d2137,#0a3d4a,#0b1020)">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#0d1a2e,#162032,#111111)">
             <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
               <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">COHORT ANALYSIS · CHURN MODEL</text>
               <line x1="14" y1="78" x2="135" y2="78" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
               <line x1="14" y1="20" x2="14" y2="78" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-              <rect class="gh-bar" x="22" y="52" width="13" height="26" fill="rgba(79,209,197,0.35)" rx="2" style="animation-delay:0.05s"/>
-              <rect class="gh-bar" x="40" y="38" width="13" height="40" fill="rgba(79,209,197,0.55)" rx="2" style="animation-delay:0.15s"/>
-              <rect class="gh-bar" x="58" y="46" width="13" height="32" fill="rgba(79,209,197,0.45)" rx="2" style="animation-delay:0.25s"/>
-              <rect class="gh-bar" x="76" y="28" width="13" height="50" fill="rgba(79,209,197,0.85)" rx="2" style="animation-delay:0.35s"/>
-              <rect class="gh-bar" x="94" y="42" width="13" height="36" fill="rgba(79,209,197,0.55)" rx="2" style="animation-delay:0.45s"/>
-              <rect class="gh-bar" x="112" y="34" width="13" height="44" fill="rgba(79,209,197,0.7)" rx="2" style="animation-delay:0.55s"/>
+              <rect class="gh-bar" x="22" y="52" width="13" height="26" fill="rgba(200,169,110,0.35)" rx="2" style="animation-delay:0.05s"/>
+              <rect class="gh-bar" x="40" y="38" width="13" height="40" fill="rgba(200,169,110,0.55)" rx="2" style="animation-delay:0.15s"/>
+              <rect class="gh-bar" x="58" y="46" width="13" height="32" fill="rgba(200,169,110,0.45)" rx="2" style="animation-delay:0.25s"/>
+              <rect class="gh-bar" x="76" y="28" width="13" height="50" fill="rgba(200,169,110,0.85)" rx="2" style="animation-delay:0.35s"/>
+              <rect class="gh-bar" x="94" y="42" width="13" height="36" fill="rgba(200,169,110,0.55)" rx="2" style="animation-delay:0.45s"/>
+              <rect class="gh-bar" x="112" y="34" width="13" height="44" fill="rgba(200,169,110,0.7)" rx="2" style="animation-delay:0.55s"/>
               <polyline class="gh-line-path" points="148,68 163,55 178,58 193,42 208,46 223,32" fill="none" stroke="rgba(99,179,237,0.9)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle class="gh-pulse" cx="223" cy="32" r="3" fill="#63b3ed"/>
+              <circle class="gh-pulse" cx="223" cy="32" r="3" fill="#34d399"/>
               <text x="148" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">RETENTION</text>
-              <rect x="148" y="76" width="82" height="13" rx="2" fill="rgba(79,209,197,0.12)" stroke="rgba(79,209,197,0.3)" stroke-width="0.5"/>
-              <text x="189" y="85" fill="rgba(79,209,197,0.85)" font-size="6.5" font-family="monospace" text-anchor="middle">CHURN ACCURACY: 95%</text>
+              <rect x="148" y="76" width="82" height="13" rx="2" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.3)" stroke-width="0.5"/>
+              <text x="189" y="85" fill="rgba(200,169,110,0.85)" font-size="6.5" font-family="monospace" text-anchor="middle">CHURN ACCURACY: 95%</text>
             </svg>
             
             
@@ -925,12 +992,12 @@
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/product-feature-optimization" target="_blank" rel="noreferrer" style="transition-delay:0.1s" onclick="openModal(event,'gh-feature')">
-          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0d37,#2d1b69,#0b1020)">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0d37,#2d1b69,#111111)">
             <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
               <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">A/B TEST RESULTS · OPTIMIZELY</text>
               <text x="14" y="30" fill="rgba(255,255,255,0.45)" font-size="7.5" font-family="monospace">Control</text>
               <rect x="58" y="22" width="130" height="13" rx="2" fill="rgba(255,255,255,0.06)"/>
-              <rect class="gh-bar" x="58" y="22" width="104" height="13" rx="2" fill="rgba(148,163,184,0.4)" style="transform-origin:left center"/>
+              <rect class="gh-bar" x="58" y="22" width="104" height="13" rx="2" fill="rgba(167,139,250,0.25)" style="transform-origin:left center"/>
               <text x="166" y="31" fill="rgba(148,163,184,0.8)" font-size="7.5" font-family="monospace">62%</text>
               <text x="14" y="50" fill="rgba(255,255,255,0.45)" font-size="7.5" font-family="monospace">Variant A</text>
               <rect x="58" y="42" width="130" height="13" rx="2" fill="rgba(255,255,255,0.06)"/>
@@ -953,7 +1020,7 @@
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/data-pipeline-automation" target="_blank" rel="noreferrer" style="transition-delay:0.15s" onclick="openModal(event,'gh-pipeline')">
-          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a1200,#3d2800,#0b1020)">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#0d1a2e,#162032,#111111)">
             <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
               <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">ETL PIPELINE · APACHE AIRFLOW DAG</text>
               <rect x="8" y="28" width="58" height="32" rx="4" fill="rgba(246,173,85,0.12)" stroke="rgba(246,173,85,0.5)" stroke-width="1"/>
@@ -985,7 +1052,7 @@
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ecommerce-analytics-platform" target="_blank" rel="noreferrer" style="transition-delay:0.2s" onclick="openModal(event,'gh-ecommerce')">
-          <div class="gh-thumb" style="background:linear-gradient(135deg,#001a0d,#004d2e,#0b1020)">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#001a0d,#004d2e,#111111)">
             <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
               <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">CLV MODEL · BG/NBD + GAMMA-GAMMA</text>
               <line x1="18" y1="78" x2="18" y2="18" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
@@ -1015,7 +1082,7 @@
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/ml-recommendation-system" target="_blank" rel="noreferrer" style="transition-delay:0.25s" onclick="openModal(event,'gh-ml')">
-          <div class="gh-thumb" style="background:linear-gradient(135deg,#0d0a2e,#1a1060,#0b1020)">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#0d0a2e,#1a1060,#111111)">
             <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
               <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">HYBRID RECOMMENDER · SVD + TF-IDF</text>
               <rect x="14" y="20" width="17" height="17" rx="2" fill="rgba(118,228,247,0.9)"/>
@@ -1051,7 +1118,7 @@
         </a>
 
         <a class="gh-card fade-in" href="https://github.com/mansikamothi03/realtime-monitoring-dashboard" target="_blank" rel="noreferrer" style="transition-delay:0.3s" onclick="openModal(event,'gh-realtime')">
-          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0505,#4a1010,#0b1020)">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0505,#4a1010,#111111)">
             <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
               <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">LIVE KPI MONITOR · WEBSOCKET · 50ms</text>
               <line x1="14" y1="75" x2="220" y2="75" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
@@ -1136,6 +1203,40 @@
       </div>
     </section>
 
+    <!-- ── EDUCATION ── -->
+    <section id="education" class="exp-section">
+      <div class="section-header fade-in">
+        <div>
+          <div class="section-label">Education</div>
+          <h2 class="section-title">Academic Background</h2>
+        </div>
+        <p class="section-subtitle">Graduate engineering degree — systems thinking, quantitative rigor, and data-driven problem solving.</p>
+      </div>
+      <div class="exp-timeline">
+        <div class="exp-item fade-in">
+          <div class="exp-dot"><div class="exp-dot-inner"></div></div>
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Master of Science <span style="font-weight:400;color:var(--muted);font-size:14px">· Electrical &amp; Electronics Engineering</span></div>
+              <div class="exp-company">
+                California State University, Sacramento
+                <span class="exp-badge">M.S.</span>
+              </div>
+            </div>
+            <div>
+              <div class="exp-period">2022 – 2024</div>
+              <div class="exp-location">Sacramento, CA</div>
+            </div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Graduate-level coursework in systems analysis, signal processing, and data-driven engineering — directly applicable to product analytics and experimentation design.</li>
+            <li>Built strong quantitative foundations in statistical modeling, optimization, and systems design that underpin my approach to A/B testing, metric frameworks, and forecasting.</li>
+            <li>Applied structured engineering problem-solving to complex, ambiguous problems — the same methodology I bring to product discovery, hypothesis formation, and roadmap prioritization.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- ── ABOUT ── -->
     <section id="about">
       <div class="section-header fade-in">
@@ -1203,16 +1304,16 @@
       <div class="contact-links">
         <a class="contact-pill" href="mailto:mansikamothi1999@gmail.com">mansikamothi1999@gmail.com</a>
         <a class="contact-pill" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer">LinkedIn &nearr;</a>
-        <a class="contact-pill" href="MK_RESUME.pdf" target="_blank" rel="noreferrer" style="border-color:rgba(79,209,197,0.5);color:var(--accent);font-weight:600">📄 Download Resume</a>
+        <a class="contact-pill" href="MK_RESUME.pdf" target="_blank" rel="noreferrer" style="border-color:rgba(200,169,110,0.5);color:var(--accent);font-weight:600">📄 Download Resume</a>
         <span class="contact-pill">📍 San Francisco, CA, USA</span>
         <span class="contact-pill">+1 510 710 8030</span>
-        <span class="contact-pill" style="border-color:rgba(79,209,197,0.5);color:var(--accent)">✈ Open to relocation</span>
+        <span class="contact-pill" style="border-color:rgba(200,169,110,0.5);color:var(--accent)">✈ Open to relocation</span>
         <span class="contact-pill" style="border-color:rgba(72,187,120,0.5);color:#48bb78;font-weight:600">✅ Available immediately</span>
       </div>
     </section>
 
     <footer>
-      Portfolio content based on Product Analyst work at Tungsten Automation and prior Business Analyst experience.
+      &copy; 2025 Mansi Kamothi &nbsp;&middot;&nbsp; Product Analyst &amp; APM Candidate &nbsp;&middot;&nbsp; San Francisco, CA
     </footer>
   </div>
 
@@ -1220,7 +1321,7 @@
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal-panel" id="modal-panel">
       <div class="modal-header" id="modal-header">
-        <button class="modal-close" id="modal-close-btn" onclick="(function(){document.getElementById('modal-overlay').classList.remove('open');document.body.style.overflow='';})()">✕</button>
+        <button class="modal-close" id="modal-close-btn" aria-label="Close">✕</button>
         <span class="modal-header-icon" id="modal-icon"></span>
         <h2 id="modal-title"></h2>
         <p class="modal-header-role" id="modal-role"></p>
@@ -1300,7 +1401,7 @@
     // ── Modal data ──
     const MODALS = {
       governance: {
-        icon: '📊', gradient: 'linear-gradient(135deg,#0d2137 0%,#0a3d4a 60%,#0b1020 100%)',
+        icon: '📊', gradient: 'linear-gradient(135deg,#0d1a2e 0%,#162032 60%,#111111 100%)',
         title: 'Unified Analytics Platform & Stakeholder Governance',
         role: 'Product Analyst · Tungsten Automation · SaaS',
         metrics: [
@@ -1318,10 +1419,10 @@
         tech: ['Tableau','Power BI','BigQuery','PostgreSQL','Salesforce','Marketo','Zendesk','Python','SQL','Confluence','Jira'],
         primaryLabel: null,
         github: null,
-        caseStudy: `<div class="modal-case-divider"></div><div class="modal-section-title" style="margin-top:0">Case study</div><div class="modal-case-body"><div class="modal-case-col"><h4 class="modal-case-h4">Context &amp; problem</h4><p>Product, Marketing, Sales, and CS each had their own reports — conflicting views of adoption, funnel performance, and customer health. No standardized KPIs, no intake process, and ad hoc reporting eating analyst time.</p><h4 class="modal-case-h4">What I did</h4><ul class="modal-case-list"><li>Led cross-functional data governance with 15+ stakeholders; weekly syncs by function</li><li>Designed a Jira intake form capturing business question, data sources, timelines, and success criteria</li><li>Standardized core KPIs across product, revenue, and engagement; documented in Confluence</li><li>Integrated 6+ data sources (PostgreSQL, GA, Salesforce, Marketo, Zendesk, BigQuery) into 20+ Tableau dashboards</li><li>Created executive presentation templates: context, methodology, key insights, recommendations</li></ul></div><div class="modal-case-col"><h4 class="modal-case-h4">Impact</h4><ul class="modal-case-list"><li>Decision cycles shortened by <strong>35%</strong> with always-available, standardized dashboards</li><li>Saved <strong>85 hrs/week</strong> of manual reporting (~$220K/yr)</li><li>Contributed to <strong>$1.8M ARR</strong> in additional revenue and <strong>$450K</strong> in churn prevention</li><li>Stakeholder satisfaction with data insights: <strong>67% → 90%</strong></li></ul></div></div>`,
+        caseStudy: `<div class="modal-case-divider"></div><div class="modal-section-title" style="margin-top:0">Case study</div><div class="cs7"><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">01</span><span class="cs7-label">Context &amp; Role</span><span class="cs7-tag both">Product + UX</span></div><div class="cs7-body">Product Analyst at Tungsten Automation. Partnered with 1 PM, 4 team leads, and 15+ stakeholders across Product, Marketing, Sales, and CS. Growth-stage product — data infrastructure hadn't kept pace with team size.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">02</span><span class="cs7-label">The Problem</span><span class="cs7-tag product">Product</span></div><div class="cs7-body">Each team had conflicting KPI definitions. No intake process. Analysts spending <strong>85 hrs/week</strong> on ad hoc requests. Every leadership meeting started with a debate about whose numbers were right — not what to do about them. Estimated cost: ~$220K/yr in analyst time.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">03</span><span class="cs7-label">Discovery</span><span class="cs7-tag ux">UX</span></div><div class="cs7-body">Ran stakeholder interviews with all 4 team leads. Audited 40+ existing reports. Analyzed 3 months of ad hoc requests to find the 20% of questions driving 80% of the work. Key insight: teams didn't need more data — they needed to trust the same data.<div class="cs7-insight">The real problem wasn't a data gap — it was a trust gap. Every leadership meeting started with 20 minutes of "whose numbers are right?" before anyone could discuss what to do about them.</div></div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">04</span><span class="cs7-label">Framing</span><span class="cs7-tag both">Product + UX</span></div><div class="cs7-body">Reframed from "build dashboards" to "create a single source of truth with governance." Scoped out custom one-off reports. Got PM and leadership alignment on the KPI framework before touching any tooling. Designed a Jira intake form to capture business question, data sources, and success criteria.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">05</span><span class="cs7-label">Design Process</span><span class="cs7-tag ux">UX</span></div><div class="cs7-body">Standardized KPIs across product, revenue, and engagement. Integrated 6+ sources (PostgreSQL, GA, Salesforce, Marketo, Zendesk, BigQuery). Built 20+ Tableau/Data Studio dashboards with consistent layout, drill-down, and executive summary views. Documented governance in Confluence.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">06</span><span class="cs7-label">Shipping</span><span class="cs7-tag product">Product</span></div><div class="cs7-body">Phased rollout: Product first, then Revenue, then CS. Ran training sessions per team. Weekly governance syncs for 2 months. Deprecated 30+ old reports after adoption was confirmed.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">07</span><span class="cs7-label">Outcome + What I'd Do Next</span><span class="cs7-tag outcome">Outcome</span></div><div class="cs7-body"><strong>Decision cycles shortened 35%.</strong> Saved 85 hrs/week (~$220K/yr). Contributed to $1.8M ARR and $450K churn prevention. Stakeholder satisfaction: 67% → 90%. The governance model became the template for how the company approaches all new data initiatives.<div class="cs7-next">Next: I'd add anomaly alerting so teams get proactive Slack notifications instead of checking dashboards manually — turning the platform from reactive to proactive.</div></div></div></div>`,
       },
       onboarding: {
-        icon: '🧪', gradient: 'linear-gradient(135deg,#1a0d37 0%,#2d1b69 60%,#0b1020 100%)',
+        icon: '🧪', gradient: 'linear-gradient(135deg,#1a0d37 0%,#2d1b69 60%,#111111 100%)',
         title: 'Onboarding Simplification & Experimentation Program',
         role: 'Product Analyst / Experimentation Lead · Tungsten Automation',
         metrics: [
@@ -1339,10 +1440,10 @@
         tech: ['Optimizely','Segment','Amplitude','GA4','Hotjar','Python','SQL','scipy','statsmodels','Jira'],
         primaryLabel: null,
         github: null,
-        caseStudy: `<div class="modal-case-divider"></div><div class="modal-section-title" style="margin-top:0">Case study</div><div class="modal-case-body"><div class="modal-case-col"><h4 class="modal-case-h4">Context &amp; problem</h4><p>42% of new users abandoned a 5-step onboarding flow at integration setup — before they ever processed a document. Session recordings, support tickets, and funnel data all pointed to the same drop-off.</p><h4 class="modal-case-h4">What I did</h4><ul class="modal-case-list"><li>Discovery: GA/Amplitude funnels, Hotjar recordings, user interviews, 200+ support tickets</li><li>Designed multi-variant A/B test (5-step control vs two 3-step variants); calculated sample size and duration</li><li>Instrumented tracking across Optimizely, Segment, and product analytics</li><li>Partnered with UX and engineering on flow design and rollout</li></ul></div><div class="modal-case-col"><h4 class="modal-case-h4">Impact</h4><ul class="modal-case-list"><li>Trial → paid conversion up <strong>19.8%</strong>, driving ~<strong>$1.2M incremental ARR</strong></li><li>Onboarding support tickets down <strong>42%</strong></li><li>90-day retention up <strong>22%</strong> for simplified-flow users</li><li>Time-to-first-value improved <strong>38%</strong></li><li>Scaled from 1–2 tests/quarter to <strong>~15/quarter</strong></li></ul></div></div>`,
+        caseStudy: `<div class="modal-case-divider"></div><div class="modal-section-title" style="margin-top:0">Case study</div><div class="cs7"><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">01</span><span class="cs7-label">Context &amp; Role</span><span class="cs7-tag both">Product + UX</span></div><div class="cs7-body">Product Analyst / Experimentation Lead at Tungsten Automation. Partnered with PM, UX designer, and 3 engineers. Product was post-PMF, optimizing for conversion and retention.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">02</span><span class="cs7-label">The Problem</span><span class="cs7-tag product">Product</span></div><div class="cs7-body"><strong>42% of new users abandoned</strong> at integration setup — before ever processing a document. Funnel data, session recordings, and 200+ support tickets all pointed to the same step. Every 1% improvement in conversion was worth ~$60K ARR.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">03</span><span class="cs7-label">Discovery</span><span class="cs7-tag ux">UX</span></div><div class="cs7-body">GA/Amplitude funnel analysis, Hotjar session recordings, 8 user interviews, and 200+ support ticket review. Key insight: users weren't confused by the UI — they were scared of breaking their existing integrations. The problem was perceived risk, not complexity.<div class="cs7-insight">This reframe was the turning point. Instead of redesigning the UI, we focused on reducing perceived risk — which led to a completely different solution than the team originally expected.</div></div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">04</span><span class="cs7-label">Framing</span><span class="cs7-tag both">Product + UX</span></div><div class="cs7-body">Reframed from "simplify the UI" to "reduce perceived risk at the critical drop-off point." Scoped out a full redesign. Got PM + eng alignment on a targeted A/B test before any design work. Defined success metrics upfront: conversion rate, support tickets, 90-day retention.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">05</span><span class="cs7-label">Design Process</span><span class="cs7-tag ux">UX</span></div><div class="cs7-body">Designed multi-variant A/B test: 5-step control vs. two 3-step variants (one with progressive disclosure, one with a "skip for now" option). Calculated sample size and test duration. Partnered with UX on flow design and copy. Instrumented tracking across Optimizely, Segment, and Amplitude.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">06</span><span class="cs7-label">Shipping</span><span class="cs7-tag product">Product</span></div><div class="cs7-body">Ran test for 3 weeks to reach statistical significance (95% confidence). Progressive disclosure variant won. Shipped to 100% of new users. Built a repeatable experimentation framework — scaled from 1–2 tests/quarter to <strong>~15/quarter</strong>.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">07</span><span class="cs7-label">Outcome + What I'd Do Next</span><span class="cs7-tag outcome">Outcome</span></div><div class="cs7-body"><strong>+19.8% trial → paid conversion. ~$1.2M incremental ARR.</strong> Support tickets down 42%. 90-day retention up 22%. Time-to-first-value improved 38%. The experimentation framework scaled from 1–2 tests/quarter to 15+, making data-driven product decisions the default — not the exception.<div class="cs7-next">Next: I'd test personalized onboarding paths by user segment — a developer integrating via API has different needs than a finance manager uploading CSVs.</div></div></div></div>`,
       },
       incident: {
-        icon: '📡', gradient: 'linear-gradient(135deg,#1a0505 0%,#4a1010 60%,#0b1020 100%)',
+        icon: '📡', gradient: 'linear-gradient(135deg,#1a0505 0%,#4a1010 60%,#111111 100%)',
         title: 'Invoice Processing Launch & Anomaly Monitoring',
         role: 'Product Analyst · Tungsten Automation · AI feature launch',
         metrics: [
@@ -1360,10 +1461,10 @@
         tech: ['Tableau','SQL','PostgreSQL','Python','Jira','Confluence','GA4'],
         primaryLabel: null,
         github: null,
-        caseStudy: `<div class="modal-case-divider"></div><div class="modal-section-title" style="margin-top:0">Case study</div><div class="modal-case-body"><div class="modal-case-col"><h4 class="modal-case-h4">Context &amp; problem</h4><p>Launching a flagship AI invoice processing feature after months of engineering work. Needed real-time monitoring to catch anything that went wrong in production before it compounded.</p><h4 class="modal-case-h4">What I did</h4><ul class="modal-case-list"><li>Defined launch success metrics with PM: adoption, accuracy, time savings, conversion impact</li><li>Built hourly-refresh Tableau "mission control" dashboard for PMs, engineers, and leadership</li><li>Monitored KPIs daily; when conversion dropped, sliced data by segment to isolate the issue</li><li>Identified file-upload error spike (2% → 18%) tied to large PDFs after a code change</li><li>Quantified ARR at risk; partnered with engineering to prioritize fix and tracked recovery</li></ul></div><div class="modal-case-col"><h4 class="modal-case-h4">Impact</h4><ul class="modal-case-list"><li>Caught and resolved the bug within <strong>24 hours</strong> instead of weeks</li><li>Prevented extended revenue impact from a <strong>2% → 18%</strong> error spike</li><li>Conversion fully recovered to pre-launch levels</li><li>Turned incident into a company-wide case study on data-driven release monitoring</li><li>PMs now treat dashboards as a required launch artifact</li></ul></div></div>`,
+        caseStudy: `<div class="modal-case-divider"></div><div class="modal-section-title" style="margin-top:0">Case study</div><div class="cs7"><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">01</span><span class="cs7-label">Context &amp; Role</span><span class="cs7-tag both">Product + UX</span></div><div class="cs7-body">Product Analyst at Tungsten Automation. Partnered with 1 PM, the engineering lead, and the Head of Product. This was the company's flagship AI feature — months of engineering work, high executive visibility.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">02</span><span class="cs7-label">The Problem</span><span class="cs7-tag product">Product</span></div><div class="cs7-body">No monitoring system existed for the AI invoice processing launch. If something went wrong in production, we'd find out from customer support — days or weeks later. With a feature this visible, that was unacceptable.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">03</span><span class="cs7-label">Discovery</span><span class="cs7-tag ux">UX</span></div><div class="cs7-body">Ran a pre-launch "what could go wrong" session with PM and eng lead. Mapped every user action to a trackable event. Identified 6 critical metrics: adoption rate, processing accuracy, time savings, file-upload error rate, conversion impact, and support ticket volume.<div class="cs7-insight">Without proactive monitoring, a production issue on this high-visibility feature could go undetected for days — by which point the revenue and trust damage would be severe.</div></div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">04</span><span class="cs7-label">Framing</span><span class="cs7-tag both">Product + UX</span></div><div class="cs7-body">Reframed from "track the launch" to "build a mission control that lets anyone in the company know if something is wrong within hours, not days." Defined alert thresholds for each metric before launch. Got PM and eng sign-off on what constituted an incident.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">05</span><span class="cs7-label">Design Process</span><span class="cs7-tag ux">UX</span></div><div class="cs7-body">Built an hourly-refresh Tableau "mission control" dashboard with traffic-light status indicators, trend lines, and segment breakdowns. Designed for three audiences: PMs (outcomes), engineers (error rates), leadership (revenue impact). Instrumented all tracking events pre-launch.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">06</span><span class="cs7-label">Shipping</span><span class="cs7-tag product">Product</span></div><div class="cs7-body">Monitored KPIs daily post-launch. On day 3, conversion dropped. Sliced data by file type and size — identified a <strong>2% → 18%</strong> file-upload error spike tied to large PDFs after a code change. Quantified ARR at risk. Partnered with eng to prioritize the fix and tracked recovery in real time.</div></div><div class="cs7-section"><div class="cs7-header"><span class="cs7-num">07</span><span class="cs7-label">Outcome + What I'd Do Next</span><span class="cs7-tag outcome">Outcome</span></div><div class="cs7-body"><strong>Bug caught and resolved in 24 hours</strong> instead of weeks. Conversion fully recovered. Prevented extended revenue impact from the error spike. The incident became a company-wide case study — PMs now treat launch monitoring dashboards as a required artifact, not an afterthought.<div class="cs7-next">Next: I'd add automated Slack alerts when any metric crosses a threshold, so the team doesn't have to check the dashboard to know something is wrong.</div></div></div></div>`,
       },
       'gh-customer': {
-        icon: '📊', gradient: 'linear-gradient(135deg,#0d2137 0%,#0a3d4a 60%,#0b1020 100%)',
+        icon: '📊', gradient: 'linear-gradient(135deg,#0d1a2e 0%,#162032 60%,#111111 100%)',
         title: 'Customer Analytics Dashboard',
         role: 'Python · SQL · scikit-learn · PostgreSQL',
         metrics: [
@@ -1383,7 +1484,7 @@
         github: 'https://github.com/mansikamothi03/customer-analytics-dashboard',
       },
       'gh-feature': {
-        icon: '🧪', gradient: 'linear-gradient(135deg,#1a0d37 0%,#2d1b69 60%,#0b1020 100%)',
+        icon: '🧪', gradient: 'linear-gradient(135deg,#1a0d37 0%,#2d1b69 60%,#111111 100%)',
         title: 'Product Feature Optimization',
         role: 'Python · scipy · statsmodels · A/B testing framework',
         metrics: [
@@ -1403,7 +1504,7 @@
         github: 'https://github.com/mansikamothi03/product-feature-optimization',
       },
       'gh-pipeline': {
-        icon: '⚙️', gradient: 'linear-gradient(135deg,#1a1200 0%,#3d2800 60%,#0b1020 100%)',
+        icon: '⚙️', gradient: 'linear-gradient(135deg,#0d1a2e 0%,#162032 60%,#111111 100%)',
         title: 'Data Pipeline Automation',
         role: 'Python · Apache Airflow · PostgreSQL · ETL',
         metrics: [
@@ -1423,7 +1524,7 @@
         github: 'https://github.com/mansikamothi03/data-pipeline-automation',
       },
       'gh-ecommerce': {
-        icon: '🛒', gradient: 'linear-gradient(135deg,#001a0d 0%,#004d2e 60%,#0b1020 100%)',
+        icon: '🛒', gradient: 'linear-gradient(135deg,#001a0d 0%,#004d2e 60%,#111111 100%)',
         title: 'E-Commerce Analytics Platform',
         role: 'Python · lifetimes · BG/NBD · Gamma-Gamma CLV',
         metrics: [
@@ -1443,7 +1544,7 @@
         github: 'https://github.com/mansikamothi03/ecommerce-analytics-platform',
       },
       'gh-ml': {
-        icon: '🤖', gradient: 'linear-gradient(135deg,#0d0a2e 0%,#1a1060 60%,#0b1020 100%)',
+        icon: '🤖', gradient: 'linear-gradient(135deg,#0d0a2e 0%,#1a1060 60%,#111111 100%)',
         title: 'ML Recommendation System',
         role: 'Python · scikit-learn · SVD · TF-IDF · Hybrid model',
         metrics: [
@@ -1463,7 +1564,7 @@
         github: 'https://github.com/mansikamothi03/ml-recommendation-system',
       },
       'gh-realtime': {
-        icon: '📡', gradient: 'linear-gradient(135deg,#1a0505 0%,#4a1010 60%,#0b1020 100%)',
+        icon: '📡', gradient: 'linear-gradient(135deg,#1a0505 0%,#4a1010 60%,#111111 100%)',
         title: 'Real-Time Monitoring Dashboard',
         role: 'Python · FastAPI · React · Recharts · WebSocket',
         metrics: [
