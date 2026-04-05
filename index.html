@@ -479,9 +479,18 @@
       padding: 20px;
       opacity: 0; pointer-events: none;
       transition: opacity 0.3s ease;
-      cursor: auto;
+      cursor: auto !important;
     }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
+    /* Force real cursor visible inside modal for all children */
+    .modal-overlay *, .modal-overlay *::before, .modal-overlay *::after {
+      cursor: auto !important;
+    }
+    .modal-overlay .modal-close,
+    .modal-overlay button,
+    .modal-overlay a {
+      cursor: pointer !important;
+    }
     .modal-panel {
       background: #111729;
       border: 1px solid rgba(148,163,184,0.2);
@@ -502,14 +511,19 @@
     .modal-header h2 { font-size: 21px; letter-spacing: -0.03em; margin-bottom: 5px; color: #fff; }
     .modal-header-role { font-size: 15px; color: rgba(255,255,255,0.55); }
     .modal-close {
-      position: absolute; top: 18px; right: 18px;
-      width: 34px; height: 34px; border-radius: 50%;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
-      color: rgba(255,255,255,0.8); font-size: 17px; cursor: pointer;
+      position: absolute; top: 14px; right: 14px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.9); font-size: 18px; cursor: pointer !important;
       display: flex; align-items: center; justify-content: center;
-      transition: background 0.2s, transform 0.2s;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      z-index: 10; /* above modal-header content */
     }
-    .modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+    .modal-close:hover {
+      background: rgba(255,255,255,0.25);
+      box-shadow: 0 0 0 3px rgba(79,209,197,0.3);
+      transform: rotate(90deg);
+    }
     .modal-content { padding: 20px 26px 26px; }
     .modal-metrics {
       display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
@@ -1134,7 +1148,7 @@
   <div class="modal-overlay" id="modal-overlay">
     <div class="modal-panel" id="modal-panel">
       <div class="modal-header" id="modal-header">
-        <button class="modal-close" id="modal-close-btn">✕</button>
+        <button class="modal-close" id="modal-close-btn" onclick="(function(){document.getElementById('modal-overlay').classList.remove('open');document.body.style.overflow='';})()">✕</button>
         <span class="modal-header-icon" id="modal-icon"></span>
         <h2 id="modal-title"></h2>
         <p class="modal-header-role" id="modal-role"></p>
@@ -1454,6 +1468,8 @@
       panel.scrollTop = 0;
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
+      // Hide cursor glow so it doesn't float over modal
+      if (glow) glow.style.opacity = '0';
 
       // Animate metrics (count-up)
       countUpTimers.forEach(clearInterval);
@@ -1492,6 +1508,8 @@
     function closeModal() {
       overlay.classList.remove('open');
       document.body.style.overflow = '';
+      // Restore cursor glow
+      if (glow) glow.style.opacity = '1';
       countUpTimers.forEach(clearInterval);
       countUpTimers = [];
       // Reset animated elements for next open
