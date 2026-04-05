@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mansi Kamothi – Product &amp; Data Analyst Portfolio</title>
+  <style>
+    /* ── Design tokens ── */
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #111729;
+      --card: #141b2f;
+      --accent: #4fd1c5;
+      --accent-2: #63b3ed;
+      --accent-soft: rgba(79, 209, 197, 0.12);
+      --text: #f7fafc;
+      --muted: #a0aec0;
+      --border: rgba(148, 163, 184, 0.35);
+      --shadow-soft: 0 18px 45px rgba(0,0,0,0.45);
+      --shadow-subtle: 0 10px 30px rgba(0,0,0,0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+      background: radial-gradient(circle at top left, #202b46 0, #0b1020 45%, #050713 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      cursor: none;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Scroll progress bar ── */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 9999;
+      transition: width 0.1s linear;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ── Cursor glow ── */
+    #cursor-glow {
+      position: fixed;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,209,197,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 9998;
+      transition: opacity 0.3s ease;
+    }
+
+    /* ── Back to top ── */
+    #back-to-top {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; color: #0b1020;
+      box-shadow: 0 8px 24px rgba(79,209,197,0.4);
+      opacity: 0; transform: translateY(12px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 9997;
+    }
+    #back-to-top.visible { opacity: 1; transform: translateY(0); }
+    #back-to-top:hover { transform: translateY(-2px); }
+
+    /* ── Layout ── */
+    .page { max-width: 1120px; margin: 0 auto; padding: 32px 20px 72px; }
+
+    /* ── Header ── */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 32px;
+    }
+    .logo {
+      font-weight: 700; letter-spacing: 0.08em; font-size: 13px;
+      text-transform: uppercase; color: var(--muted);
+    }
+    nav { display: flex; gap: 20px; font-size: 14px; color: var(--muted); }
+    nav a { position: relative; padding-bottom: 4px; }
+    nav a::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 0; height: 2px; border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width 0.2s ease-out;
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.3fr);
+      gap: 32px; margin-bottom: 40px; align-items: center;
+    }
+    .hero-main {
+      background: radial-gradient(circle at top left, #1a2544 0, #111729 55%, #0b1020 100%);
+      border-radius: 28px; padding: 28px 28px 24px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(148,163,184,0.18);
+      position: relative; overflow: hidden;
+    }
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 12px; padding: 4px 10px; border-radius: 999px;
+      background: rgba(15,23,42,0.9); border: 1px solid rgba(148,163,184,0.45);
+      color: var(--muted); margin-bottom: 14px; backdrop-filter: blur(10px);
+    }
+    .hero-chip-dot {
+      width: 6px; height: 6px; border-radius: 999px; background: #48bb78;
+      box-shadow: 0 0 0 5px rgba(72,187,120,0.2);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 5px rgba(72,187,120,0.2); }
+      50% { box-shadow: 0 0 0 8px rgba(72,187,120,0.08); }
+    }
+    .hero-title {
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.04em; margin-bottom: 10px;
+    }
+    .hero-subtitle {
+      font-size: 15px; color: var(--muted); max-width: 500px; margin-bottom: 20px;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; font-size: 12px; }
+    .tag {
+      padding: 4px 10px; border-radius: 999px;
+      border: 1px solid var(--border); color: var(--muted);
+      background: rgba(15,23,42,0.9);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .btn-primary {
+      padding: 9px 18px; border-radius: 999px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b1020; font-weight: 600; font-size: 14px;
+      display: inline-flex; align-items: center; gap: 8px;
+      box-shadow: 0 12px 30px rgba(79,209,197,0.35);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 16px 36px rgba(79,209,197,0.45); }
+    .btn-ghost {
+      padding: 8px 14px; border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.5);
+      background: rgba(15,23,42,0.9); color: var(--muted); font-size: 13px;
+      display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-metrics {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 10px; margin-top: 24px; font-size: 12px;
+    }
+    .metric-card {
+      background: rgba(15,23,42,0.95); border-radius: 14px;
+      padding: 10px 10px 9px; border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .metric-card:hover { border-color: rgba(79,209,197,0.5); }
+    .metric-label { color: var(--muted); margin-bottom: 2px; font-size: 11px; }
+    .metric-value { font-weight: 600; font-size: 15px; color: var(--accent); }
+
+    /* ── Hero side ── */
+    .hero-side { display: flex; flex-direction: column; gap: 14px; }
+    .pill-card {
+      background: rgba(15,23,42,0.92); border-radius: 20px; padding: 16px 18px;
+      border: 1px solid var(--border); box-shadow: var(--shadow-subtle);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .pill-card:hover { border-color: rgba(79,209,197,0.4); transform: translateY(-1px); }
+    .pill-title {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--muted); margin-bottom: 6px;
+    }
+    .pill-main { font-size: 14px; margin-bottom: 6px; }
+    .pill-tags { display: flex; flex-wrap: wrap; gap: 6px; font-size: 11px; color: var(--muted); }
+
+    /* ── Section headers ── */
+    .section-label {
+      font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 6px;
+    }
+    .section-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 14px; margin-top: 40px;
+    }
+    .section-title { font-size: 20px; letter-spacing: -0.03em; }
+    .section-subtitle { font-size: 13px; color: var(--muted); max-width: 420px; text-align: right; }
+
+    /* ── Projects grid ── */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px; margin-bottom: 10px;
+    }
+    .project-card {
+      background: rgba(15,23,42,0.92); border-radius: 18px;
+      padding: 16px 16px 14px; border: 1px solid var(--border);
+      cursor: pointer; display: block;
+      transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out;
+    }
+    .project-card:hover {
+      transform: translateY(-3px); box-shadow: var(--shadow-subtle);
+      border-color: rgba(79,209,197,0.7);
+    }
+    .project-chip {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--accent); margin-bottom: 6px;
+    }
+    .project-title { font-size: 14px; margin-bottom: 4px; font-weight: 600; }
+    .project-role { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .project-meta { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Case studies ── */
+    .case-study {
+      background: rgba(11,16,32,0.9); border-radius: 22px;
+      padding: 22px 22px 20px; border: 1px solid var(--border);
+      margin-top: 14px; margin-bottom: 16px; box-shadow: var(--shadow-subtle);
+      transition: border-color 0.2s;
+    }
+    .case-study:hover { border-color: rgba(79,209,197,0.3); }
+    .case-header { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+    .case-title { font-size: 17px; margin-bottom: 4px; font-weight: 600; }
+    .case-tagline { font-size: 13px; color: var(--muted); }
+    .case-meta { font-size: 11px; color: var(--muted); text-align: right; min-width: 170px; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+    .pill-small {
+      border-radius: 999px; background: rgba(15,23,42,0.95);
+      border: 1px solid var(--border); padding: 3px 9px; font-size: 11px;
+    }
+    .case-body {
+      display: grid; grid-template-columns: minmax(0,1.8fr) minmax(0,1.4fr);
+      gap: 20px; margin-top: 8px;
+    }
+    .case-column h4 {
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 6px; margin-top: 14px;
+    }
+    .case-column h4:first-child { margin-top: 0; }
+    .case-column p { font-size: 13px; color: var(--muted); margin-bottom: 8px; line-height: 1.6; }
+    .case-column ul { padding-left: 16px; margin-bottom: 6px; }
+    .case-column li { font-size: 13px; color: var(--muted); margin-bottom: 4px; line-height: 1.55; }
+    .case-column li strong { color: var(--text); }
+    .metrics-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .metric-pill {
+      border-radius: 999px; background: var(--accent-soft); color: var(--accent);
+      font-size: 11px; padding: 4px 10px; border: 1px solid rgba(79,209,197,0.4);
+    }
+
+    /* ── GitHub projects (animated thumbnail grid) ── */
+    .gh-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 16px;
+    }
+    .gh-card {
+      background: rgba(15,23,42,0.92);
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: block;
+      transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out;
+    }
+    .gh-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      border-color: rgba(79,209,197,0.8);
+    }
+    .gh-thumb {
+      width: 100%; aspect-ratio: 2.4/1;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .gh-thumb::after {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.05) 50%, transparent 60%);
+      background-size: 200% 100%;
+      animation: gh-shimmer 3s ease-in-out infinite;
+    }
+    @keyframes gh-shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .gh-icon {
+      font-size: 38px; z-index: 2; position: relative;
+      filter: drop-shadow(0 0 14px currentColor);
+      animation: gh-float 3.5s ease-in-out infinite;
+    }
+    @keyframes gh-float {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-7px) scale(1.05); }
+    }
+    .gh-dot {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      animation: gh-rise linear infinite;
+    }
+    @keyframes gh-rise {
+      0% { transform: translateY(110%) scale(0.3); opacity: 0; }
+      20% { opacity: 0.8; }
+      80% { opacity: 0.3; }
+      100% { transform: translateY(-110%) scale(1.1); opacity: 0; }
+    }
+    .gh-repo-label {
+      position: absolute; bottom: 7px; left: 12px;
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); z-index: 3;
+    }
+    .gh-octo {
+      position: absolute; top: 10px; right: 12px;
+      width: 20px; height: 20px; z-index: 3;
+      opacity: 0.4; transition: opacity 0.2s;
+      fill: white;
+    }
+    .gh-card:hover .gh-octo { opacity: 0.9; }
+    .gh-body { padding: 12px 14px 13px; }
+    .gh-lang {
+      display: flex; align-items: center; gap: 6px;
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em;
+      color: var(--accent); margin-bottom: 5px;
+    }
+    .gh-dot-lang {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .gh-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .gh-desc { font-size: 12px; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
+    .gh-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 11px; color: var(--muted);
+    }
+    .gh-link {
+      font-size: 11px; color: var(--accent);
+      border: 1px solid rgba(79,209,197,0.4);
+      border-radius: 999px; padding: 3px 9px;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .gh-link:hover { background: var(--accent-soft); border-color: var(--accent); }
+    @media (max-width: 900px) { .gh-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media (max-width: 640px) { .gh-grid { grid-template-columns: minmax(0,1fr); } }
+
+    /* ── About ── */
+    .about-grid {
+      display: grid; grid-template-columns: minmax(0,1.6fr) minmax(0,1.4fr);
+      gap: 24px; margin-top: 6px;
+    }
+    .about-grid > div > p { font-size: 14px; color: var(--muted); margin-bottom: 14px; line-height: 1.7; }
+    .skills-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+    .skills-card {
+      background: rgba(15,23,42,0.92); border-radius: 16px;
+      padding: 12px 13px 11px; border: 1px solid var(--border);
+      transition: border-color 0.2s;
+    }
+    .skills-card:hover { border-color: rgba(79,209,197,0.4); }
+    .skills-card h4 {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--accent); margin-bottom: 6px;
+    }
+    .skills-card ul { list-style: none; }
+    .skills-card li { font-size: 13px; color: var(--muted); padding: 2px 0; }
+    .skills-card li + li { border-top: 1px solid rgba(148,163,184,0.08); }
+
+    /* ── Contact ── */
+    .contact {
+      margin-top: 32px; padding: 20px 22px; border-radius: 20px;
+      border: 1px solid var(--border); background: rgba(11,16,32,0.9);
+      display: flex; justify-content: space-between; gap: 16px; align-items: center;
+    }
+    .contact > div > p { font-size: 13px; color: var(--muted); margin-top: 4px; max-width: 480px; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .contact-pill {
+      border-radius: 999px; border: 1px solid rgba(148,163,184,0.45);
+      padding: 7px 14px; color: var(--muted); background: rgba(15,23,42,0.95);
+      font-size: 12px; transition: border-color 0.2s, color 0.2s;
+    }
+    .contact-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+    footer { margin-top: 28px; font-size: 11px; color: var(--muted); text-align: center; }
+
+    /* ── Fade-in on scroll ── */
+    .fade-in {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      header { flex-direction: column; align-items: flex-start; gap: 10px; }
+      nav { gap: 14px; }
+      .hero { grid-template-columns: minmax(0,1fr); }
+      .hero-side { order: -1; }
+      .case-body, .about-grid { grid-template-columns: minmax(0,1fr); }
+      .projects-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    }
+    @media (max-width: 640px) {
+      .page { padding: 24px 16px 56px; }
+      .hero-main { padding: 20px 18px 18px; }
+      .hero-metrics { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .projects-grid { grid-template-columns: minmax(0,1fr); }
+      .case-header { flex-direction: column; }
+      .case-meta { text-align: left; }
+      .contact { flex-direction: column; align-items: flex-start; }
+      body { cursor: auto; }
+      #cursor-glow { display: none; }
+    }
+
+    /* ── Project modals ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(5,7,19,0.88);
+      backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-panel {
+      background: #111729;
+      border: 1px solid rgba(148,163,184,0.2);
+      border-radius: 24px;
+      width: 100%; max-width: 800px;
+      max-height: 90vh; overflow-y: auto;
+      transform: translateY(48px) scale(0.95);
+      transition: transform 0.38s cubic-bezier(0.34,1.4,0.64,1);
+      box-shadow: 0 40px 90px rgba(0,0,0,0.65);
+      scrollbar-width: thin; scrollbar-color: rgba(79,209,197,0.3) transparent;
+    }
+    .modal-overlay.open .modal-panel { transform: translateY(0) scale(1); }
+    .modal-header {
+      padding: 26px 26px 22px; border-radius: 24px 24px 0 0;
+      position: relative;
+    }
+    .modal-header-icon { font-size: 34px; margin-bottom: 10px; display: block; filter: drop-shadow(0 0 12px currentColor); }
+    .modal-header h2 { font-size: 19px; letter-spacing: -0.03em; margin-bottom: 5px; color: #fff; }
+    .modal-header-role { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .modal-close {
+      position: absolute; top: 18px; right: 18px;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.8); font-size: 15px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .modal-close:hover { background: rgba(255,255,255,0.2); transform: rotate(90deg); }
+    .modal-content { padding: 20px 26px 26px; }
+    .modal-metrics {
+      display: grid; grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 10px; margin-bottom: 20px;
+    }
+    .modal-metric {
+      background: rgba(15,23,42,0.95); border-radius: 14px;
+      padding: 13px 12px 11px; border: 1px solid rgba(148,163,184,0.12);
+      text-align: center;
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .modal-metric.show { opacity: 1; transform: translateY(0); }
+    .modal-metric-value {
+      font-size: 22px; font-weight: 700; color: var(--accent);
+      letter-spacing: -0.04em; line-height: 1; margin-bottom: 5px;
+    }
+    .modal-metric-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.3; }
+    .modal-body {
+      display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,1fr);
+      gap: 14px; margin-bottom: 18px;
+    }
+    .modal-section-title {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em;
+      color: var(--accent); margin-bottom: 10px;
+    }
+    .modal-chart-wrap, .modal-steps-wrap {
+      background: rgba(15,23,42,0.7); border-radius: 14px; padding: 14px 16px;
+    }
+    .modal-bar-row { margin-bottom: 11px; }
+    .modal-bar-row:last-child { margin-bottom: 0; }
+    .modal-bar-label {
+      font-size: 11px; color: var(--muted); margin-bottom: 5px;
+      display: flex; justify-content: space-between;
+    }
+    .modal-bar-track {
+      height: 5px; background: rgba(148,163,184,0.1);
+      border-radius: 999px; overflow: hidden; margin-bottom: 3px;
+    }
+    .modal-bar-fill {
+      height: 100%; border-radius: 999px; width: 0%;
+      transition: width 0.9s cubic-bezier(0.4,0,0.2,1);
+    }
+    .modal-bar-fill.bar-before { background: rgba(148,163,184,0.25); }
+    .modal-bar-fill.bar-after { background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+    .modal-step {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 7px 0; border-bottom: 1px solid rgba(148,163,184,0.07);
+      opacity: 0; transform: translateX(-12px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .modal-step.show { opacity: 1; transform: translateX(0); }
+    .modal-step:last-child { border-bottom: none; }
+    .modal-step-num {
+      width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+      background: var(--accent-soft); border: 1px solid rgba(79,209,197,0.35);
+      color: var(--accent); font-size: 10px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .modal-step-text { font-size: 12px; color: var(--muted); padding-top: 3px; line-height: 1.4; }
+    .modal-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+    .modal-tech-pill {
+      border-radius: 999px; background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(148,163,184,0.22); padding: 4px 11px;
+      font-size: 11px; color: var(--muted);
+    }
+    .modal-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .modal-btn-primary {
+      padding: 9px 20px; border-radius: 999px; border: none; cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #0b1020; font-weight: 600; font-size: 13px;
+      display: inline-flex; align-items: center; gap: 7px; text-decoration: none;
+      box-shadow: 0 8px 22px rgba(79,209,197,0.3);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .modal-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 30px rgba(79,209,197,0.42); }
+    .modal-btn-ghost {
+      padding: 8px 16px; border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: transparent; color: var(--muted); font-size: 13px;
+      display: inline-flex; align-items: center; gap: 7px; cursor: pointer;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .modal-btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    @media (max-width: 640px) {
+      .modal-metrics { grid-template-columns: repeat(2,minmax(0,1fr)); }
+      .modal-body { grid-template-columns: minmax(0,1fr); }
+      .modal-panel { border-radius: 20px; max-height: 95vh; }
+    }
+  
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+@media (max-width: 640px) { .projects-grid { grid-template-columns: 1fr; } }
+.modal-overlay { z-index: 10000; cursor: pointer; }
+.modal-panel { z-index: 10001; cursor: default; }
+</style>
+</head>
+<body>
+  <!-- Scroll progress -->
+  <div id="scroll-progress"></div>
+  <!-- Cursor glow -->
+  <div id="cursor-glow"></div>
+  <!-- Back to top -->
+  <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+  <div class="page">
+    <header>
+      <div class="logo">MANSI KAMOTHI</div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#github-projects">GitHub</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <!-- ── HERO ── -->
+    <section class="hero" id="top">
+      <div class="hero-main fade-in">
+        <div class="hero-chip">
+          <span class="hero-chip-dot"></span>
+          <span>Product &amp; Data Analyst &rarr; Associate Product Manager</span>
+        </div>
+        <h1 class="hero-title">I build data-driven onboarding &amp; analytics capabilities.</h1>
+        <p class="hero-subtitle">
+          I help product and business teams turn ambiguous questions into measurable experiments, <strong>dashboards</strong>,
+          and roadmap decisions that drive <strong>conversion</strong>, retention, and <strong>stakeholder</strong> confidence.
+        </p>
+        <div class="hero-tags">
+          <span class="tag">Product Analytics</span>
+          <span class="tag"><strong>Experimentation</strong></span>
+          <span class="tag">Dashboards &amp; BI</span>
+          <span class="tag">Stakeholder Alignment</span>
+          <span class="tag">SaaS &amp; B2B</span>
+        </div>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('case-studies').scrollIntoView({behavior:'smooth'})">
+            View case studies &rarr;
+          </button>
+          <a class="btn-ghost" href="MK_RESUME.pdf" target="_blank" rel="noreferrer">📄 Resume</a>
+          <a class="btn-ghost" href="mailto:mansikamothi1999@gmail.com">Email me</a>
+          <a class="btn-ghost" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer">LinkedIn &nearr;</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <div class="metric-label">Trial &rarr; paid uplift</div>
+            <div class="metric-value">+19.8%</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Incremental <strong>ARR</strong> impact</div>
+            <div class="metric-value">$1.2M / yr</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Reporting automation</div>
+            <div class="metric-value">85 hrs/wk</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-side">
+        <div class="pill-card fade-in" style="transition-delay:0.1s">
+          <div class="pill-title">Now</div>
+          <div class="pill-main"><strong>Product Analyst</strong> &middot; Tungsten Automation (Remote, USA)</div>
+          <div class="pill-tags">
+            <span>Onboarding &amp; experimentation</span>
+            <span>Executive &amp; product <strong>dashboards</strong></span>
+          </div>
+        </div>
+        <div class="pill-card fade-in" style="transition-delay:0.2s">
+          <div class="pill-title">Target roles</div>
+          <div class="pill-main">Associate Product Manager &middot; <strong>Product Analyst</strong> &middot; Data/BI Analyst</div>
+          <div class="pill-tags">
+            <span>Wealth &amp; fintech</span>
+            <span>Digital client experiences</span>
+            <span>Analytics platforms</span>
+          </div>
+        </div>
+        <div class="pill-card fade-in" style="transition-delay:0.3s">
+          <div class="pill-title">Toolbox</div>
+          <div class="pill-main"><strong>SQL</strong> &middot; Python &middot; Tableau &middot; Power BI &middot; BigQuery &middot; Salesforce &middot; GA4 &middot; Optimizely</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FEATURED WORK ── -->
+    <section id="work">
+      <div class="section-header fade-in">
+        <div>
+          <div class="section-label">Featured work</div>
+          <h2 class="section-title">Selected product &amp; analytics projects</h2>
+        </div>
+        <p class="section-subtitle">
+          Stakeholder discovery, experimentation, and data platforms working together to improve onboarding,
+          visibility, and decision-making.
+        </p>
+      </div>
+
+      <div class="projects-grid">
+        <a href="#" class="project-card fade-in" style="transition-delay:0.05s" onclick="openModal(event,'governance')">
+          <div class="project-chip">Analytics platform</div>
+          <div class="project-title">Unified product analytics &amp; data governance</div>
+          <div class="project-role">Tungsten Automation &middot; <strong>Product Analyst</strong></div>
+          <div class="project-meta">Single source of truth across Product, Marketing, Sales &amp; CS; standardized KPIs and 20+ live <strong>dashboards</strong>.</div>
+        </a>
+        <a href="#" class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal(event,'onboarding')">
+          <div class="project-chip"><strong>Experimentation</strong></div>
+          <div class="project-title">Onboarding simplification &amp; experimentation program</div>
+          <div class="project-role">Tungsten Automation &middot; <strong>Product Analyst</strong></div>
+          <div class="project-meta">End-to-end A/B testing for trial onboarding, lifting trial &rarr; paid <strong>conversion</strong> by 19.8% and driving $1.2M <strong>ARR</strong>.</div>
+        </a>
+        <a href="#" class="project-card fade-in" style="transition-delay:0.15s" onclick="openModal(event,'incident')">
+          <div class="project-chip">Incident detection</div>
+          <div class="project-title">Invoice processing launch &amp; anomaly monitoring</div>
+          <div class="project-role">Tungsten Automation &middot; <strong>Product Analyst</strong></div>
+          <div class="project-meta">Real-time <strong>dashboards</strong> detected a release defect within 24 hours, quantified <strong>ARR</strong> at risk, and restored <strong>conversion</strong>.</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── CASE STUDIES ── -->
+    <section id="case-studies">
+      <div class="section-header fade-in">
+        <div>
+          <div class="section-label">Case studies</div>
+          <h2 class="section-title">How I work end-to-end</h2>
+        </div>
+        <p class="section-subtitle">
+          Clarify the problem &rarr; align <strong>stakeholder</strong>s &rarr; instrument data &rarr; experiment &rarr; translate into roadmap.
+        </p>
+      </div>
+
+      <!-- Case 1 -->
+      <article id="case-governance" class="case-study fade-in">
+        <div class="case-header">
+          <div>
+            <h3 class="case-title">Unified analytics platform &amp; <strong>stakeholder</strong> governance</h3>
+            <p class="case-tagline">Creating a single source of truth for product, marketing, sales &amp; customer success</p>
+          </div>
+          <div class="case-meta">
+            <div><strong>Role</strong>: <strong>Product Analyst</strong></div>
+            <div><strong>Company</strong>: Tungsten Automation</div>
+            <div><strong>Domain</strong>: SaaS analytics platform</div>
+            <div class="pill-row">
+              <span class="pill-small">Stakeholder leadership</span>
+              <span class="pill-small">Data governance</span>
+              <span class="pill-small">KPI design</span>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-column">
+            <h4>Context &amp; problem</h4>
+            <p>Product, Marketing, Sales, and Customer Success each had their own reports and metrics, leading to conflicting views of adoption, funnel performance, and customer health. Leaders lacked a single, trusted view of "how the product is really doing" and which levers to pull.</p>
+            <ul>
+              <li>Complex data landscape across product usage (Postgre<strong>SQL</strong>), GA, Salesforce, Marketo, Zendesk, and BigQuery.</li>
+              <li>No standardized KPIs or intake process for new analytics needs.</li>
+              <li>Ad hoc reporting consumed analyst time and delayed decisions.</li>
+            </ul>
+            <h4>What I did</h4>
+            <ul>
+              <li>Led a cross-functional data governance initiative, identifying 15+ key <strong>stakeholder</strong>s and establishing weekly/bi-weekly syncs by function.</li>
+              <li>Designed a Jira-based requirements intake form capturing business question, desired outputs, data sources, timelines, and success criteria.</li>
+              <li>Partnered with <strong>stakeholder</strong>s to define core product, revenue, and engagement KPIs and documented them in Confluence as the single reference.</li>
+              <li>Mapped and integrated data from product logs, GA, Salesforce, Marketo, Zendesk, and BigQuery into a harmonized model powering 20+ Tableau / Data Studio <strong>dashboards</strong>.</li>
+              <li>Created presentation templates for executive reviews: context, methodology, key insights, and prioritized recommendations.</li>
+            </ul>
+          </div>
+          <div class="case-column">
+            <h4>Impact</h4>
+            <ul>
+              <li>Shortened product decision cycles by <strong>35%</strong> by aligning on standard KPIs and always-available <strong>dashboards</strong>.</li>
+              <li>Saved <strong>85 hours/week</strong> of manual reporting effort, worth roughly <strong>$220K</strong> per year.</li>
+              <li>Enabled data-backed roadmap and campaign decisions that contributed to <strong>$1.8M <strong>ARR</strong></strong> in additional revenue and <strong>$450K</strong> in churn prevention.</li>
+              <li>Increased <strong>stakeholder</strong> satisfaction with data insights from <strong>67%</strong> to <strong>90%</strong>, based on quarterly surveys.</li>
+            </ul>
+            <div class="metrics-row">
+              <span class="metric-pill">Single source of truth across 6+ systems</span>
+              <span class="metric-pill">20+ live <strong>dashboards</strong></span>
+              <span class="metric-pill">Executive &amp; functional views</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 2 -->
+      <article id="case-onboarding" class="case-study fade-in">
+        <div class="case-header">
+          <div>
+            <h3 class="case-title">Onboarding simplification &amp; experimentation program</h3>
+            <p class="case-tagline">Using A/B testing to redesign trial onboarding and improve <strong>conversion</strong> &amp; retention</p>
+          </div>
+          <div class="case-meta">
+            <div><strong>Role</strong>: <strong>Product Analyst</strong> / <strong>Experimentation</strong> Lead</div>
+            <div><strong>Domain</strong>: SaaS onboarding funnel</div>
+            <div><strong>Scope</strong>: Trial &rarr; paid <strong>conversion</strong>, feature adoption, support volume</div>
+            <div class="pill-row">
+              <span class="pill-small">Hypothesis-driven discovery</span>
+              <span class="pill-small">Experiment design</span>
+              <span class="pill-small">Funnel analytics</span>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-column">
+            <h4>Context &amp; problem</h4>
+            <p>New users were dropping out of a 5-step onboarding flow before they experienced value. Session recordings, support tickets, and funnel data showed that 42% abandoned at integration setup, long before they processed a single document.</p>
+            <ul>
+              <li>Goal: improve trial &rarr; paid <strong>conversion</strong> and reduce onboarding-related support tickets.</li>
+              <li>Constraints: preserve necessary configuration for enterprise customers while simplifying for SMBs.</li>
+            </ul>
+            <h4>What I did</h4>
+            <ul>
+              <li>Conducted qualitative and quantitative discovery: GA/Amplitude funnels, Hotjar session recordings, user interviews, and 200+ onboarding-related support tickets.</li>
+              <li>Formulated a test hypothesis: reducing steps and automating integrations would increase <strong>conversion</strong> by 15% and lower abandonment at integration setup.</li>
+              <li>Designed a multi-variant A/B test (control 5-step vs two 3-step variants), calculated required sample size and test duration, and partnered with UX and engineering on flows.</li>
+              <li>Defined tracking events and instrumentation plan across Optimizely, Segment, and product analytics to measure activation, feature adoption, and retention by segment.</li>
+            </ul>
+          </div>
+          <div class="case-column">
+            <h4>Impact</h4>
+            <ul>
+              <li>Increased trial &rarr; paid <strong>conversion</strong> by <strong>19.8%</strong> relative lift on the winning variant, driving approximately <strong>$1.2M in incremental <strong>ARR</strong></strong>.</li>
+              <li>Reduced onboarding-related support tickets by <strong>42%</strong> and improved 90-day retention by <strong>22%</strong> among users who went through the simplified flow.</li>
+              <li>Improved time-to-first-value by <strong>38%</strong>, enabling more users to activate within the trial window.</li>
+              <li>Scaled the experimentation program from 1&ndash;2 tests per quarter to ~15 per quarter, with a knowledge base of 20+ documented experiments informing future roadmap decisions.</li>
+            </ul>
+            <div class="metrics-row">
+              <span class="metric-pill">3 onboarding variants tested</span>
+              <span class="metric-pill">5k+ users in experiment</span>
+              <span class="metric-pill">Conversion, retention &amp; support KPIs</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Case 3 -->
+      <article id="case-incident" class="case-study fade-in">
+        <div class="case-header">
+          <div>
+            <h3 class="case-title">Invoice processing launch &amp; anomaly monitoring</h3>
+            <p class="case-tagline">Using <strong>dashboards</strong> as an early-warning system during a high-stakes feature release</p>
+          </div>
+          <div class="case-meta">
+            <div><strong>Role</strong>: <strong>Product Analyst</strong></div>
+            <div><strong>Domain</strong>: AI-powered invoice processing feature</div>
+            <div><strong>Scope</strong>: Launch monitoring, incident detection, remediation</div>
+            <div class="pill-row">
+              <span class="pill-small">Release monitoring</span>
+              <span class="pill-small">Root-cause analysis</span>
+              <span class="pill-small">Cross-functional response</span>
+            </div>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-column">
+            <h4>Context &amp; problem</h4>
+            <p>The team was launching a flagship AI invoice processing feature after months of engineering work. We needed to monitor adoption, accuracy, and <strong>conversion</strong>, and be able to react quickly if anything went wrong in production.</p>
+            <ul>
+              <li>Instrumented tracking for key events: setup completion, first successful invoice, errors, and funnel drop-offs.</li>
+              <li>Built an hourly-refresh Tableau dashboard as "mission control" for PMs, engineers, and leadership.</li>
+            </ul>
+            <h4>What I did</h4>
+            <ul>
+              <li>Defined launch success metrics with the Product Manager: adoption, processing accuracy, time savings, and impact on trial &rarr; paid <strong>conversion</strong>.</li>
+              <li>On launch, monitored KPIs daily; when <strong>conversion</strong> suddenly dropped, sliced data by segment and use case to isolate the issue.</li>
+              <li>Identified a spike in file-upload errors (2% &rarr; 18%) tied to large invoice PDFs after a code change. Quantified the impact in affected users and estimated <strong>ARR</strong> at risk.</li>
+              <li>Partnered with engineering and support to prioritize the fix, then tracked recovery and shared daily updates with <strong>stakeholder</strong>s until metrics normalized.</li>
+            </ul>
+          </div>
+          <div class="case-column">
+            <h4>Impact</h4>
+            <ul>
+              <li>Prevented an extended revenue impact by catching and helping resolve the bug within ~24 hours instead of weeks.</li>
+              <li>Turned the incident into a company-wide case study on data-driven release monitoring and incident response.</li>
+              <li>Strengthened trust in analytics as part of the release process, leading PMs to treat <strong>dashboards</strong> as a required launch artifact.</li>
+            </ul>
+            <div class="metrics-row">
+              <span class="metric-pill">Real-time anomaly detection</span>
+              <span class="metric-pill">Daily <strong>stakeholder</strong> updates</span>
+              <span class="metric-pill">24-hour incident resolution</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+<!-- ── GITHUB PROJECTS ── -->
+    <section id="github-projects">
+      <div class="section-header fade-in">
+        <div>
+          <div class="section-label">GitHub</div>
+          <h2 class="section-title">Technical projects &amp; code</h2>
+        </div>
+        <p class="section-subtitle">
+          Data pipelines, ML models, <strong>dashboards</strong>, and analytics tools — all open source on GitHub.
+        </p>
+      </div>
+
+      <div class="gh-grid">
+
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.05s" onclick="openModal(event,'gh-customer')">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#0d2137,#0a3d4a,#0b1020)">
+            <div class="gh-dot" style="width:55px;height:55px;left:8%;animation-duration:6s;animation-delay:0s"></div>
+            <div class="gh-dot" style="width:28px;height:28px;left:62%;animation-duration:8s;animation-delay:2s"></div>
+            <div class="gh-dot" style="width:18px;height:18px;left:82%;animation-duration:5s;animation-delay:1s"></div>
+            <div class="gh-icon" style="color:#4fd1c5">📊</div>
+            <div class="gh-repo-label">customer-analytics-dashboard</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
+          <div class="gh-body">
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · <strong>SQL</strong></div>
+            <div class="gh-title">Customer Analytics Dashboard</div>
+            <div class="gh-desc">Churn prediction, cohort analysis, and customer health scoring with Postgre<strong>SQL</strong> and scikit-learn.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.1s" onclick="openModal(event,'gh-feature')">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0d37,#2d1b69,#0b1020)">
+            <div class="gh-dot" style="width:50px;height:50px;left:20%;animation-duration:7s;animation-delay:0.5s"></div>
+            <div class="gh-dot" style="width:22px;height:22px;left:70%;animation-duration:9s;animation-delay:1.5s"></div>
+            <div class="gh-dot" style="width:14px;height:14px;left:45%;animation-duration:6s;animation-delay:3s"></div>
+            <div class="gh-icon" style="color:#b794f4">🧪</div>
+            <div class="gh-repo-label">product-feature-optimization</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
+          <div class="gh-body">
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · statsmodels</div>
+            <div class="gh-title">Product Feature Optimization</div>
+            <div class="gh-desc">A/B test framework with statistical significance testing, power analysis, and experiment reporting.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.15s" onclick="openModal(event,'gh-pipeline')">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a1200,#3d2800,#0b1020)">
+            <div class="gh-dot" style="width:45px;height:45px;left:15%;animation-duration:5s;animation-delay:1s"></div>
+            <div class="gh-dot" style="width:32px;height:32px;left:65%;animation-duration:7s;animation-delay:0s"></div>
+            <div class="gh-dot" style="width:16px;height:16px;left:40%;animation-duration:9s;animation-delay:2s"></div>
+            <div class="gh-icon" style="color:#f6ad55">⚙️</div>
+            <div class="gh-repo-label">data-pipeline-automation</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
+          <div class="gh-body">
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · Apache Airflow</div>
+            <div class="gh-title">Data Pipeline Automation</div>
+            <div class="gh-desc">Airflow DAG for automated customer data ingestion, transformation, and loading with error handling.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.2s" onclick="openModal(event,'gh-ecommerce')">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#001a0d,#004d2e,#0b1020)">
+            <div class="gh-dot" style="width:52px;height:52px;left:25%;animation-duration:8s;animation-delay:0.3s"></div>
+            <div class="gh-dot" style="width:26px;height:26px;left:72%;animation-duration:6s;animation-delay:2.5s"></div>
+            <div class="gh-dot" style="width:15px;height:15px;left:50%;animation-duration:10s;animation-delay:1s"></div>
+            <div class="gh-icon" style="color:#68d391">🛒</div>
+            <div class="gh-repo-label">ecommerce-analytics-platform</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
+          <div class="gh-body">
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · lifetimes</div>
+            <div class="gh-title">E-Commerce Analytics Platform</div>
+            <div class="gh-desc">CLV modeling using BG/NBD and Gamma-Gamma models, with customer segmentation and revenue forecasting.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.25s" onclick="openModal(event,'gh-ml')">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#0d0a2e,#1a1060,#0b1020)">
+            <div class="gh-dot" style="width:48px;height:48px;left:18%;animation-duration:7s;animation-delay:0.8s"></div>
+            <div class="gh-dot" style="width:24px;height:24px;left:68%;animation-duration:5s;animation-delay:2s"></div>
+            <div class="gh-dot" style="width:20px;height:20px;left:38%;animation-duration:8s;animation-delay:0.2s"></div>
+            <div class="gh-icon" style="color:#76e4f7">🤖</div>
+            <div class="gh-repo-label">ml-recommendation-system</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
+          <div class="gh-body">
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · scikit-learn</div>
+            <div class="gh-title">ML Recommendation System</div>
+            <div class="gh-desc">Hybrid recommender combining collaborative filtering (SVD) and content-based TF-IDF for product recommendations.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="#" style="transition-delay:0.3s" onclick="openModal(event,'gh-realtime')">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#1a0505,#4a1010,#0b1020)">
+            <div class="gh-dot" style="width:42px;height:42px;left:12%;animation-duration:6s;animation-delay:1.2s"></div>
+            <div class="gh-dot" style="width:30px;height:30px;left:58%;animation-duration:8s;animation-delay:0.4s"></div>
+            <div class="gh-dot" style="width:17px;height:17px;left:78%;animation-duration:5s;animation-delay:2.8s"></div>
+            <div class="gh-icon" style="color:#fc8181">📡</div>
+            <div class="gh-repo-label">realtime-monitoring-dashboard</div>
+            <svg class="gh-octo" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          </div>
+          <div class="gh-body">
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#f7df1e"></span>Python · React · FastAPI</div>
+            <div class="gh-title">Real-Time Monitoring Dashboard</div>
+            <div class="gh-desc">FastAPI WebSocket backend with React + Recharts for live KPI monitoring, anomaly alerts, and metric streaming.</div>
+            <div class="gh-footer"><span>mansikamothi03</span><span class="gh-link">View repo &nearr;</span></div>
+          </div>
+        </a>
+
+      </div>
+    </section>
+    <!-- ── ABOUT ── -->
+    <section id="about">
+      <div class="section-header fade-in">
+        <div>
+          <div class="section-label">About</div>
+          <h2 class="section-title">Who I am &amp; how I work</h2>
+        </div>
+        <p class="section-subtitle">
+          At the intersection of product, analytics, and <strong>stakeholder</strong>s — clarifying the problem, instrumenting the data, and helping teams make confident decisions.
+        </p>
+      </div>
+      <div class="about-grid fade-in">
+        <div>
+          <p>I am a Product and Business Analyst with 3+ years of experience in SaaS and enterprise environments, focused on turning data into product decisions. I work best in cross-functional pods with Product Managers, designers, engineers, and business <strong>stakeholder</strong>s.</p>
+          <p>My recent work centers on onboarding, experimentation, and analytics platforms: defining success metrics, running A/B tests, building executive-ready <strong>dashboards</strong>, and partnering with leadership to adjust strategy based on what the data is telling us.</p>
+          <p>I am particularly excited about Associate Product Manager and <strong>Product Analyst</strong> roles in wealth, fintech, and SaaS, where improving digital client experiences has a tangible impact on people's financial lives.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="skills-card">
+            <h4>Product &amp; discovery</h4>
+            <ul>
+              <li>Requirements elicitation &amp; intake design</li>
+              <li>Stakeholder workshops &amp; alignment</li>
+              <li>As-Is / To-Be journey mapping</li>
+              <li>Roadmap &amp; OKR input</li>
+            </ul>
+          </div>
+          <div class="skills-card">
+            <h4>Analytics &amp; experimentation</h4>
+            <ul>
+              <li><strong>SQL</strong>, Python (pandas, numpy)</li>
+              <li>Experiment design &amp; analysis</li>
+              <li>Funnel &amp; cohort analysis</li>
+              <li>Forecasting &amp; performance tracking</li>
+            </ul>
+          </div>
+          <div class="skills-card">
+            <h4>Data platforms</h4>
+            <ul>
+              <li>Tableau, Power BI, Data Studio</li>
+              <li>BigQuery, Postgre<strong>SQL</strong>, My<strong>SQL</strong></li>
+              <li>Salesforce, Marketo, Zendesk</li>
+              <li>GA4, Amplitude, Mixpanel</li>
+            </ul>
+          </div>
+          <div class="skills-card">
+            <h4>Ways of working</h4>
+            <ul>
+              <li>Agile / Scrum (Jira, Confluence)</li>
+              <li>Cross-functional collaboration</li>
+              <li>Executive-ready storytelling</li>
+              <li>Process &amp; reporting automation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="contact fade-in">
+      <div>
+        <div class="section-label">Contact</div>
+        <p>Based in San Francisco, California, USA. Open to Associate Product Manager, <strong>Product Analyst</strong>, and Analytics roles — and open to relocation for the right opportunity.</p>
+      </div>
+      <div class="contact-links">
+        <a class="contact-pill" href="mailto:mansikamothi1999@gmail.com">mansikamothi1999@gmail.com</a>
+        <a class="contact-pill" href="https://www.linkedin.com/in/mansikamothi" target="_blank" rel="noreferrer">LinkedIn &nearr;</a>
+        <a class="contact-pill" href="MK_RESUME.pdf" target="_blank" rel="noreferrer" style="border-color:rgba(79,209,197,0.5);color:var(--accent)">📄 View Resume</a>
+        <span class="contact-pill">📍 San Francisco, CA, USA</span>
+        <span class="contact-pill">+1 510 710 8030</span>
+        <span class="contact-pill" style="border-color:rgba(79,209,197,0.5);color:var(--accent)">✈ Open to relocation</span>
+      </div>
+    </section>
+
+    <footer>
+      Portfolio content based on <strong>Product Analyst</strong> work at Tungsten Automation and prior Business Analyst experience.
+    </footer>
+  </div>
+
+  <!-- ── PROJECT MODAL ── -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-panel" id="modal-panel">
+      <div class="modal-header" id="modal-header">
+        <button class="modal-close" id="modal-close-btn">✕</button>
+        <span class="modal-header-icon" id="modal-icon"></span>
+        <h2 id="modal-title"></h2>
+        <p class="modal-header-role" id="modal-role"></p>
+      </div>
+      <div class="modal-content">
+        <div class="modal-metrics" id="modal-metrics"></div>
+        <div class="modal-body">
+          <div class="modal-chart-wrap">
+            <div class="modal-section-title">Key metrics</div>
+            <div id="modal-chart"></div>
+          </div>
+          <div class="modal-steps-wrap">
+            <div class="modal-section-title">Process</div>
+            <div id="modal-steps"></div>
+          </div>
+        </div>
+        <div class="modal-section-title">Tech stack</div>
+        <div class="modal-tech" id="modal-tech"></div>
+        <div class="modal-actions" id="modal-actions"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Scroll progress bar ──
+    const progressBar = document.getElementById('scroll-progress');
+    function updateProgress() {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+    }
+
+    // ── Back to top ──
+    const backBtn = document.getElementById('back-to-top');
+    function updateBackToTop() {
+      backBtn.classList.toggle('visible', window.scrollY > 400);
+    }
+
+    window.addEventListener('scroll', () => {
+      updateProgress();
+      updateBackToTop();
+    }, { passive: true });
+
+    // ── Cursor glow ──
+    const glow = document.getElementById('cursor-glow');
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+    });
+
+    // ── Fade-in on scroll (Intersection Observer) ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add('visible');
+      });
+    });
+
+    // ── Modal data ──
+    const MODALS = {
+      governance: {
+        icon: '📊', gradient: 'linear-gradient(135deg,#0d2137 0%,#0a3d4a 60%,#0b1020 100%)',
+        title: 'Unified Analytics Platform & Stakeholder Governance',
+        role: '<strong>Product Analyst</strong> · Tungsten Automation · SaaS',
+        metrics: [
+          { value: 35, suffix: '%', label: 'Faster decisions' },
+          { value: 85, suffix: ' hrs', label: 'Saved per week' },
+          { value: 220, prefix: '$', suffix: 'K', label: 'Annual savings' },
+          { value: 20, suffix: '+', label: 'Live <strong>dashboards</strong>' },
+        ],
+        chart: [
+          { label: 'Stakeholder satisfaction', before: 67, after: 90, beforeLabel: '67%', afterLabel: '90%' },
+          { label: 'Decision cycle speed', before: 50, after: 85, beforeLabel: 'Baseline', afterLabel: '+35%' },
+          { label: 'Reporting automation', before: 20, after: 95, beforeLabel: '20%', afterLabel: '95%' },
+        ],
+        steps: ['Stakeholder discovery & intake design','KPI standardization across 4 teams','Data integration (6+ sources)','20+ Tableau / Data Studio <strong>dashboards</strong>','Governance process & Confluence docs'],
+        tech: ['Tableau','Power BI','BigQuery','Postgre<strong>SQL</strong>','Salesforce','Marketo','Zendesk','Python','<strong>SQL</strong>','Confluence','Jira'],
+        primaryLabel: 'Read full case study ↓', primaryHref: '#case-governance', primaryScroll: true,
+        github: null,
+      },
+      onboarding: {
+        icon: '🧪', gradient: 'linear-gradient(135deg,#1a0d37 0%,#2d1b69 60%,#0b1020 100%)',
+        title: 'Onboarding Simplification & <strong>Experimentation</strong> Program',
+        role: '<strong>Product Analyst</strong> / <strong>Experimentation</strong> Lead · Tungsten Automation',
+        metrics: [
+          { value: 19.8, suffix: '%', label: 'Conversion lift' },
+          { value: 1.2, prefix: '$', suffix: 'M <strong>ARR</strong>', label: 'Incremental revenue' },
+          { value: 42, suffix: '%', label: 'Support tickets ↓' },
+          { value: 22, suffix: '%', label: '90-day retention ↑' },
+        ],
+        chart: [
+          { label: 'Trial → paid <strong>conversion</strong>', before: 62, after: 74, beforeLabel: '62%', afterLabel: '74%' },
+          { label: 'Onboarding support tickets', before: 100, after: 58, beforeLabel: '100%', afterLabel: '−42%' },
+          { label: 'Time-to-first-value', before: 100, after: 62, beforeLabel: 'Baseline', afterLabel: '−38%' },
+        ],
+        steps: ['Qualitative & quantitative discovery','Hypothesis formation','Multi-variant A/B test design','Instrumentation (Optimizely + Segment)','Statistical analysis & winner selection','Scale to 15 experiments/quarter'],
+        tech: ['Optimizely','Segment','Amplitude','GA4','Hotjar','Python','<strong>SQL</strong>','scipy','statsmodels','Jira'],
+        primaryLabel: 'Read full case study ↓', primaryHref: '#case-onboarding', primaryScroll: true,
+        github: null,
+      },
+      incident: {
+        icon: '📡', gradient: 'linear-gradient(135deg,#1a0505 0%,#4a1010 60%,#0b1020 100%)',
+        title: 'Invoice Processing Launch & Anomaly Monitoring',
+        role: '<strong>Product Analyst</strong> · Tungsten Automation · AI feature launch',
+        metrics: [
+          { value: 24, suffix: ' hrs', label: 'Incident resolution' },
+          { value: 18, suffix: '%', label: 'Error spike detected' },
+          { value: 100, suffix: '%', label: 'Conversion recovered' },
+          { value: 1, prefix: '', suffix: ' dashboard', label: 'Mission control' },
+        ],
+        chart: [
+          { label: 'File-upload error rate', before: 2, after: 18, beforeLabel: '2% pre-launch', afterLabel: '18% spike' },
+          { label: 'Conversion recovery', before: 72, after: 100, beforeLabel: '72% at incident', afterLabel: '100% restored' },
+          { label: 'Stakeholder update cadence', before: 20, after: 100, beforeLabel: 'Ad hoc', afterLabel: 'Daily' },
+        ],
+        steps: ['Define launch success metrics','Instrument tracking events','Build hourly-refresh dashboard','Detect anomaly within 24 hrs','Root-cause analysis & quantification','Fix, deploy & recovery tracking'],
+        tech: ['Tableau','<strong>SQL</strong>','Postgre<strong>SQL</strong>','Python','Jira','Confluence','GA4'],
+        primaryLabel: 'Read full case study ↓', primaryHref: '#case-incident', primaryScroll: true,
+        github: null,
+      },
+      'gh-customer': {
+        icon: '📊', gradient: 'linear-gradient(135deg,#0d2137 0%,#0a3d4a 60%,#0b1020 100%)',
+        title: 'Customer Analytics Dashboard',
+        role: 'Python · <strong>SQL</strong> · scikit-learn · Postgre<strong>SQL</strong>',
+        metrics: [
+          { value: 3, suffix: '', label: 'ML models' },
+          { value: 95, suffix: '%', label: 'Churn accuracy' },
+          { value: 4, suffix: '', label: 'Cohort segments' },
+          { value: 5, suffix: '', label: '<strong>SQL</strong> schemas' },
+        ],
+        chart: [
+          { label: 'Churn model accuracy', before: 60, after: 95, beforeLabel: 'Baseline', afterLabel: '95%' },
+          { label: 'Feature coverage', before: 30, after: 85, beforeLabel: '30%', afterLabel: '85%' },
+          { label: 'Cohort retention tracked', before: 0, after: 100, beforeLabel: 'None', afterLabel: '4 segments' },
+        ],
+        steps: ['Data ingestion & schema design','Feature engineering pipeline','Churn prediction (Random Forest)','Cohort analysis & retention curves','Customer health scoring dashboard'],
+        tech: ['Python','scikit-learn','Postgre<strong>SQL</strong>','pandas','numpy','matplotlib','seaborn','<strong>SQL</strong>Alchemy'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/customer-analytics-dashboard', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/customer-analytics-dashboard',
+      },
+      'gh-feature': {
+        icon: '🧪', gradient: 'linear-gradient(135deg,#1a0d37 0%,#2d1b69 60%,#0b1020 100%)',
+        title: 'Product Feature Optimization',
+        role: 'Python · scipy · statsmodels · A/B testing framework',
+        metrics: [
+          { value: 95, suffix: '%', label: 'Confidence interval' },
+          { value: 3, suffix: '', label: 'Test variants' },
+          { value: 80, suffix: '%', label: 'Statistical power' },
+          { value: 10, suffix: '+', label: 'Experiments' },
+        ],
+        chart: [
+          { label: 'Statistical power achieved', before: 40, after: 80, beforeLabel: '40%', afterLabel: '80%' },
+          { label: 'Sample size efficiency', before: 50, after: 90, beforeLabel: 'Manual', afterLabel: 'Automated' },
+          { label: 'Experiment documentation', before: 20, after: 95, beforeLabel: '20%', afterLabel: '95%' },
+        ],
+        steps: ['Hypothesis & metric definition','Power analysis & sample sizing','Variant setup & randomization','Data collection & tracking','Statistical significance testing','Experiment report generation'],
+        tech: ['Python','scipy','statsmodels','pandas','matplotlib','seaborn','numpy','Jupyter'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/product-feature-optimization', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/product-feature-optimization',
+      },
+      'gh-pipeline': {
+        icon: '⚙️', gradient: 'linear-gradient(135deg,#1a1200 0%,#3d2800 60%,#0b1020 100%)',
+        title: 'Data Pipeline Automation',
+        role: 'Python · Apache Airflow · Postgre<strong>SQL</strong> · ETL',
+        metrics: [
+          { value: 5, suffix: '', label: 'DAG tasks' },
+          { value: 3, suffix: 'x', label: 'Auto-retry logic' },
+          { value: 100, suffix: '%', label: 'Scheduled daily' },
+          { value: 0, suffix: ' manual', label: 'Steps required' },
+        ],
+        chart: [
+          { label: 'Pipeline reliability', before: 60, after: 98, beforeLabel: '60%', afterLabel: '98%' },
+          { label: 'Manual effort eliminated', before: 100, after: 5, beforeLabel: '100%', afterLabel: '5%' },
+          { label: 'Data freshness', before: 30, after: 95, beforeLabel: 'Daily batch', afterLabel: 'Hourly' },
+        ],
+        steps: ['Source data extraction','Schema validation & type checks','Transformation & enrichment','Postgre<strong>SQL</strong> load & upsert','Email alerting on failure'],
+        tech: ['Python','Apache Airflow','Postgre<strong>SQL</strong>','pandas','<strong>SQL</strong>Alchemy','smtplib','logging'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/data-pipeline-automation', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/data-pipeline-automation',
+      },
+      'gh-ecommerce': {
+        icon: '🛒', gradient: 'linear-gradient(135deg,#001a0d 0%,#004d2e 60%,#0b1020 100%)',
+        title: 'E-Commerce Analytics Platform',
+        role: 'Python · lifetimes · BG/NBD · Gamma-Gamma CLV',
+        metrics: [
+          { value: 4, suffix: '', label: 'CLV segments' },
+          { value: 12, suffix: ' mo', label: 'Revenue forecast' },
+          { value: 85, suffix: '%', label: 'Model fit (R²)' },
+          { value: 3, suffix: 'x', label: 'ROI on top segment' },
+        ],
+        chart: [
+          { label: 'CLV model accuracy (R²)', before: 50, after: 85, beforeLabel: '50%', afterLabel: '85%' },
+          { label: 'Customer segmentation coverage', before: 0, after: 100, beforeLabel: 'None', afterLabel: '4 tiers' },
+          { label: 'Revenue forecast horizon', before: 10, after: 80, beforeLabel: '1 month', afterLabel: '12 months' },
+        ],
+        steps: ['Transaction data preparation','BG/NBD purchase frequency model','Gamma-Gamma spend model','CLV calculation & segmentation','Revenue forecasting & visualization'],
+        tech: ['Python','lifetimes','pandas','matplotlib','seaborn','scikit-learn','numpy','Jupyter'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/ecommerce-analytics-platform', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/ecommerce-analytics-platform',
+      },
+      'gh-ml': {
+        icon: '🤖', gradient: 'linear-gradient(135deg,#0d0a2e 0%,#1a1060 60%,#0b1020 100%)',
+        title: 'ML Recommendation System',
+        role: 'Python · scikit-learn · SVD · TF-IDF · Hybrid model',
+        metrics: [
+          { value: 2, suffix: ' models', label: 'Hybrid approach' },
+          { value: 0.82, suffix: '', label: 'RMSE score' },
+          { value: 10, suffix: 'K+', label: 'Items indexed' },
+          { value: 92, suffix: '%', label: 'Coverage' },
+        ],
+        chart: [
+          { label: 'Recommendation accuracy', before: 55, after: 82, beforeLabel: 'Baseline', afterLabel: '82%' },
+          { label: 'Catalog coverage', before: 40, after: 92, beforeLabel: '40%', afterLabel: '92%' },
+          { label: 'Cold-start handling', before: 0, after: 75, beforeLabel: 'None', afterLabel: '75%' },
+        ],
+        steps: ['Data preprocessing & user-item matrix','Collaborative filtering (SVD)','Content-based filtering (TF-IDF)','Hybrid score fusion','Evaluation (RMSE, precision@k)'],
+        tech: ['Python','scikit-learn','scipy','surprise','pandas','numpy','TF-IDF','SVD'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/ml-recommendation-system', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/ml-recommendation-system',
+      },
+      'gh-realtime': {
+        icon: '📡', gradient: 'linear-gradient(135deg,#1a0505 0%,#4a1010 60%,#0b1020 100%)',
+        title: 'Real-Time Monitoring Dashboard',
+        role: 'Python · FastAPI · React · Recharts · WebSocket',
+        metrics: [
+          { value: 50, suffix: ' ms', label: 'Latency' },
+          { value: 100, suffix: '/s', label: 'Events streamed' },
+          { value: 5, suffix: '', label: 'Live KPI panels' },
+          { value: 99, suffix: '%', label: 'Uptime' },
+        ],
+        chart: [
+          { label: 'Dashboard latency', before: 80, after: 95, beforeLabel: '500ms', afterLabel: '50ms' },
+          { label: 'Anomaly detection rate', before: 30, after: 88, beforeLabel: '30%', afterLabel: '88%' },
+          { label: 'KPI visibility', before: 20, after: 100, beforeLabel: 'Manual', afterLabel: 'Real-time' },
+        ],
+        steps: ['FastAPI WebSocket server setup','KPI metric streaming pipeline','React + Recharts frontend','Anomaly threshold alerting','Live dashboard deployment'],
+        tech: ['Python','FastAPI','React','Recharts','WebSocket','uvicorn','JavaScript','CSS'],
+        primaryLabel: 'View on GitHub ↗', primaryHref: 'https://github.com/mansikamothi03/realtime-monitoring-dashboard', primaryScroll: false,
+        github: 'https://github.com/mansikamothi03/realtime-monitoring-dashboard',
+      },
+    };
+
+    // ── Modal open/close ──
+    const overlay = document.getElementById('modal-overlay');
+    const panel   = document.getElementById('modal-panel');
+    let countUpTimers = [];
+
+    function openModal(e, key) {
+      e.preventDefault();
+      const d = MODALS[key];
+      if (!d) return;
+
+      // Header
+      document.getElementById('modal-header').style.background = d.gradient;
+      document.getElementById('modal-icon').textContent = d.icon;
+      document.getElementById('modal-title').textContent = d.title;
+      document.getElementById('modal-role').textContent = d.role;
+
+      // Metrics
+      const mEl = document.getElementById('modal-metrics');
+      mEl.innerHTML = d.metrics.map((m,i) =>
+        `<div class="modal-metric" style="transition-delay:${0.05+i*0.07}s">
+          <div class="modal-metric-value" data-target="${m.value}" data-prefix="${m.prefix||''}" data-suffix="${m.suffix||''}">${m.prefix||''}0${m.suffix||''}</div>
+          <div class="modal-metric-label">${m.label}</div>
+        </div>`
+      ).join('');
+
+      // Chart
+      const cEl = document.getElementById('modal-chart');
+      cEl.innerHTML = d.chart.map(c =>
+        `<div class="modal-bar-row">
+          <div class="modal-bar-label"><span>${c.label}</span><span style="color:var(--accent)">${c.afterLabel}</span></div>
+          <div class="modal-bar-track"><div class="modal-bar-fill bar-before" data-w="${c.before}"></div></div>
+          <div class="modal-bar-track"><div class="modal-bar-fill bar-after" data-w="${c.after}"></div></div>
+        </div>`
+      ).join('');
+
+      // Steps
+      const sEl = document.getElementById('modal-steps');
+      sEl.innerHTML = d.steps.map((s,i) =>
+        `<div class="modal-step" style="transition-delay:${0.1+i*0.06}s">
+          <div class="modal-step-num">${i+1}</div>
+          <div class="modal-step-text">${s}</div>
+        </div>`
+      ).join('');
+
+      // Tech
+      document.getElementById('modal-tech').innerHTML =
+        d.tech.map(t => `<span class="modal-tech-pill">${t}</span>`).join('');
+
+      // Actions
+      const aEl = document.getElementById('modal-actions');
+      if (d.primaryScroll) {
+        aEl.innerHTML = `<button class="modal-btn-primary" onclick="closeModal();setTimeout(()=>document.querySelector('${d.primaryHref}').scrollIntoView({behavior:'smooth'}),200)">${d.primaryLabel}</button>`;
+      } else {
+        aEl.innerHTML = `<a class="modal-btn-primary" href="${d.primaryHref}" target="_blank" rel="noreferrer">${d.primaryLabel}</a>`;
+      }
+
+      // Show overlay
+      panel.scrollTop = 0;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      // Animate metrics (count-up)
+      countUpTimers.forEach(clearInterval);
+      countUpTimers = [];
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.modal-metric').forEach(el => el.classList.add('show'));
+        document.querySelectorAll('.modal-step').forEach(el => el.classList.add('show'));
+
+        // Bar chart animate
+        document.querySelectorAll('.modal-bar-fill').forEach(el => {
+          const w = parseFloat(el.dataset.w);
+          setTimeout(() => { el.style.width = w + '%'; }, 120);
+        });
+
+        // Count-up
+        document.querySelectorAll('.modal-metric-value').forEach(el => {
+          const target = parseFloat(el.dataset.target);
+          const prefix = el.dataset.prefix;
+          const suffix = el.dataset.suffix;
+          const isFloat = target % 1 !== 0;
+          const duration = 900;
+          const steps = 40;
+          const interval = duration / steps;
+          let step = 0;
+          const timer = setInterval(() => {
+            step++;
+            const val = target * (step / steps);
+            el.textContent = prefix + (isFloat ? val.toFixed(1) : Math.round(val)) + suffix;
+            if (step >= steps) { clearInterval(timer); el.textContent = prefix + (isFloat ? target.toFixed(1) : target) + suffix; }
+          }, interval);
+          countUpTimers.push(timer);
+        });
+      });
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      countUpTimers.forEach(clearInterval);
+      countUpTimers = [];
+      // Reset animated elements for next open
+      setTimeout(() => {
+        document.querySelectorAll('.modal-metric').forEach(el => el.classList.remove('show'));
+        document.querySelectorAll('.modal-step').forEach(el => el.classList.remove('show'));
+        document.querySelectorAll('.modal-bar-fill').forEach(el => { el.style.width = '0%'; });
+      }, 320);
+    }
+
+    document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>
