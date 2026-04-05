@@ -209,10 +209,16 @@
       padding: 16px 16px 14px; border: 1px solid var(--border);
       cursor: pointer; display: block;
       transition: transform 0.14s ease-out, box-shadow 0.14s ease-out, border-color 0.14s ease-out;
+      animation: card-hint-pulse 3s ease-in-out infinite;
+    }
+    @keyframes card-hint-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(79,209,197,0); }
+      50% { box-shadow: 0 0 0 4px rgba(79,209,197,0.12); }
     }
     .project-card:hover {
       transform: translateY(-3px); box-shadow: var(--shadow-subtle);
       border-color: rgba(79,209,197,0.7);
+      animation: none;
     }
     .project-chip {
       font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em;
@@ -221,6 +227,42 @@
     .project-title { font-size: 14px; margin-bottom: 4px; font-weight: 600; }
     .project-role { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
     .project-meta { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .project-mini-metrics {
+      display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 6px; margin-top: 10px;
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .project-card:hover .project-mini-metrics { max-height: 60px; opacity: 1; }
+    .project-mini-metric {
+      background: rgba(79,209,197,0.07); border-radius: 8px;
+      padding: 5px 8px; border: 1px solid rgba(79,209,197,0.18);
+      text-align: center;
+      transform: translateY(6px);
+      transition: transform 0.3s ease;
+    }
+    .project-card:hover .project-mini-metric { transform: translateY(0); }
+    .project-card:hover .project-mini-metric:nth-child(2) { transition-delay: 0.07s; }
+    .project-mini-val { font-size: 13px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+    .project-mini-lbl { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+    .project-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 10px; padding-top: 8px;
+      border-top: 1px solid rgba(148,163,184,0.08);
+    }
+    .project-card-badge {
+      font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--accent); background: var(--accent-soft);
+      border: 1px solid rgba(79,209,197,0.3); border-radius: 999px;
+      padding: 2px 7px;
+    }
+    .project-card-cta {
+      font-size: 11px; color: var(--accent);
+      display: flex; align-items: center; gap: 4px;
+      opacity: 0.6; transition: opacity 0.2s, letter-spacing 0.2s;
+    }
+    .project-card:hover .project-card-cta { opacity: 1; letter-spacing: 0.02em; }
 
     /* ── Case studies ── */
     .case-study {
@@ -426,6 +468,7 @@
       padding: 20px;
       opacity: 0; pointer-events: none;
       transition: opacity 0.3s ease;
+      cursor: auto;
     }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
     .modal-panel {
@@ -639,7 +682,7 @@
     <section id="work">
       <div class="section-header fade-in">
         <div>
-          <div class="section-label">Featured work</div>
+          <div class="section-label">Featured work · click any card to explore</div>
           <h2 class="section-title">Selected product &amp; analytics projects</h2>
         </div>
         <p class="section-subtitle">
@@ -654,18 +697,60 @@
           <div class="project-title">Unified product analytics &amp; data governance</div>
           <div class="project-role">Tungsten Automation &middot; Product Analyst</div>
           <div class="project-meta">Single source of truth across Product, Marketing, Sales &amp; CS; standardized KPIs and 20+ live dashboards.</div>
+          <div class="project-mini-metrics">
+            <div class="project-mini-metric">
+              <div class="project-mini-val">+35%</div>
+              <div class="project-mini-lbl">Faster decisions</div>
+            </div>
+            <div class="project-mini-metric">
+              <div class="project-mini-val">85h/wk</div>
+              <div class="project-mini-lbl">Time saved</div>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span class="project-card-badge">📊 Interactive</span>
+            <span class="project-card-cta">View dashboard →</span>
+          </div>
         </a>
         <a href="#" class="project-card fade-in" style="transition-delay:0.1s" onclick="openModal(event,'onboarding')">
           <div class="project-chip">Experimentation</div>
           <div class="project-title">Onboarding simplification &amp; experimentation program</div>
           <div class="project-role">Tungsten Automation &middot; Product Analyst</div>
           <div class="project-meta">End-to-end A/B testing for trial onboarding, lifting trial &rarr; paid conversion by 19.8% and driving $1.2M ARR.</div>
+          <div class="project-mini-metrics">
+            <div class="project-mini-metric">
+              <div class="project-mini-val">+19.8%</div>
+              <div class="project-mini-lbl">Conversion lift</div>
+            </div>
+            <div class="project-mini-metric">
+              <div class="project-mini-val">$1.2M</div>
+              <div class="project-mini-lbl">ARR impact</div>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span class="project-card-badge">🧪 Interactive</span>
+            <span class="project-card-cta">View dashboard →</span>
+          </div>
         </a>
         <a href="#" class="project-card fade-in" style="transition-delay:0.15s" onclick="openModal(event,'incident')">
           <div class="project-chip">Incident detection</div>
           <div class="project-title">Invoice processing launch &amp; anomaly monitoring</div>
           <div class="project-role">Tungsten Automation &middot; Product Analyst</div>
           <div class="project-meta">Real-time dashboards detected a release defect within 24 hours, quantified ARR at risk, and restored conversion.</div>
+          <div class="project-mini-metrics">
+            <div class="project-mini-metric">
+              <div class="project-mini-val">24h</div>
+              <div class="project-mini-lbl">Detection time</div>
+            </div>
+            <div class="project-mini-metric">
+              <div class="project-mini-val">2→18%</div>
+              <div class="project-mini-lbl">Error spike caught</div>
+            </div>
+          </div>
+          <div class="project-card-footer">
+            <span class="project-card-badge">📡 Interactive</span>
+            <span class="project-card-cta">View dashboard →</span>
+          </div>
         </a>
       </div>
     </section>
