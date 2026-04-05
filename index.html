@@ -423,6 +423,51 @@
     @media (max-width: 900px) { .gh-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
     @media (max-width: 640px) { .gh-grid { grid-template-columns: minmax(0,1fr); } }
 
+    /* ── Experience ── */
+    .exp-section { margin-top: 40px; }
+    .exp-timeline { position: relative; padding-left: 28px; margin-top: 16px; }
+    .exp-timeline::before {
+      content: ''; position: absolute; left: 7px; top: 0; bottom: 0;
+      width: 1px; background: rgba(148,163,184,0.12);
+    }
+    .exp-item {
+      position: relative; margin-bottom: 24px;
+      background: rgba(15,23,42,0.92); border-radius: 18px;
+      padding: 18px 20px 16px; border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .exp-item:hover { border-color: rgba(79,209,197,0.4); transform: translateY(-1px); }
+    .exp-dot {
+      position: absolute; left: -28px; top: 20px;
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 2px solid rgba(79,209,197,0.4); background: #0b1020;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .exp-dot-inner {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--muted);
+    }
+    .exp-dot-inner.current {
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(79,209,197,0.2);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+    .exp-role { font-size: 17px; font-weight: 600; margin-bottom: 3px; }
+    .exp-company { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--accent); }
+    .exp-badge {
+      font-size: 11px; padding: 2px 7px; border-radius: 999px;
+      background: rgba(79,209,197,0.1); border: 1px solid rgba(79,209,197,0.3);
+      color: var(--accent);
+    }
+    .exp-period { font-size: 13px; color: var(--muted); text-align: right; }
+    .exp-location { font-size: 12px; color: rgba(148,163,184,0.5); margin-top: 2px; }
+    .exp-bullets { list-style: none; padding: 0; margin: 0; }
+    .exp-bullets li {
+      display: flex; gap: 10px; font-size: 15px; color: var(--muted);
+      padding: 4px 0; line-height: 1.55;
+    }
+    .exp-bullets li::before { content: '▸'; color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+
     /* ── About ── */
     .about-grid {
       display: grid; grid-template-columns: minmax(0,1.6fr) minmax(0,1.4fr);
@@ -663,6 +708,7 @@
       <nav>
         <a href="#work">Work</a>
         <a href="#github-projects">GitHub</a>
+        <a href="#experience">Experience</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -927,6 +973,66 @@
 
       </div>
     </section>
+    <!-- ── EXPERIENCE ── -->
+    <section id="experience" class="exp-section">
+      <div class="section-header fade-in">
+        <div>
+          <div class="section-label">Career</div>
+          <h2 class="section-title">Experience</h2>
+        </div>
+        <p class="section-subtitle">3+ years turning data into product decisions at SaaS companies.</p>
+      </div>
+
+      <div class="exp-timeline">
+        <!-- Tungsten Automation -->
+        <div class="exp-item fade-in">
+          <div class="exp-dot"><div class="exp-dot-inner current"></div></div>
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Product &amp; Data Analyst</div>
+              <div class="exp-company">
+                Tungsten Automation
+                <span class="exp-badge">Current</span>
+              </div>
+            </div>
+            <div>
+              <div class="exp-period">2022 – Present</div>
+              <div class="exp-location">Remote, USA</div>
+            </div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Own the product analytics stack for a SaaS platform with 45M+ annual events — BigQuery, Amplitude, and Power BI.</li>
+            <li>Drove a 19.8% trial-to-paid conversion lift by identifying drop-off patterns and running A/B tests on onboarding flows.</li>
+            <li>Built automated ETL pipelines in Python + Airflow, eliminating 85 hrs/week of manual analyst work across 3 teams.</li>
+            <li>Partnered with CPO and GTM leads to define KPIs, prioritize roadmap items, and track post-launch impact.</li>
+            <li>Delivered executive dashboards consolidating 6 data sources — reduced reporting cycle from 5 days to real-time.</li>
+            <li>Collaborated with 120+ stakeholders across Product, Sales, Marketing, and Engineering on data-driven decisions.</li>
+          </ul>
+        </div>
+
+        <!-- Prior role -->
+        <div class="exp-item fade-in" style="transition-delay:0.1s">
+          <div class="exp-dot"><div class="exp-dot-inner"></div></div>
+          <div class="exp-header">
+            <div>
+              <div class="exp-role">Business / Data Analyst</div>
+              <div class="exp-company">Prior Role</div>
+            </div>
+            <div>
+              <div class="exp-period">2020 – 2022</div>
+              <div class="exp-location">Bay Area, CA</div>
+            </div>
+          </div>
+          <ul class="exp-bullets">
+            <li>Analyzed customer behavior data to surface insights that informed product and pricing decisions.</li>
+            <li>Built SQL-based reporting pipelines and Tableau dashboards for operations and finance teams.</li>
+            <li>Supported go-to-market strategy with segmentation analysis and competitive benchmarking.</li>
+            <li>Reduced manual reporting time by 60% through process automation and standardized data models.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- ── ABOUT ── -->
     <section id="about">
       <div class="section-header fade-in">
