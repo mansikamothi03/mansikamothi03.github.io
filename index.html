@@ -25,7 +25,7 @@
       --accent-2: #34d399;
       --accent-soft: rgba(167, 139, 250, 0.12);
       --text: #f9fafb;
-      --muted: #71717a;
+      --muted: #a1a1aa;
       --border: rgba(167, 139, 250, 0.18);
       --shadow-soft: 0 18px 45px rgba(0,0,0,0.55);
       --shadow-subtle: 0 10px 30px rgba(0,0,0,0.45);
@@ -881,6 +881,20 @@
       color: var(--muted);
     }
 
+    /* ── Case study dashboard mockups ── */
+    .cs-dashboard {
+      margin-top: 18px;
+      margin-bottom: 4px;
+    }
+    .cs-dashboard-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
     /* ── Responsive: new sections ── */
     @media (max-width: 900px) {
       .how-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
@@ -928,7 +942,7 @@
         <h1 class="hero-title">I turn product data into decisions that <em>actually ship.</em></h1>
         <p style="margin:6px 0 14px;font-size:14px;color:var(--muted);letter-spacing:0.01em;">📍 San Francisco, CA</p>
         <p class="hero-subtitle">
-          <strong>2.5+ years</strong> turning messy product data into decisions that ship. I run <strong>A/B tests</strong> with proper statistical rigor, build <strong>dashboards</strong> that show up in leadership reviews, and help cross-functional teams move from question to shipped decision — with the data to back it up.
+          <strong>3+ years</strong> turning messy product data into decisions that ship. I run <strong>A/B tests</strong> with proper statistical rigor, build <strong>dashboards</strong> that show up in leadership reviews, and help cross-functional teams move from question to shipped decision — with the data to back it up.
         </p>
         <div class="hero-tags">
           <span class="tag">Product Analytics</span>
@@ -1153,6 +1167,54 @@
               <div class="cs-col-text"><strong>+19.8% trial-to-paid conversion</strong> within 60 days of launch. $1.2M incremental ARR. Experiment framework adopted as the team standard for all future feature tests.</div>
             </div>
           </div>
+          <!-- Dashboard mockup: Onboarding funnel -->
+          <div class="cs-dashboard">
+            <div class="cs-dashboard-label">📊 Onboarding funnel analysis — Amplitude · Power BI</div>
+            <svg viewBox="0 0 760 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px;background:rgba(10,10,15,0.7)">
+              <!-- KPI row -->
+              <rect x="10" y="10" width="110" height="44" rx="6" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+              <text x="65" y="28" fill="rgba(167,139,250,0.6)" font-size="8" font-family="monospace" text-anchor="middle">TRIAL STARTS</text>
+              <text x="65" y="46" fill="#a78bfa" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">12,400</text>
+              <rect x="130" y="10" width="110" height="44" rx="6" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+              <text x="185" y="28" fill="rgba(167,139,250,0.6)" font-size="8" font-family="monospace" text-anchor="middle">STEP 1 COMPLETE</text>
+              <text x="185" y="46" fill="#a78bfa" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">9,672</text>
+              <rect x="250" y="10" width="110" height="44" rx="6" fill="rgba(252,129,129,0.1)" stroke="rgba(252,129,129,0.3)" stroke-width="1"/>
+              <text x="305" y="28" fill="rgba(252,129,129,0.7)" font-size="8" font-family="monospace" text-anchor="middle">STEP 2 DROP-OFF</text>
+              <text x="305" y="46" fill="#fc8181" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">−43%</text>
+              <rect x="370" y="10" width="110" height="44" rx="6" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.3)" stroke-width="1"/>
+              <text x="425" y="28" fill="rgba(52,211,153,0.6)" font-size="8" font-family="monospace" text-anchor="middle">CONVERSION (AFTER)</text>
+              <text x="425" y="46" fill="#34d399" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">+19.8%</text>
+              <rect x="490" y="10" width="110" height="44" rx="6" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.3)" stroke-width="1"/>
+              <text x="545" y="28" fill="rgba(52,211,153,0.6)" font-size="8" font-family="monospace" text-anchor="middle">ARR IMPACT</text>
+              <text x="545" y="46" fill="#34d399" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">$1.2M</text>
+              <!-- Funnel bars -->
+              <text x="10" y="72" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">ONBOARDING FUNNEL — CONTROL vs VARIANT</text>
+              <!-- Control funnel -->
+              <rect x="10" y="80" width="220" height="12" rx="3" fill="rgba(148,163,184,0.15)"/>
+              <rect x="10" y="80" width="220" height="12" rx="3" fill="rgba(148,163,184,0.35)"/>
+              <text x="235" y="90" fill="rgba(148,163,184,0.7)" font-size="8" font-family="monospace">Control: 12.1%</text>
+              <rect x="10" y="96" width="220" height="12" rx="3" fill="rgba(148,163,184,0.08)"/>
+              <rect x="10" y="96" width="126" height="12" rx="3" fill="rgba(148,163,184,0.2)"/>
+              <text x="235" y="106" fill="rgba(148,163,184,0.5)" font-size="8" font-family="monospace">Step 2: 57%</text>
+              <rect x="10" y="112" width="220" height="12" rx="3" fill="rgba(148,163,184,0.08)"/>
+              <rect x="10" y="112" width="77" height="12" rx="3" fill="rgba(148,163,184,0.15)"/>
+              <text x="235" y="122" fill="rgba(148,163,184,0.4)" font-size="8" font-family="monospace">Step 3: 35%</text>
+              <!-- Variant funnel -->
+              <rect x="380" y="80" width="220" height="12" rx="3" fill="rgba(167,139,250,0.08)"/>
+              <rect x="380" y="80" width="220" height="12" rx="3" fill="rgba(167,139,250,0.4)"/>
+              <text x="605" y="90" fill="rgba(167,139,250,0.9)" font-size="8" font-family="monospace" font-weight="bold">Variant: 14.5% ✓</text>
+              <rect x="380" y="96" width="220" height="12" rx="3" fill="rgba(167,139,250,0.08)"/>
+              <rect x="380" y="96" width="187" height="12" rx="3" fill="rgba(167,139,250,0.3)"/>
+              <text x="605" y="106" fill="rgba(167,139,250,0.7)" font-size="8" font-family="monospace">Step 2: 85%</text>
+              <rect x="380" y="112" width="220" height="12" rx="3" fill="rgba(167,139,250,0.08)"/>
+              <rect x="380" y="112" width="154" height="12" rx="3" fill="rgba(167,139,250,0.2)"/>
+              <text x="605" y="122" fill="rgba(167,139,250,0.6)" font-size="8" font-family="monospace">Step 3: 70%</text>
+              <!-- p-value badge -->
+              <rect x="310" y="88" width="62" height="18" rx="4" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.4)" stroke-width="1"/>
+              <text x="341" y="100" fill="#34d399" font-size="8" font-family="monospace" text-anchor="middle">p &lt; 0.05 ✓</text>
+              <text x="10" y="150" fill="rgba(255,255,255,0.18)" font-size="7" font-family="monospace">n=12,400 · 95% CI · 80% power · 60-day window · Amplitude + BigQuery + Power BI</text>
+            </svg>
+          </div>
           <div class="cs-tools">
             <span class="cs-tool-pill">Amplitude</span>
             <span class="cs-tool-pill">BigQuery</span>
@@ -1205,6 +1267,41 @@
               <div class="cs-col-text"><strong>85 hrs/week saved</strong> across 3 teams. Reporting cycle cut from 5 days to real-time. 35% fewer ad hoc data requests. 20+ live dashboards used daily by Product, Sales, and CS.</div>
             </div>
           </div>
+          <!-- Dashboard mockup: Executive KPI dashboard -->
+          <div class="cs-dashboard">
+            <div class="cs-dashboard-label">📊 Executive KPI dashboard — Power BI · BigQuery · 6 sources</div>
+            <svg viewBox="0 0 760 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px;background:rgba(10,10,15,0.7)">
+              <!-- Header row KPIs -->
+              <rect x="10" y="10" width="88" height="44" rx="6" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+              <text x="54" y="26" fill="rgba(167,139,250,0.6)" font-size="7" font-family="monospace" text-anchor="middle">MRR</text>
+              <text x="54" y="44" fill="#a78bfa" font-size="15" font-weight="bold" font-family="monospace" text-anchor="middle">$2.4M</text>
+              <rect x="106" y="10" width="88" height="44" rx="6" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
+              <text x="150" y="26" fill="rgba(52,211,153,0.6)" font-size="7" font-family="monospace" text-anchor="middle">TRIAL→PAID</text>
+              <text x="150" y="44" fill="#34d399" font-size="15" font-weight="bold" font-family="monospace" text-anchor="middle">14.5%</text>
+              <rect x="202" y="10" width="88" height="44" rx="6" fill="rgba(246,173,85,0.1)" stroke="rgba(246,173,85,0.25)" stroke-width="1"/>
+              <text x="246" y="26" fill="rgba(246,173,85,0.6)" font-size="7" font-family="monospace" text-anchor="middle">CHURN RATE</text>
+              <text x="246" y="44" fill="#f6ad55" font-size="15" font-weight="bold" font-family="monospace" text-anchor="middle">2.1%</text>
+              <rect x="298" y="10" width="88" height="44" rx="6" fill="rgba(99,179,237,0.1)" stroke="rgba(99,179,237,0.25)" stroke-width="1"/>
+              <text x="342" y="26" fill="rgba(99,179,237,0.6)" font-size="7" font-family="monospace" text-anchor="middle">NPS</text>
+              <text x="342" y="44" fill="#63b3ed" font-size="15" font-weight="bold" font-family="monospace" text-anchor="middle">+42</text>
+              <rect x="394" y="10" width="88" height="44" rx="6" fill="rgba(252,129,129,0.1)" stroke="rgba(252,129,129,0.25)" stroke-width="1"/>
+              <text x="438" y="26" fill="rgba(252,129,129,0.6)" font-size="7" font-family="monospace" text-anchor="middle">OPEN TICKETS</text>
+              <text x="438" y="44" fill="#fc8181" font-size="15" font-weight="bold" font-family="monospace" text-anchor="middle">127</text>
+              <rect x="490" y="10" width="88" height="44" rx="6" fill="rgba(167,139,250,0.1)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
+              <text x="534" y="26" fill="rgba(167,139,250,0.5)" font-size="7" font-family="monospace" text-anchor="middle">PIPELINE</text>
+              <text x="534" y="44" fill="#a78bfa" font-size="15" font-weight="bold" font-family="monospace" text-anchor="middle">$8.7M</text>
+              <!-- MRR trend line -->
+              <text x="10" y="68" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">MRR TREND — LAST 8 MONTHS</text>
+              <line x1="10" y1="140" x2="590" y2="140" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+              <polyline points="10,132 85,128 160,122 235,118 310,110 385,104 460,96 535,88 590,82" fill="none" stroke="rgba(167,139,250,0.8)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10,132 85,128 160,122 235,118 310,110 385,104 460,96 535,88 590,82 L590,140 L10,140 Z" fill="rgba(167,139,250,0.06)"/>
+              <circle cx="590" cy="82" r="4" fill="#a78bfa"/>
+              <rect x="596" y="74" width="52" height="14" rx="3" fill="rgba(167,139,250,0.2)" stroke="rgba(167,139,250,0.4)" stroke-width="0.5"/>
+              <text x="622" y="84" fill="#a78bfa" font-size="7" font-family="monospace" text-anchor="middle">+18% MoM</text>
+              <!-- Source badges -->
+              <text x="10" y="155" fill="rgba(255,255,255,0.18)" font-size="7" font-family="monospace">Sources: BigQuery · Salesforce · Zendesk · Amplitude · Stripe · GA4 · Refreshed every 15 min</text>
+            </svg>
+          </div>
           <div class="cs-tools">
             <span class="cs-tool-pill">Python</span>
             <span class="cs-tool-pill">Apache Airflow</span>
@@ -1256,6 +1353,47 @@
               <div class="cs-col-label"><span>✅</span> Outcome</div>
               <div class="cs-col-text">Contributed to <strong>3 successful product launches</strong>. 60% reduction in manual reporting (~12 hrs/week). SQL dashboards adopted by operations and finance teams as daily tools.</div>
             </div>
+          </div>
+          <!-- Dashboard mockup: Customer segmentation -->
+          <div class="cs-dashboard">
+            <div class="cs-dashboard-label">📊 Customer segmentation dashboard — Tableau · SQL · RFM model</div>
+            <svg viewBox="0 0 760 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px;background:rgba(10,10,15,0.7)">
+              <!-- Segment cards -->
+              <rect x="10" y="10" width="130" height="55" rx="6" fill="rgba(52,211,153,0.12)" stroke="rgba(52,211,153,0.35)" stroke-width="1"/>
+              <text x="75" y="26" fill="rgba(52,211,153,0.7)" font-size="8" font-family="monospace" text-anchor="middle">CHAMPIONS</text>
+              <text x="75" y="44" fill="#34d399" font-size="18" font-weight="bold" font-family="monospace" text-anchor="middle">8,240</text>
+              <text x="75" y="57" fill="rgba(52,211,153,0.5)" font-size="7" font-family="monospace" text-anchor="middle">Avg CLV: $4,200</text>
+              <rect x="150" y="10" width="130" height="55" rx="6" fill="rgba(99,179,237,0.1)" stroke="rgba(99,179,237,0.3)" stroke-width="1"/>
+              <text x="215" y="26" fill="rgba(99,179,237,0.6)" font-size="8" font-family="monospace" text-anchor="middle">LOYAL</text>
+              <text x="215" y="44" fill="#63b3ed" font-size="18" font-weight="bold" font-family="monospace" text-anchor="middle">14,100</text>
+              <text x="215" y="57" fill="rgba(99,179,237,0.4)" font-size="7" font-family="monospace" text-anchor="middle">Avg CLV: $1,800</text>
+              <rect x="290" y="10" width="130" height="55" rx="6" fill="rgba(246,173,85,0.1)" stroke="rgba(246,173,85,0.3)" stroke-width="1"/>
+              <text x="355" y="26" fill="rgba(246,173,85,0.6)" font-size="8" font-family="monospace" text-anchor="middle">AT RISK</text>
+              <text x="355" y="44" fill="#f6ad55" font-size="18" font-weight="bold" font-family="monospace" text-anchor="middle">11,300</text>
+              <text x="355" y="57" fill="rgba(246,173,85,0.4)" font-size="7" font-family="monospace" text-anchor="middle">Avg CLV: $620</text>
+              <rect x="430" y="10" width="130" height="55" rx="6" fill="rgba(252,129,129,0.08)" stroke="rgba(252,129,129,0.25)" stroke-width="1"/>
+              <text x="495" y="26" fill="rgba(252,129,129,0.5)" font-size="8" font-family="monospace" text-anchor="middle">CHURNED</text>
+              <text x="495" y="44" fill="#fc8181" font-size="18" font-weight="bold" font-family="monospace" text-anchor="middle">16,360</text>
+              <text x="495" y="57" fill="rgba(252,129,129,0.35)" font-size="7" font-family="monospace" text-anchor="middle">Win-back target</text>
+              <!-- Revenue bar chart -->
+              <text x="10" y="80" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">REVENUE CONTRIBUTION BY SEGMENT</text>
+              <rect x="10" y="88" width="200" height="14" rx="3" fill="rgba(52,211,153,0.5)"/>
+              <text x="215" y="99" fill="rgba(52,211,153,0.9)" font-size="8" font-family="monospace">Champions: 58%</text>
+              <rect x="10" y="106" width="120" height="14" rx="3" fill="rgba(99,179,237,0.4)"/>
+              <text x="135" y="117" fill="rgba(99,179,237,0.8)" font-size="8" font-family="monospace">Loyal: 28%</text>
+              <rect x="10" y="124" width="48" height="14" rx="3" fill="rgba(246,173,85,0.35)"/>
+              <text x="63" y="135" fill="rgba(246,173,85,0.7)" font-size="8" font-family="monospace">At Risk: 11%</text>
+              <rect x="10" y="142" width="14" height="10" rx="2" fill="rgba(252,129,129,0.25)"/>
+              <text x="29" y="151" fill="rgba(252,129,129,0.5)" font-size="8" font-family="monospace">Churned: 3%</text>
+              <!-- GTM recommendation badge -->
+              <rect x="580" y="88" width="170" height="68" rx="6" fill="rgba(167,139,250,0.08)" stroke="rgba(167,139,250,0.2)" stroke-width="1"/>
+              <text x="665" y="103" fill="rgba(167,139,250,0.7)" font-size="7" font-family="monospace" text-anchor="middle">GTM RECOMMENDATION</text>
+              <text x="665" y="117" fill="rgba(255,255,255,0.8)" font-size="7.5" font-family="monospace" text-anchor="middle">Focus spend: Champions</text>
+              <text x="665" y="129" fill="rgba(255,255,255,0.7)" font-size="7.5" font-family="monospace" text-anchor="middle">+ Loyal segments</text>
+              <text x="665" y="141" fill="rgba(52,211,153,0.8)" font-size="7.5" font-family="monospace" text-anchor="middle">Pricing: +12% mid-tier</text>
+              <text x="665" y="153" fill="rgba(252,129,129,0.6)" font-size="7.5" font-family="monospace" text-anchor="middle">Sunset: low-margin SKU</text>
+              <text x="10" y="158" fill="rgba(255,255,255,0.18)" font-size="7" font-family="monospace">50K+ records · RFM model · CLV (BG/NBD) · Tableau · SQL pipelines</text>
+            </svg>
           </div>
           <div class="cs-tools">
             <span class="cs-tool-pill">SQL</span>
@@ -1472,7 +1610,7 @@
           <div class="section-label">Career</div>
           <h2 class="section-title">Experience</h2>
         </div>
-        <p class="section-subtitle">2.5+ years turning data into product decisions at SaaS companies.</p>
+        <p class="section-subtitle">3+ years turning data into product decisions at SaaS companies.</p>
       </div>
 
       <div class="exp-timeline">
@@ -1589,7 +1727,7 @@
       <div class="about-grid fade-in">
         <div>
 <img src="mansi.jpeg" alt="Mansi Kamothi" class="about-photo" />
-          <p><strong>Product Analyst</strong> with <strong>2.5+ years</strong> in <strong>SaaS</strong>. I sit between the data and the decision — figuring out what the numbers actually mean and what to do about it. I work best in cross-functional teams where I can talk to engineers, designers, and PMs in the same week.</p>
+          <p><strong>Product Analyst</strong> with <strong>3+ years</strong> in <strong>SaaS</strong>. I sit between the data and the decision — figuring out what the numbers actually mean and what to do about it. I work best in cross-functional teams where I can talk to engineers, designers, and PMs in the same week.</p>
           <p>Most of my recent work has been in onboarding and experimentation: running <strong>A/B tests</strong> with proper statistical rigor, building <strong>dashboards</strong> that show up in leadership reviews, and helping PMs prioritize based on what users are actually doing — not just what they say they want.</p>
           <p>Looking for <strong>Product Analyst</strong>, <strong>Senior Product Analyst</strong>, and <strong>Product Operations</strong> roles in fintech or SaaS — ideally somewhere that treats analytics as a first-class input to product decisions, not an afterthought.</p>
         </div>
