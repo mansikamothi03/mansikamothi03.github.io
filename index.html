@@ -786,6 +786,112 @@
       .modal-body { grid-template-columns: minmax(0,1fr); }
       .modal-panel { border-radius: 20px; max-height: 95vh; }
     }
+
+    /* ── Hero positioning tagline ── */
+    .hero-positioning {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.75;
+      margin-bottom: 10px;
+    }
+
+    /* ── How I Work ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 14px;
+      margin-top: 4px;
+    }
+    .how-card {
+      background: rgba(22,27,34,0.92);
+      border-radius: 18px;
+      padding: 22px 20px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .how-card:hover { border-color: rgba(167,139,250,0.4); transform: translateY(-2px); }
+    .how-icon { font-size: 28px; margin-bottom: 12px; line-height: 1; }
+    .how-title { font-size: 15px; font-weight: 600; margin-bottom: 7px; }
+    .how-desc { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── Case Studies (standalone section) ── */
+    .cs-section { margin-top: 14px; display: flex; flex-direction: column; gap: 20px; }
+    .cs-card {
+      background: rgba(22,27,34,0.92);
+      border-radius: 22px;
+      padding: 26px 26px 22px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-subtle);
+      transition: border-color 0.2s;
+    }
+    .cs-card:hover { border-color: rgba(167,139,250,0.35); }
+    .cs-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(148,163,184,0.1);
+    }
+    .cs-card-title { font-size: 20px; font-weight: 600; margin-bottom: 5px; }
+    .cs-card-sub { font-size: 14px; color: var(--muted); }
+    .cs-card-metrics { display: flex; gap: 10px; flex-shrink: 0; }
+    .cs-metric {
+      background: var(--accent-soft);
+      border: 1px solid rgba(167,139,250,0.25);
+      border-radius: 12px;
+      padding: 9px 16px;
+      text-align: center;
+      min-width: 84px;
+    }
+    .cs-metric-val { font-size: 18px; font-weight: 700; color: var(--accent); line-height: 1.2; }
+    .cs-metric-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 3px; }
+    .cs-body {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0,1fr));
+      gap: 18px;
+    }
+    .cs-col-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .cs-col-label span { font-size: 14px; }
+    .cs-col-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .cs-col-text strong { color: rgba(255,255,255,0.9); }
+    .cs-tools {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-top: 18px; padding-top: 16px;
+      border-top: 1px solid rgba(148,163,184,0.08);
+    }
+    .cs-tool-pill {
+      font-size: 12px; padding: 3px 10px; border-radius: 999px;
+      background: rgba(22,27,34,0.95);
+      border: 1px solid rgba(148,163,184,0.15);
+      color: var(--muted);
+    }
+
+    /* ── Responsive: new sections ── */
+    @media (max-width: 900px) {
+      .how-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cs-body { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .cs-card-header { flex-direction: column; }
+      .cs-card-metrics { flex-wrap: wrap; }
+    }
+    @media (max-width: 640px) {
+      .how-grid { grid-template-columns: minmax(0,1fr); }
+      .cs-body { grid-template-columns: minmax(0,1fr); }
+    }
   </style>
 </head>
 <body>
@@ -801,6 +907,8 @@
       <div class="logo">MANSI KAMOTHI</div>
       <nav>
         <a href="#work">Work</a>
+        <a href="#case-studies">Case Studies</a>
+        <a href="#how-i-work">How I Work</a>
         <a href="#github-projects">GitHub</a>
         <a href="#experience">Experience</a>
         <a href="#education">Education</a>
@@ -816,6 +924,7 @@
           <span class="hero-chip-dot"></span>
           <span>Available immediately</span>
         </div>
+        <p class="hero-positioning">Product Analytics &nbsp;·&nbsp; BI Reporting &nbsp;·&nbsp; Product Operations &nbsp;·&nbsp; Growth Analytics</p>
         <h1 class="hero-title">I turn product data into decisions that <em>actually ship.</em></h1>
         <p style="margin:6px 0 14px;font-size:14px;color:var(--muted);letter-spacing:0.01em;">📍 San Francisco, CA</p>
         <p class="hero-subtitle">
@@ -895,6 +1004,39 @@
       </div>
     </section>
 
+    <!-- ── HOW I WORK ── -->
+    <section id="how-i-work">
+      <div class="section-header fade-in">
+        <div>
+          <div class="section-label">Methodology</div>
+          <h2 class="section-title">How I work</h2>
+        </div>
+        <p class="section-subtitle">Analytics, experimentation, and stakeholder alignment — from question to shipped decision.</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-card fade-in" style="transition-delay:0.05s">
+          <div class="how-icon">📊</div>
+          <div class="how-title">Start with the data</div>
+          <div class="how-desc">Funnel analysis, cohort breakdowns, and event tracking to find where users drop off and why — before anyone writes a spec.</div>
+        </div>
+        <div class="how-card fade-in" style="transition-delay:0.1s">
+          <div class="how-icon">🧪</div>
+          <div class="how-title">Test before you ship</div>
+          <div class="how-desc">Proper A/B test design — sample sizing, guardrail metrics, statistical significance — so teams ship with confidence, not hope.</div>
+        </div>
+        <div class="how-card fade-in" style="transition-delay:0.15s">
+          <div class="how-icon">🤝</div>
+          <div class="how-title">Align stakeholders early</div>
+          <div class="how-desc">I translate data into decisions leadership can act on. Dashboards that get opened, readouts that drive roadmap calls — not just reports.</div>
+        </div>
+        <div class="how-card fade-in" style="transition-delay:0.2s">
+          <div class="how-icon">⚙️</div>
+          <div class="how-title">Automate the repetitive</div>
+          <div class="how-desc">ETL pipelines, automated reporting, and standardized KPI frameworks — so teams spend time on decisions, not data wrangling.</div>
+        </div>
+      </div>
+    </section>
+
     <!-- ── FEATURED WORK ── -->
     <section id="work">
       <div class="section-header fade-in">
@@ -957,6 +1099,174 @@
             </div>
           </div>
         </a>
+      </div>
+    </section>
+
+    <!-- ── CASE STUDIES ── -->
+    <section id="case-studies">
+      <div class="section-header fade-in">
+        <div>
+          <div class="section-label">Deep dives</div>
+          <h2 class="section-title">Case studies</h2>
+        </div>
+        <p class="section-subtitle">Problem → data → analysis → recommendation → measurable outcome.</p>
+      </div>
+      <div class="cs-section">
+
+        <!-- Case Study 1: Onboarding -->
+        <div class="cs-card fade-in">
+          <div class="cs-card-header">
+            <div>
+              <div class="cs-card-title">Onboarding Optimization &amp; Conversion Lift</div>
+              <div class="cs-card-sub">Tungsten Automation &middot; Product Analyst &middot; 2024</div>
+            </div>
+            <div class="cs-card-metrics">
+              <div class="cs-metric">
+                <div class="cs-metric-val">+19.8%</div>
+                <div class="cs-metric-lbl">Conversion</div>
+              </div>
+              <div class="cs-metric">
+                <div class="cs-metric-val">$1.2M</div>
+                <div class="cs-metric-lbl">ARR impact</div>
+              </div>
+            </div>
+          </div>
+          <div class="cs-body">
+            <div class="cs-col">
+              <div class="cs-col-label"><span>❓</span> Problem</div>
+              <div class="cs-col-text">Trial-to-paid conversion was stagnating at ~12%. PMs had no visibility into <strong>which onboarding steps caused drop-off</strong> — decisions were based on gut feel, not data.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>🗄️</span> Data</div>
+              <div class="cs-col-text">Amplitude event logs (45M+ annual events), BigQuery session data, Salesforce trial records, and Stripe payment conversion timestamps.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>🔬</span> Analysis</div>
+              <div class="cs-col-text">Built a step-by-step funnel in Amplitude. Identified 3 steps with &gt;40% drop-off. Ran <strong>4 sequential A/B tests</strong> (n=12,400 each) with 95% CI and 80% statistical power.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>💡</span> Recommendation</div>
+              <div class="cs-col-text">Simplify onboarding from 5 steps to 3. Remove mandatory credit card at signup. Add a <strong>time-to-first-value</strong> milestone in the first session.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>✅</span> Outcome</div>
+              <div class="cs-col-text"><strong>+19.8% trial-to-paid conversion</strong> within 60 days of launch. $1.2M incremental ARR. Experiment framework adopted as the team standard for all future feature tests.</div>
+            </div>
+          </div>
+          <div class="cs-tools">
+            <span class="cs-tool-pill">Amplitude</span>
+            <span class="cs-tool-pill">BigQuery</span>
+            <span class="cs-tool-pill">Python · statsmodels</span>
+            <span class="cs-tool-pill">Salesforce</span>
+            <span class="cs-tool-pill">Stripe</span>
+            <span class="cs-tool-pill">Power BI</span>
+            <span class="cs-tool-pill">A/B Testing</span>
+            <span class="cs-tool-pill">Funnel Analysis</span>
+          </div>
+        </div>
+
+        <!-- Case Study 2: Analytics Infrastructure -->
+        <div class="cs-card fade-in" style="transition-delay:0.1s">
+          <div class="cs-card-header">
+            <div>
+              <div class="cs-card-title">Analytics Infrastructure &amp; Reporting Automation</div>
+              <div class="cs-card-sub">Tungsten Automation &middot; Product Analyst &middot; 2024</div>
+            </div>
+            <div class="cs-card-metrics">
+              <div class="cs-metric">
+                <div class="cs-metric-val">85h/wk</div>
+                <div class="cs-metric-lbl">Time saved</div>
+              </div>
+              <div class="cs-metric">
+                <div class="cs-metric-val">5d → live</div>
+                <div class="cs-metric-lbl">Reporting</div>
+              </div>
+            </div>
+          </div>
+          <div class="cs-body">
+            <div class="cs-col">
+              <div class="cs-col-label"><span>❓</span> Problem</div>
+              <div class="cs-col-text">5 teams pulled data from <strong>6 different sources</strong> with no shared KPI definitions. 85 hrs/week spent on manual reporting. Leadership had no single source of truth.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>🗄️</span> Data</div>
+              <div class="cs-col-text">BigQuery, Salesforce, Zendesk, Amplitude, Stripe, and GA4 — audited all 23 existing reports and mapped data lineage across 6 sources.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>🔬</span> Analysis</div>
+              <div class="cs-col-text">Identified 14 redundant reports and 3 conflicting KPI definitions. Designed a <strong>canonical metric layer</strong> in dbt and built Airflow DAGs for automated ingestion from all 6 sources.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>💡</span> Recommendation</div>
+              <div class="cs-col-text">Centralize into Power BI with automated refresh. Implement a <strong>Jira intake process</strong> for new data requests. Deprecate 14 redundant reports and standardize KPI definitions across teams.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>✅</span> Outcome</div>
+              <div class="cs-col-text"><strong>85 hrs/week saved</strong> across 3 teams. Reporting cycle cut from 5 days to real-time. 35% fewer ad hoc data requests. 20+ live dashboards used daily by Product, Sales, and CS.</div>
+            </div>
+          </div>
+          <div class="cs-tools">
+            <span class="cs-tool-pill">Python</span>
+            <span class="cs-tool-pill">Apache Airflow</span>
+            <span class="cs-tool-pill">dbt</span>
+            <span class="cs-tool-pill">BigQuery</span>
+            <span class="cs-tool-pill">Power BI</span>
+            <span class="cs-tool-pill">Salesforce</span>
+            <span class="cs-tool-pill">Zendesk</span>
+            <span class="cs-tool-pill">ETL Automation</span>
+          </div>
+        </div>
+
+        <!-- Case Study 3: Customer Segmentation -->
+        <div class="cs-card fade-in" style="transition-delay:0.2s">
+          <div class="cs-card-header">
+            <div>
+              <div class="cs-card-title">Customer Segmentation &amp; GTM Strategy</div>
+              <div class="cs-card-sub">Magna Infotech &middot; Business Analyst &middot; 2020–2021</div>
+            </div>
+            <div class="cs-card-metrics">
+              <div class="cs-metric">
+                <div class="cs-metric-val">3</div>
+                <div class="cs-metric-lbl">Launches</div>
+              </div>
+              <div class="cs-metric">
+                <div class="cs-metric-val">−60%</div>
+                <div class="cs-metric-lbl">Report time</div>
+              </div>
+            </div>
+          </div>
+          <div class="cs-body">
+            <div class="cs-col">
+              <div class="cs-col-label"><span>❓</span> Problem</div>
+              <div class="cs-col-text">3 product lines had no visibility into which customer segments drove revenue. Pricing and GTM decisions were based on intuition — across <strong>50K+ customer records</strong>.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>🗄️</span> Data</div>
+              <div class="cs-col-text">50K+ transaction records, CRM behavioral data, product usage logs, and competitive pricing benchmarks across 4 business units.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>🔬</span> Analysis</div>
+              <div class="cs-col-text">RFM segmentation to identify Champions, Loyal, At-Risk, and Churned cohorts. CLV modeling to rank segment profitability. Competitive benchmarking on pricing tiers.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>💡</span> Recommendation</div>
+              <div class="cs-col-text">Focus GTM spend on top 2 segments. Adjust mid-tier pricing by +12%. Sunset the lowest-margin SKU. Build <strong>SQL reporting pipelines</strong> for ongoing segment tracking in Tableau.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>✅</span> Outcome</div>
+              <div class="cs-col-text">Contributed to <strong>3 successful product launches</strong>. 60% reduction in manual reporting (~12 hrs/week). SQL dashboards adopted by operations and finance teams as daily tools.</div>
+            </div>
+          </div>
+          <div class="cs-tools">
+            <span class="cs-tool-pill">SQL</span>
+            <span class="cs-tool-pill">Python · pandas</span>
+            <span class="cs-tool-pill">Tableau</span>
+            <span class="cs-tool-pill">RFM Segmentation</span>
+            <span class="cs-tool-pill">CLV Modeling</span>
+            <span class="cs-tool-pill">Competitive Analysis</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
