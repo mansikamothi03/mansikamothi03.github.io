@@ -1113,6 +1113,22 @@
             </div>
           </div>
         </a>
+        <a href="#" class="project-card fade-in" style="transition-delay:0.2s" onclick="openModal(event,'ai-insights')">
+          <div class="project-chip">AI · LLM</div>
+          <div class="project-title">AI-assisted product insights tool</div>
+          <div class="project-role">Personal Project &middot; OpenAI API · Python</div>
+          <div class="project-meta">Built an LLM pipeline that ingests Amplitude event data and Zendesk ticket exports, then generates executive-ready product insight summaries — cutting weekly reporting prep from 4 hours to 20 minutes.</div>
+          <div class="project-mini-metrics">
+            <div class="project-mini-metric">
+              <div class="project-mini-val">4h→20m</div>
+              <div class="project-mini-lbl">Reporting time</div>
+            </div>
+            <div class="project-mini-metric">
+              <div class="project-mini-val">GPT-4o</div>
+              <div class="project-mini-lbl">LLM backbone</div>
+            </div>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -1405,6 +1421,98 @@
           </div>
         </div>
 
+        <!-- Case Study 4: AI-Assisted Ticket Intelligence -->
+        <div class="cs-card fade-in" style="transition-delay:0.3s">
+          <div class="cs-card-header">
+            <div>
+              <div class="cs-card-title">AI-Assisted Ticket Intelligence &amp; Support Analytics</div>
+              <div class="cs-card-sub">Tungsten Automation &middot; Product Analyst &middot; 2024</div>
+            </div>
+            <div class="cs-card-metrics">
+              <div class="cs-metric">
+                <div class="cs-metric-val">−40%</div>
+                <div class="cs-metric-lbl">P1 response time</div>
+              </div>
+              <div class="cs-metric">
+                <div class="cs-metric-val">800+</div>
+                <div class="cs-metric-lbl">Tickets/wk classified</div>
+              </div>
+            </div>
+          </div>
+          <div class="cs-body">
+            <div class="cs-col">
+              <div class="cs-col-label"><span>❓</span> Problem</div>
+              <div class="cs-col-text">CS team handled 800+ Zendesk tickets/week with no automated triage. <strong>23% of tickets from At-Risk accounts</strong> went unresolved beyond SLA — invisible until churn happened.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>🗄️</span> Data</div>
+              <div class="cs-col-text">Zendesk ticket exports (subject, body, tags, resolution time), Salesforce account health scores, product usage logs, and historical churn labels across 14 months.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>🔬</span> Analysis</div>
+              <div class="cs-col-text">Used <strong>OpenAI API</strong> to classify tickets by product area and urgency sentiment. Joined with Salesforce health scores via SQL. Identified that billing + auth tickets from At-Risk accounts had 3× higher churn correlation.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>💡</span> Recommendation</div>
+              <div class="cs-col-text">Auto-tag tickets by product area + urgency tier using LLM classification. Build a <strong>health-score-weighted SLA dashboard</strong> in Power BI so CS leads see at-risk accounts first.</div>
+            </div>
+            <div class="cs-col">
+              <div class="cs-col-label"><span>✅</span> Outcome</div>
+              <div class="cs-col-text"><strong>40% reduction in P1 ticket response time</strong>. CS team adopted the triage dashboard as their daily tool. At-Risk account escalations surfaced 2× faster, contributing to a measurable improvement in retention.</div>
+            </div>
+          </div>
+          <!-- Dashboard mockup: AI ticket triage -->
+          <div class="cs-dashboard">
+            <div class="cs-dashboard-label">📊 AI ticket triage dashboard — Zendesk · OpenAI API · Power BI</div>
+            <svg viewBox="0 0 760 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;border-radius:10px;background:rgba(10,10,15,0.7)">
+              <!-- KPI row -->
+              <rect x="10" y="10" width="108" height="44" rx="6" fill="rgba(252,129,129,0.12)" stroke="rgba(252,129,129,0.3)" stroke-width="1"/>
+              <text x="64" y="28" fill="rgba(252,129,129,0.6)" font-size="7" font-family="monospace" text-anchor="middle">OPEN TICKETS</text>
+              <text x="64" y="46" fill="#fc8181" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">847</text>
+              <rect x="126" y="10" width="108" height="44" rx="6" fill="rgba(246,173,85,0.1)" stroke="rgba(246,173,85,0.25)" stroke-width="1"/>
+              <text x="180" y="28" fill="rgba(246,173,85,0.6)" font-size="7" font-family="monospace" text-anchor="middle">AT-RISK ACCTS</text>
+              <text x="180" y="46" fill="#f6ad55" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">194</text>
+              <rect x="242" y="10" width="108" height="44" rx="6" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.25)" stroke-width="1"/>
+              <text x="296" y="28" fill="rgba(167,139,250,0.6)" font-size="7" font-family="monospace" text-anchor="middle">AI CLASSIFIED</text>
+              <text x="296" y="46" fill="#a78bfa" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">98.2%</text>
+              <rect x="358" y="10" width="108" height="44" rx="6" fill="rgba(52,211,153,0.1)" stroke="rgba(52,211,153,0.25)" stroke-width="1"/>
+              <text x="412" y="28" fill="rgba(52,211,153,0.6)" font-size="7" font-family="monospace" text-anchor="middle">P1 RESPONSE</text>
+              <text x="412" y="46" fill="#34d399" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">−40%</text>
+              <rect x="474" y="10" width="108" height="44" rx="6" fill="rgba(99,179,237,0.1)" stroke="rgba(99,179,237,0.25)" stroke-width="1"/>
+              <text x="528" y="28" fill="rgba(99,179,237,0.6)" font-size="7" font-family="monospace" text-anchor="middle">SLA BREACH</text>
+              <text x="528" y="46" fill="#63b3ed" font-size="16" font-weight="bold" font-family="monospace" text-anchor="middle">23%→9%</text>
+              <!-- Ticket category breakdown -->
+              <text x="10" y="70" fill="rgba(255,255,255,0.3)" font-size="7" font-family="monospace">TICKET CATEGORY · AI CLASSIFICATION (OpenAI API)</text>
+              <rect x="10" y="78" width="180" height="12" rx="3" fill="rgba(252,129,129,0.4)"/>
+              <text x="195" y="88" fill="rgba(252,129,129,0.9)" font-size="8" font-family="monospace">Billing / Auth: 38%</text>
+              <rect x="10" y="94" width="130" height="12" rx="3" fill="rgba(246,173,85,0.4)"/>
+              <text x="145" y="104" fill="rgba(246,173,85,0.8)" font-size="8" font-family="monospace">Feature Bug: 27%</text>
+              <rect x="10" y="110" width="90" height="12" rx="3" fill="rgba(167,139,250,0.4)"/>
+              <text x="105" y="120" fill="rgba(167,139,250,0.8)" font-size="8" font-family="monospace">Onboarding: 19%</text>
+              <rect x="10" y="126" width="50" height="12" rx="3" fill="rgba(99,179,237,0.35)"/>
+              <text x="65" y="136" fill="rgba(99,179,237,0.7)" font-size="8" font-family="monospace">Other: 16%</text>
+              <!-- Churn correlation badge -->
+              <rect x="580" y="70" width="170" height="72" rx="6" fill="rgba(252,129,129,0.08)" stroke="rgba(252,129,129,0.25)" stroke-width="1"/>
+              <text x="665" y="86" fill="rgba(252,129,129,0.7)" font-size="7" font-family="monospace" text-anchor="middle">CHURN SIGNAL</text>
+              <text x="665" y="100" fill="rgba(255,255,255,0.85)" font-size="7.5" font-family="monospace" text-anchor="middle">Billing + Auth tickets</text>
+              <text x="665" y="113" fill="rgba(255,255,255,0.7)" font-size="7.5" font-family="monospace" text-anchor="middle">from At-Risk accounts</text>
+              <text x="665" y="126" fill="#fc8181" font-size="8" font-weight="bold" font-family="monospace" text-anchor="middle">3× churn correlation</text>
+              <text x="665" y="136" fill="rgba(52,211,153,0.7)" font-size="7" font-family="monospace" text-anchor="middle">→ Priority escalation</text>
+              <text x="10" y="155" fill="rgba(255,255,255,0.18)" font-size="7" font-family="monospace">Zendesk · OpenAI API · Salesforce · SQL · Power BI · 14-month training window</text>
+            </svg>
+          </div>
+          <div class="cs-tools">
+            <span class="cs-tool-pill">OpenAI API</span>
+            <span class="cs-tool-pill">Python · pandas</span>
+            <span class="cs-tool-pill">Zendesk</span>
+            <span class="cs-tool-pill">Salesforce</span>
+            <span class="cs-tool-pill">SQL</span>
+            <span class="cs-tool-pill">Power BI</span>
+            <span class="cs-tool-pill">NLP Classification</span>
+            <span class="cs-tool-pill">Health Scoring</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1597,6 +1705,83 @@
             <div class="gh-lang"><span class="gh-dot-lang" style="background:#f7df1e"></span>Python · React · FastAPI</div>
             <div class="gh-title">Real-Time Monitoring Dashboard</div>
             <div class="gh-desc">FastAPI WebSocket backend with React + Recharts for live KPI monitoring, anomaly alerts, and metric streaming.</div>
+            <div class="gh-footer"><span class="gh-link">View repo &nearr;</span></div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/nlp-feedback-classifier" target="_blank" rel="noreferrer" style="transition-delay:0.35s" onclick="openModal(event,'gh-nlp')">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#0a1a2e,#0d2240,#111111)">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">NLP PIPELINE · OPENAI EMBEDDINGS</text>
+              <!-- Theme bars -->
+              <text x="14" y="26" fill="rgba(167,139,250,0.5)" font-size="6" font-family="monospace">Feature Requests</text>
+              <rect x="14" y="29" width="130" height="9" rx="2" fill="rgba(167,139,250,0.35)"/>
+              <text x="148" y="37" fill="rgba(167,139,250,0.8)" font-size="6.5" font-family="monospace">34%</text>
+              <text x="14" y="44" fill="rgba(252,129,129,0.5)" font-size="6" font-family="monospace">Billing / Pricing</text>
+              <rect x="14" y="47" width="95" height="9" rx="2" fill="rgba(252,129,129,0.35)"/>
+              <text x="113" y="55" fill="rgba(252,129,129,0.8)" font-size="6.5" font-family="monospace">25%</text>
+              <text x="14" y="62" fill="rgba(246,173,85,0.5)" font-size="6" font-family="monospace">Onboarding</text>
+              <rect x="14" y="65" width="72" height="9" rx="2" fill="rgba(246,173,85,0.35)"/>
+              <text x="90" y="73" fill="rgba(246,173,85,0.8)" font-size="6.5" font-family="monospace">19%</text>
+              <text x="14" y="80" fill="rgba(99,179,237,0.5)" font-size="6" font-family="monospace">Bug Reports</text>
+              <rect x="14" y="83" width="52" height="9" rx="2" fill="rgba(99,179,237,0.3)"/>
+              <text x="70" y="91" fill="rgba(99,179,237,0.7)" font-size="6.5" font-family="monospace">14%</text>
+              <!-- Accuracy badge -->
+              <rect x="168" y="28" width="62" height="18" rx="4" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.4)" stroke-width="1"/>
+              <text x="199" y="40" fill="#34d399" font-size="7.5" font-family="monospace" text-anchor="middle">91.4% acc</text>
+              <rect x="168" y="50" width="62" height="18" rx="4" fill="rgba(167,139,250,0.12)" stroke="rgba(167,139,250,0.3)" stroke-width="1"/>
+              <text x="199" y="62" fill="#a78bfa" font-size="7" font-family="monospace" text-anchor="middle">800 resp/2min</text>
+              <text x="14" y="98" fill="rgba(255,255,255,0.22)" font-size="6" font-family="monospace">spaCy · OpenAI embeddings · KMeans · VADER · GPT-4o</text>
+            </svg>
+          </div>
+          <div class="gh-body">
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#3572A5"></span>Python · OpenAI · spaCy</div>
+            <div class="gh-title">NLP Customer Feedback Classifier</div>
+            <div class="gh-desc">End-to-end NLP pipeline: OpenAI embeddings + KMeans clustering to classify 800+ feedback responses by theme and sentiment in under 2 minutes.</div>
+            <div class="gh-footer"><span class="gh-link">View repo &nearr;</span></div>
+          </div>
+        </a>
+
+        <a class="gh-card fade-in" href="https://github.com/mansikamothi03/snowflake-dbt-analytics" target="_blank" rel="noreferrer" style="transition-delay:0.4s" onclick="openModal(event,'gh-snowflake')">
+          <div class="gh-thumb" style="background:linear-gradient(135deg,#001a2e,#003366,#111111)">
+            <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:2" viewBox="0 0 240 100" xmlns="http://www.w3.org/2000/svg">
+              <text x="14" y="13" fill="rgba(255,255,255,0.35)" font-size="6.5" font-family="monospace" letter-spacing="1">SNOWFLAKE · dbt · AIRFLOW STACK</text>
+              <!-- Pipeline flow -->
+              <rect x="8" y="24" width="42" height="22" rx="3" fill="rgba(99,179,237,0.15)" stroke="rgba(99,179,237,0.4)" stroke-width="1"/>
+              <text x="29" y="33" fill="rgba(99,179,237,0.9)" font-size="6" font-family="monospace" text-anchor="middle">SOURCES</text>
+              <text x="29" y="42" fill="rgba(255,255,255,0.3)" font-size="5.5" font-family="monospace" text-anchor="middle">5 connectors</text>
+              <line x1="50" y1="35" x2="62" y2="35" stroke="rgba(99,179,237,0.5)" stroke-width="1.5"/>
+              <polygon points="60,32 66,35 60,38" fill="rgba(99,179,237,0.6)"/>
+              <rect x="66" y="24" width="42" height="22" rx="3" fill="rgba(246,173,85,0.15)" stroke="rgba(246,173,85,0.4)" stroke-width="1"/>
+              <text x="87" y="33" fill="rgba(246,173,85,0.9)" font-size="6" font-family="monospace" text-anchor="middle">STAGING</text>
+              <text x="87" y="42" fill="rgba(255,255,255,0.3)" font-size="5.5" font-family="monospace" text-anchor="middle">dbt models</text>
+              <line x1="108" y1="35" x2="120" y2="35" stroke="rgba(246,173,85,0.5)" stroke-width="1.5"/>
+              <polygon points="118,32 124,35 118,38" fill="rgba(246,173,85,0.6)"/>
+              <rect x="124" y="24" width="42" height="22" rx="3" fill="rgba(167,139,250,0.15)" stroke="rgba(167,139,250,0.4)" stroke-width="1"/>
+              <text x="145" y="33" fill="rgba(167,139,250,0.9)" font-size="6" font-family="monospace" text-anchor="middle">MARTS</text>
+              <text x="145" y="42" fill="rgba(255,255,255,0.3)" font-size="5.5" font-family="monospace" text-anchor="middle">fct + dim</text>
+              <line x1="166" y1="35" x2="178" y2="35" stroke="rgba(167,139,250,0.5)" stroke-width="1.5"/>
+              <polygon points="176,32 182,35 176,38" fill="rgba(167,139,250,0.6)"/>
+              <rect x="182" y="24" width="42" height="22" rx="3" fill="rgba(52,211,153,0.15)" stroke="rgba(52,211,153,0.4)" stroke-width="1"/>
+              <text x="203" y="33" fill="rgba(52,211,153,0.9)" font-size="6" font-family="monospace" text-anchor="middle">BI LAYER</text>
+              <text x="203" y="42" fill="rgba(255,255,255,0.3)" font-size="5.5" font-family="monospace" text-anchor="middle">Power BI</text>
+              <!-- Stats row -->
+              <rect x="8" y="54" width="52" height="20" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+              <text x="34" y="63" fill="rgba(255,255,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">34 models</text>
+              <text x="34" y="71" fill="rgba(52,211,153,0.7)" font-size="6" font-family="monospace" text-anchor="middle">100% tested</text>
+              <rect x="66" y="54" width="52" height="20" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+              <text x="92" y="63" fill="rgba(255,255,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">3× faster</text>
+              <text x="92" y="71" fill="rgba(246,173,85,0.7)" font-size="6" font-family="monospace" text-anchor="middle">query perf</text>
+              <rect x="124" y="54" width="52" height="20" rx="3" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
+              <text x="150" y="63" fill="rgba(255,255,255,0.5)" font-size="6" font-family="monospace" text-anchor="middle">−40% cost</text>
+              <text x="150" y="71" fill="rgba(99,179,237,0.7)" font-size="6" font-family="monospace" text-anchor="middle">auto-suspend</text>
+              <text x="8" y="90" fill="rgba(255,255,255,0.22)" font-size="6" font-family="monospace">Snowflake · dbt Core 1.7 · Airflow 2.8 · Fivetran · SCD Type 2</text>
+            </svg>
+          </div>
+          <div class="gh-body">
+            <div class="gh-lang"><span class="gh-dot-lang" style="background:#e8b84b"></span>SQL · dbt · Python</div>
+            <div class="gh-title">Snowflake + dbt Analytics Stack</div>
+            <div class="gh-desc">Production-ready modern data stack: 34 dbt models across staging/marts/metrics layers, 100% test coverage on fact tables, Airflow orchestration, and Power BI semantic layer.</div>
             <div class="gh-footer"><span class="gh-link">View repo &nearr;</span></div>
           </div>
         </a>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200" />
+  <title>LinkedIn Thumbnail – Mansi Kamothi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      width: 1200px;
+      height: 627px;
+      overflow: hidden;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: radial-gradient(circle at top left, #1e1b2e 0%, #111111 45%, #0a0a0a 100%);
+      color: #f9fafb;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle grid overlay */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(167,139,250,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(167,139,250,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    /* Glow blobs */
+    .blob-1 {
+      position: absolute;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(167,139,250,0.18) 0%, transparent 70%);
+      top: -120px; left: -80px;
+      pointer-events: none;
+    }
+    .blob-2 {
+      position: absolute;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(52,211,153,0.1) 0%, transparent 70%);
+      bottom: -80px; right: 200px;
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      width: 1200px;
+      height: 627px;
+      display: flex;
+      align-items: stretch;
+      z-index: 1;
+    }
+
+    /* ── LEFT PANEL ── */
+    .left {
+      flex: 0 0 680px;
+      padding: 52px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a78bfa, #34d399);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; font-weight: 700; color: #111;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 15%;
+    }
+
+    .name-block {}
+    .name {
+      font-size: 17px; font-weight: 700; letter-spacing: 0.02em;
+      color: #f9fafb;
+    }
+    .title-line {
+      font-size: 13px; color: #a1a1aa; margin-top: 2px;
+    }
+
+    .available-chip {
+      margin-left: auto;
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; padding: 5px 12px; border-radius: 999px;
+      background: rgba(22,27,34,0.9);
+      border: 1px solid rgba(72,187,120,0.4);
+      color: #48bb78; font-weight: 600;
+    }
+    .chip-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #48bb78;
+      box-shadow: 0 0 0 4px rgba(72,187,120,0.2);
+    }
+
+    .hero-text {
+      margin-top: 28px;
+    }
+
+    .positioning {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #a78bfa; opacity: 0.85;
+      margin-bottom: 12px;
+    }
+
+    .headline {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 42px; font-weight: 700;
+      line-height: 1.1; letter-spacing: -0.02em;
+      color: #f9fafb;
+    }
+    .headline em {
+      font-style: italic; font-weight: 400; color: #a78bfa;
+    }
+
+    .subtitle {
+      font-size: 15px; color: #a1a1aa; line-height: 1.6;
+      margin-top: 14px; max-width: 520px;
+    }
+    .subtitle strong { color: #f9fafb; }
+
+    .tags {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+    }
+    .tag {
+      padding: 4px 11px; border-radius: 999px;
+      border: 1px solid rgba(167,139,250,0.25);
+      color: #a1a1aa; font-size: 12px;
+      background: rgba(22,27,34,0.9);
+    }
+
+    .url-row {
+      display: flex; align-items: center; gap: 10px; margin-top: 24px;
+    }
+    .url-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 999px;
+      background: linear-gradient(135deg, #a78bfa, #34d399);
+      color: #111; font-size: 13px; font-weight: 700;
+    }
+    .url-ghost {
+      font-size: 13px; color: #a1a1aa;
+    }
+
+    /* ── RIGHT PANEL ── */
+    .right {
+      flex: 1;
+      padding: 40px 40px 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .metric-card {
+      background: rgba(22,27,34,0.92);
+      border: 1px solid rgba(167,139,250,0.18);
+      border-radius: 16px;
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .metric-icon { font-size: 22px; flex-shrink: 0; }
+    .metric-val {
+      font-size: 26px; font-weight: 700; color: #a78bfa;
+      line-height: 1;
+    }
+    .metric-lbl { font-size: 12px; color: #a1a1aa; margin-top: 3px; }
+
+    .metric-card.green { border-color: rgba(52,211,153,0.2); }
+    .metric-card.green .metric-val { color: #34d399; }
+
+    .divider {
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(167,139,250,0.2), transparent);
+      align-self: stretch;
+      margin: 0 4px;
+    }
+
+    /* Mini dashboard preview */
+    .mini-dash {
+      background: rgba(10,10,15,0.8);
+      border: 1px solid rgba(167,139,250,0.15);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-top: 4px;
+    }
+    .mini-dash-label {
+      font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #a1a1aa; margin-bottom: 8px; font-weight: 600;
+    }
+    .mini-bars { display: flex; flex-direction: column; gap: 5px; }
+    .mini-bar-row { display: flex; align-items: center; gap: 8px; }
+    .mini-bar-label { font-size: 9px; color: #71717a; width: 52px; flex-shrink: 0; font-family: monospace; }
+    .mini-bar-track { flex: 1; height: 7px; border-radius: 999px; background: rgba(255,255,255,0.06); overflow: hidden; }
+    .mini-bar-fill { height: 100%; border-radius: 999px; }
+    .mini-bar-val { font-size: 9px; color: #a1a1aa; width: 36px; text-align: right; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <div class="blob-1"></div>
+  <div class="blob-2"></div>
+
+  <div class="container">
+    <!-- LEFT -->
+    <div class="left">
+      <div>
+        <div class="top-row">
+          <div class="avatar">
+            <img src="mansi.jpeg" alt="Mansi" onerror="this.style.display='none';this.parentElement.textContent='MK'" />
+          </div>
+          <div class="name-block">
+            <div class="name">Mansi Kamothi</div>
+            <div class="title-line">Product Analyst · San Francisco, CA</div>
+          </div>
+          <div class="available-chip">
+            <span class="chip-dot"></span>
+            Available now
+          </div>
+        </div>
+
+        <div class="hero-text">
+          <div class="positioning">Product Analytics &nbsp;·&nbsp; BI Reporting &nbsp;·&nbsp; Product Operations &nbsp;·&nbsp; Growth</div>
+          <h1 class="headline">I turn product data into<br>decisions that <em>actually ship.</em></h1>
+          <p class="subtitle">
+            <strong>3+ years</strong> in SaaS — A/B testing, executive dashboards, ETL automation, and stakeholder alignment from question to shipped decision.
+          </p>
+          <div class="tags">
+            <span class="tag">SQL · Python · Tableau</span>
+            <span class="tag">Power BI · BigQuery</span>
+            <span class="tag">A/B Experimentation</span>
+            <span class="tag">Salesforce · Amplitude</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="url-row">
+        <div class="url-badge">📊 View Portfolio →</div>
+        <span class="url-ghost">mansikamothi03.github.io</span>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RIGHT -->
+    <div class="right">
+      <div class="metric-card">
+        <div class="metric-icon">📈</div>
+        <div>
+          <div class="metric-val">+19.8%</div>
+          <div class="metric-lbl">Trial-to-paid conversion lift</div>
+        </div>
+      </div>
+      <div class="metric-card green">
+        <div class="metric-icon">💰</div>
+        <div>
+          <div class="metric-val">$1.2M</div>
+          <div class="metric-lbl">Incremental ARR driven</div>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon">⏱</div>
+        <div>
+          <div class="metric-val">85 hrs/wk</div>
+          <div class="metric-lbl">Saved via ETL automation</div>
+        </div>
+      </div>
+      <div class="metric-card green">
+        <div class="metric-icon">🧪</div>
+        <div>
+          <div class="metric-val">15+</div>
+          <div class="metric-lbl">A/B experiments shipped</div>
+        </div>
+      </div>
+
+      <!-- Mini funnel preview -->
+      <div class="mini-dash">
+        <div class="mini-dash-label">Onboarding funnel · Control vs Variant</div>
+        <div class="mini-bars">
+          <div class="mini-bar-row">
+            <div class="mini-bar-label">Control</div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:62%;background:rgba(148,163,184,0.4)"></div></div>
+            <div class="mini-bar-val">12.1%</div>
+          </div>
+          <div class="mini-bar-row">
+            <div class="mini-bar-label">Variant ✓</div>
+            <div class="mini-bar-track"><div class="mini-bar-fill" style="width:100%;background:linear-gradient(90deg,#a78bfa,#34d399)"></div></div>
+            <div class="mini-bar-val" style="color:#34d399">14.5%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
