@@ -1,0 +1,41 @@
+feedback_id,feedback_text,source,date,account_tier
+1,"The billing page is so confusing! I can't find my invoices anywhere.",zendesk,2024-01-03,pro
+2,"SSO login keeps failing every morning. My whole team is blocked.",zendesk,2024-01-04,enterprise
+3,"Love the new dashboard — it's so much faster and cleaner than before.",nps,2024-01-04,pro
+4,"Please add bulk CSV export. We need to pull data for 500+ accounts at once.",g2,2024-01-05,enterprise
+5,"The app crashes whenever I upload a file larger than 10MB. Completely unusable.",zendesk,2024-01-05,starter
+6,"Getting started was really hard. The onboarding docs are outdated and confusing.",nps,2024-01-06,starter
+7,"I was charged twice this month. Need a refund immediately.",zendesk,2024-01-06,pro
+8,"The API response times have gotten really slow over the past week.",zendesk,2024-01-07,enterprise
+9,"Fantastic tool — our team's productivity has doubled since we switched.",capterra,2024-01-07,pro
+10,"Would love to see a Slack integration so we get alerts in our workspace.",g2,2024-01-08,enterprise
+11,"My subscription was cancelled without warning. I never requested this.",zendesk,2024-01-08,pro
+12,"The mobile app keeps logging me out every few hours.",zendesk,2024-01-09,starter
+13,"Onboarding checklist is a great idea but half the steps don't work.",nps,2024-01-09,starter
+14,"Dashboard loading takes 15+ seconds. This is unacceptable for a paid plan.",zendesk,2024-01-10,pro
+15,"Excellent customer support — they resolved my issue in under an hour.",capterra,2024-01-10,enterprise
+16,"Please add role-based permissions. We need to restrict what junior staff can see.",g2,2024-01-11,enterprise
+17,"Invoice PDF download is broken — it just shows a blank page.",zendesk,2024-01-11,pro
+18,"The new search feature is incredibly useful. Saves me so much time.",nps,2024-01-12,pro
+19,"I can't figure out how to connect my Salesforce account. No clear instructions.",zendesk,2024-01-12,starter
+20,"Error 500 every time I try to export a report. Has been happening for 3 days.",zendesk,2024-01-13,enterprise
+21,"Pricing jumped 40% with no notice. Considering switching to a competitor.",nps,2024-01-13,pro
+22,"Would be great to have a dark mode option for the dashboard.",g2,2024-01-14,starter
+23,"The audit log feature is exactly what our compliance team needed. Great addition.",capterra,2024-01-14,enterprise
+24,"Setup took me 3 hours and I still haven't connected all my data sources.",nps,2024-01-15,starter
+25,"Webhook notifications are firing duplicate events. Causing issues in our pipeline.",zendesk,2024-01-15,enterprise
+26,"Best analytics tool I've used in 10 years. Highly recommend.",capterra,2024-01-16,pro
+27,"Can you add a way to schedule reports to be emailed automatically?",g2,2024-01-16,pro
+28,"The trial expired before I could properly evaluate the product. Need more time.",zendesk,2024-01-17,starter
+29,"Charts are not rendering correctly in Firefox. Works fine in Chrome.",zendesk,2024-01-17,pro
+30,"I love how easy it is to share dashboards with stakeholders who don't have accounts.",nps,2024-01-18,enterprise
+31,"The pricing page is misleading — features listed as included are actually add-ons.",g2,2024-01-18,pro
+32,"Data sync from Hubspot stopped working after the last update.",zendesk,2024-01-19,enterprise
+33,"Would love a Python SDK so we can pull data programmatically.",g2,2024-01-19,enterprise
+34,"The product has improved so much over the last 6 months. Keep it up!",capterra,2024-01-20,pro
+35,"I keep getting logged out mid-session. Very disruptive during presentations.",zendesk,2024-01-20,starter
+36,"Onboarding video tutorials are outdated — they show a completely different UI.",nps,2024-01-21,starter
+37,"My team was accidentally given admin access. Need better permission controls.",zendesk,2024-01-21,enterprise
+38,"The cohort analysis feature is brilliant. Exactly what we needed.",capterra,2024-01-22,enterprise
+39,"Can't delete old dashboards — the delete button does nothing.",zendesk,2024-01-22,pro
+40,"Annual billing discount is not being applied to my account despite signing up for it.",zendesk,2024-01-23,pro

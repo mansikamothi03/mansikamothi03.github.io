@@ -1,0 +1,31 @@
+# Copy this file to ~/.dbt/profiles.yml and fill in your Snowflake credentials.
+# Never commit your actual profiles.yml — it contains secrets.
+
+snowflake_analytics:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: your_account.your_region   # e.g. xy12345.us-east-1
+      user: your_username
+      password: your_password             # or use authenticator: externalbrowser for SSO
+      role: transformer
+      database: ANALYTICS_DEV
+      warehouse: TRANSFORMING_WH
+      schema: dbt_dev
+      threads: 4
+      client_session_keep_alive: false
+      query_tag: dbt_dev
+
+    prod:
+      type: snowflake
+      account: your_account.your_region
+      user: your_username
+      password: your_password
+      role: transformer
+      database: ANALYTICS_PROD
+      warehouse: TRANSFORMING_WH
+      schema: dbt_prod
+      threads: 8
+      client_session_keep_alive: false
+      query_tag: dbt_prod
